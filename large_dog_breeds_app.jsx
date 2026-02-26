@@ -135,7 +135,7 @@ function SidebarSection({ title, sectionKey, collapsed, onToggle, activeCount, o
         onClick={() => onToggle(sectionKey)}
         style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.55rem 0.9rem", cursor: "pointer", userSelect: "none" }}
       >
-        <span style={{ fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: activeCount > 0 ? "#e8d49a" : "#888", fontWeight: activeCount > 0 ? 600 : 400 }}>
+        <span style={{ fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: activeCount > 0 ? "#e8d49a" : "#999", fontWeight: activeCount > 0 ? 600 : 400 }}>
           {title}{activeCount > 0 ? ` (${activeCount})` : ""}
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -462,7 +462,7 @@ export default function App() {
         const checked = (activeFilters[field] || new Set()).has(v);
         const desc = descMap[v];
         return (
-          <label key={v} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: "0.72rem", color: checked ? "#e8e0d0" : "#666", cursor: "pointer", marginBottom: "0.45rem", userSelect: "none" }}>
+          <label key={v} style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: "0.76rem", color: checked ? "#e8e0d0" : "#888", cursor: "pointer", marginBottom: "0.45rem", userSelect: "none" }}>
             <input type="checkbox" checked={checked}
               onChange={() => toggleFilter(field, v)}
               style={{ accentColor: "#c8a96e", flexShrink: 0, marginTop: 2 }} />
@@ -783,7 +783,7 @@ export default function App() {
               </div>
 
               <div style={{ overflowX: "auto", overflowY: "auto", maxHeight: "calc(100vh - 230px)" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.8rem" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.88rem" }}>
                   <thead>
                     {/* Row 1: existing columns (rowSpan=2) + category group headers */}
                     <tr style={{ borderBottom: "1px solid #1a1a1a" }}>
@@ -797,7 +797,7 @@ export default function App() {
                             style={{
                               padding: "0.55rem 0.7rem", textAlign: "left",
                               color: active ? "#e8d49a" : "#c8a96e", fontWeight: active ? 600 : 400,
-                              fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase",
+                              fontSize: "0.73rem", letterSpacing: "0.1em", textTransform: "uppercase",
                               whiteSpace: "nowrap", cursor: sortable ? "pointer" : "default", userSelect: "none",
                               position: "sticky", top: 0, background: "#0d0d0d",
                               verticalAlign: "bottom",
@@ -817,7 +817,7 @@ export default function App() {
                             padding: "0.4rem 0.5rem",
                             textAlign: "center",
                             color: cat.color,
-                            fontSize: "0.6rem",
+                            fontSize: "0.66rem",
                             letterSpacing: "0.12em",
                             textTransform: "uppercase",
                             whiteSpace: "nowrap",
@@ -842,9 +842,9 @@ export default function App() {
                               style={{
                                 padding: "0.35rem 0.4rem",
                                 textAlign: "left",
-                                color: active ? "#e8d49a" : isOvr ? cat.color : cat.color + "99",
+                                color: active ? "#e8d49a" : isOvr ? cat.color : cat.color + "cc",
                                 fontWeight: active || isOvr ? 600 : 400,
-                                fontSize: "0.58rem",
+                                fontSize: "0.64rem",
                                 letterSpacing: "0.06em",
                                 textTransform: "uppercase",
                                 whiteSpace: "nowrap",
@@ -880,23 +880,23 @@ export default function App() {
                               {b.name}
                             </a>
                           </td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#777", whiteSpace: "nowrap" }}>{b.origin}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#bbb", whiteSpace: "nowrap" }}>{b.weight_lbs.min} lbs</td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#bbb", whiteSpace: "nowrap" }}>{b.weight_lbs.max} lbs</td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#bbb", whiteSpace: "nowrap" }}>{fmtH(b)}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#bbb", whiteSpace: "nowrap" }}>{fmtL(b)}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#888", whiteSpace: "nowrap" }}>{b.coat}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#888" }}>{b.purpose.join(", ")}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap" }}><Dot level={b.exercise} /><span style={{ color: "#888" }}>{b.exercise}</span></td>
-                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap" }}><Dot level={b.grooming} /><span style={{ color: "#888" }}>{b.grooming}</span></td>
-                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap" }}><Dot level={b.shedding} /><span style={{ color: "#888" }}>{b.shedding}</span></td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#9a9a9a", whiteSpace: "nowrap" }}>{b.origin}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#ccc", whiteSpace: "nowrap" }}>{b.weight_lbs.min} lbs</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#ccc", whiteSpace: "nowrap" }}>{b.weight_lbs.max} lbs</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#ccc", whiteSpace: "nowrap" }}>{fmtH(b)}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#ccc", whiteSpace: "nowrap" }}>{fmtL(b)}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#aaa", whiteSpace: "nowrap" }}>{b.coat}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#aaa" }}>{b.purpose.join(", ")}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap" }}><Dot level={b.exercise} /><span style={{ color: "#aaa" }}>{b.exercise}</span></td>
+                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap" }}><Dot level={b.grooming} /><span style={{ color: "#aaa" }}>{b.grooming}</span></td>
+                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap" }}><Dot level={b.shedding} /><span style={{ color: "#aaa" }}>{b.shedding}</span></td>
                           <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap" }}>
-                            <span style={{ color: TRAIN_COLOR[b.trainability] || "#aaa", fontSize: "0.75rem" }}>{b.trainability}</span>
+                            <span style={{ color: TRAIN_COLOR[b.trainability] || "#bbb" }}>{b.trainability}</span>
                           </td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#777", whiteSpace: "nowrap" }}>{b.temperament.join(" · ")}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", color: "#666", maxWidth: 220, whiteSpace: "normal", lineHeight: 1.45 }}>{b.health_notes}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", textAlign: "center", color: b.good_with_kids ? "#4ade80" : "#444" }}>{b.good_with_kids ? "✓" : "✕"}</td>
-                          <td style={{ padding: "0.6rem 0.7rem", textAlign: "center", color: b.good_with_dogs ? "#4ade80" : "#444" }}>{b.good_with_dogs ? "✓" : "✕"}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#9a9a9a", whiteSpace: "nowrap" }}>{b.temperament.join(" · ")}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", color: "#888", maxWidth: 220, whiteSpace: "normal", lineHeight: 1.45 }}>{b.health_notes}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", textAlign: "center", color: b.good_with_kids ? "#4ade80" : "#555" }}>{b.good_with_kids ? "✓" : "✕"}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", textAlign: "center", color: b.good_with_dogs ? "#4ade80" : "#555" }}>{b.good_with_dogs ? "✓" : "✕"}</td>
                           {/* Rating cells */}
                           {RATING_CATEGORIES.filter(c => visibleRatingCats.has(c.key)).flatMap(cat =>
                             cat.traits.map((t, i) => (
@@ -937,29 +937,29 @@ export default function App() {
                           {b.name}
                         </a>
                       </div>
-                      <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 2 }}>{b.origin}</div>
+                      <div style={{ color: "#777", fontSize: "0.74rem", marginTop: 2 }}>{b.origin}</div>
                     </div>
                     <div style={{ textAlign: "right" }}>
-                      <div style={{ color: "#c8a96e", fontSize: "0.7rem" }}>{fmtL(b)}</div>
-                      <div style={{ color: "#555", fontSize: "0.68rem" }}>lifespan</div>
+                      <div style={{ color: "#c8a96e", fontSize: "0.74rem" }}>{fmtL(b)}</div>
+                      <div style={{ color: "#777", fontSize: "0.7rem" }}>lifespan</div>
                     </div>
                   </div>
-                  <div style={{ fontSize: "0.72rem", color: "#666", marginBottom: "0.6rem" }}>{b.temperament.join(" · ")}</div>
+                  <div style={{ fontSize: "0.72rem", color: "#888", marginBottom: "0.6rem" }}>{b.temperament.join(" · ")}</div>
                   <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap", marginBottom: "0.7rem" }}>
                     {b.purpose.map(p => <Badge key={p} text={p} />)}
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.4rem", marginBottom: "0.5rem" }}>
                     {[["Weight", fmt(b)], ["Height", fmtH(b)]].map(([k, v]) => (
                       <div key={k} style={{ background: "#161616", padding: "0.4rem 0.6rem" }}>
-                        <div style={{ color: "#444", fontSize: "0.58rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>{k}</div>
-                        <div style={{ color: "#bbb", fontSize: "0.78rem" }}>{v}</div>
+                        <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>{k}</div>
+                        <div style={{ color: "#ccc", fontSize: "0.78rem" }}>{v}</div>
                       </div>
                     ))}
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.4rem", marginBottom: "0.5rem" }}>
                     {[["Exercise", b.exercise], ["Grooming", b.grooming]].map(([k, v]) => (
                       <div key={k} style={{ background: "#161616", padding: "0.4rem 0.6rem" }}>
-                        <div style={{ color: "#444", fontSize: "0.58rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>{k}</div>
+                        <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>{k}</div>
                         <div style={{ fontSize: "0.75rem", marginBottom: 4 }}><Dot level={v} /><span style={{ color: "#ccc" }}>{v}</span></div>
                         <StatBar value={LEVEL[v] + 1} max={3} color={LEVEL_COLOR[v]} />
                       </div>
@@ -967,28 +967,28 @@ export default function App() {
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.4rem", marginBottom: "0.5rem" }}>
                     <div style={{ background: "#161616", padding: "0.4rem 0.6rem" }}>
-                      <div style={{ color: "#444", fontSize: "0.58rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>Shedding</div>
+                      <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>Shedding</div>
                       <div style={{ fontSize: "0.75rem" }}><Dot level={b.shedding} /><span style={{ color: "#ccc" }}>{b.shedding}</span></div>
                     </div>
                     <div style={{ background: "#161616", padding: "0.4rem 0.6rem" }}>
-                      <div style={{ color: "#444", fontSize: "0.58rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>Trainability</div>
+                      <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>Trainability</div>
                       <div style={{ fontSize: "0.75rem", color: TRAIN_COLOR[b.trainability] || "#aaa" }}>{b.trainability}</div>
                     </div>
                   </div>
                   <div style={{ background: "#161616", padding: "0.4rem 0.6rem", marginBottom: "0.7rem" }}>
-                    <div style={{ color: "#444", fontSize: "0.58rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>Coat</div>
+                    <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>Coat</div>
                     <div style={{ color: "#999", fontSize: "0.78rem" }}>{b.coat}</div>
                   </div>
                   {/* DogTime ratings summary on card */}
                   {b.ratings && (
                     <div style={{ background: "#0e0e0e", border: "1px solid #1a1a1a", padding: "0.5rem 0.6rem", marginBottom: "0.7rem" }}>
-                      <div style={{ color: "#444", fontSize: "0.58rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.45rem" }}>DogTime Ratings</div>
+                      <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.45rem" }}>DogTime Ratings</div>
                       {RATING_CATEGORIES.map(cat => (
                         <div key={cat.key} style={{ marginBottom: "0.35rem" }}>
-                          <div style={{ fontSize: "0.58rem", color: cat.color + "88", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>{cat.label}</div>
+                          <div style={{ fontSize: "0.62rem", color: cat.color + "aa", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>{cat.label}</div>
                           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.25rem 0.5rem" }}>
                             {cat.traits.map(t => (
-                              <div key={t.key} style={{ display: "flex", alignItems: "center", gap: 3, fontSize: "0.6rem", color: "#555" }}>
+                              <div key={t.key} style={{ display: "flex", alignItems: "center", gap: 3, fontSize: "0.62rem", color: "#777" }}>
                                 <span>{t.label}:</span>
                                 <RatingPips value={b.ratings[t.trait]} color={cat.color} />
                               </div>
@@ -1003,8 +1003,8 @@ export default function App() {
                     <Badge text="Dogs" bg={b.good_with_dogs ? "#0f1f2a" : "#1a1212"} color={b.good_with_dogs ? "#60a5fa" : "#553333"} />
                   </div>
                   <div style={{ borderTop: "1px solid #1e1e1e", paddingTop: "0.6rem" }}>
-                    <div style={{ color: "#444", fontSize: "0.58rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 3 }}>Health</div>
-                    <div style={{ color: "#666", fontSize: "0.72rem", lineHeight: 1.5 }}>{b.health_notes}</div>
+                    <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 3 }}>Health</div>
+                    <div style={{ color: "#888", fontSize: "0.72rem", lineHeight: 1.5 }}>{b.health_notes}</div>
                   </div>
                 </div>
               ))}
