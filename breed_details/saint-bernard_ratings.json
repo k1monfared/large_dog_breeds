@@ -1,0 +1,49 @@
+{
+  "breed": "Saint Bernard",
+  "slug": "saint-bernard",
+  "url": "https://dogtime.com/dog-breeds/saint-bernard",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adaptability - Overall": 3,
+      "Adapts Well To Apartment Living": 3,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 1
+    },
+    "All-around friendliness": {
+      "All-around friendliness - Overall": 5,
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Health And Grooming Needs - Overall": 4,
+      "Shedding": 4,
+      "Drooling Potential": 5,
+      "Easy To Groom": 2,
+      "General Health": 2,
+      "Potential For Weight Gain": 4,
+      "Size": 5
+    },
+    "Trainability": {
+      "Trainability - Overall": 2,
+      "Easy To Train": 2,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 1,
+      "Tendency To Bark Or Howl": 1,
+      "Wanderlust Potential": 2
+    },
+    "Exercise needs": {
+      "Exercise needs - Overall": 3,
+      "High Energy Level": 3,
+      "Intensity": 2,
+      "Exercise Needs": 2,
+      "Potential For Playfulness": 4
+    }
+  }
+}

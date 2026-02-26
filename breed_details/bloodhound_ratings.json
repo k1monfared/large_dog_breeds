@@ -1,0 +1,49 @@
+{
+  "breed": "Bloodhound",
+  "slug": "bloodhound",
+  "url": "https://dogtime.com/dog-breeds/bloodhound",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adaptability - Overall": 3,
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 3,
+      "Tolerates Hot Weather": 3
+    },
+    "All-around friendliness": {
+      "All-around friendliness - Overall": 5,
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Health And Grooming Needs - Overall": 3,
+      "Shedding": 4,
+      "Drooling Potential": 5,
+      "Easy To Groom": 1,
+      "General Health": 3,
+      "Potential For Weight Gain": 3,
+      "Size": 4
+    },
+    "Trainability": {
+      "Trainability - Overall": 4,
+      "Easy To Train": 3,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 5,
+      "Prey Drive": 3,
+      "Tendency To Bark Or Howl": 4,
+      "Wanderlust Potential": 5
+    },
+    "Exercise needs": {
+      "Exercise needs - Overall": 4,
+      "High Energy Level": 5,
+      "Intensity": 4,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 3
+    }
+  }
+}

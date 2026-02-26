@@ -1,0 +1,49 @@
+{
+  "breed": "Bullmastiff",
+  "slug": "bullmastiff",
+  "url": "https://dogtime.com/dog-breeds/bullmastiff",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adaptability - Overall": 3,
+      "Adapts Well To Apartment Living": 3,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "All-around friendliness - Overall": 4,
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 4,
+      "Friendly Toward Strangers": 3
+    },
+    "Health And Grooming Needs": {
+      "Health And Grooming Needs - Overall": 4,
+      "Shedding": 1,
+      "Drooling Potential": 5,
+      "Easy To Groom": 5,
+      "General Health": 2,
+      "Potential For Weight Gain": 5,
+      "Size": 5
+    },
+    "Trainability": {
+      "Trainability - Overall": 3,
+      "Easy To Train": 3,
+      "Intelligence": 3,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 3,
+      "Tendency To Bark Or Howl": 4,
+      "Wanderlust Potential": 3
+    },
+    "Exercise needs": {
+      "Exercise needs - Overall": 4,
+      "High Energy Level": 2,
+      "Intensity": 4,
+      "Exercise Needs": 3,
+      "Potential For Playfulness": 5
+    }
+  }
+}

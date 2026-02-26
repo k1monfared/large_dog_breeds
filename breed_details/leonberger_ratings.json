@@ -1,0 +1,49 @@
+{
+  "breed": "Leonberger",
+  "slug": "leonberger",
+  "url": "https://dogtime.com/dog-breeds/leonberger",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adaptability - Overall": 2,
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 1
+    },
+    "All-around friendliness": {
+      "All-around friendliness - Overall": 4,
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 4,
+      "Dog Friendly": 3,
+      "Friendly Toward Strangers": 2
+    },
+    "Health And Grooming Needs": {
+      "Health And Grooming Needs - Overall": 4,
+      "Shedding": 5,
+      "Drooling Potential": 3,
+      "Easy To Groom": 4,
+      "General Health": 1,
+      "Potential For Weight Gain": 4,
+      "Size": 5
+    },
+    "Trainability": {
+      "Trainability - Overall": 3,
+      "Easy To Train": 2,
+      "Intelligence": 3,
+      "Potential For Mouthiness": 4,
+      "Prey Drive": 4,
+      "Tendency To Bark Or Howl": 3,
+      "Wanderlust Potential": 2
+    },
+    "Exercise needs": {
+      "Exercise needs - Overall": 4,
+      "High Energy Level": 4,
+      "Intensity": 4,
+      "Exercise Needs": 4,
+      "Potential For Playfulness": 4
+    }
+  }
+}

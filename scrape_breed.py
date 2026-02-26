@@ -41,6 +41,7 @@ NOISE_RE = re.compile(
 )
 
 HEADING_LEVEL = {"h2": 2, "h3": 3, "h4": 4, "h5": 5}
+HEADING_TAGS  = list(HEADING_LEVEL.keys())
 
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
@@ -76,16 +77,16 @@ def strip_stars(text: str) -> str:
 
 def count_stars(text: str) -> int | None:
     """
-    Count filled stars. DogTime sometimes uses ★ for filled and ☆ for empty,
-    giving us the true score. If only ★ are present (all same char) we can't
-    distinguish — return None so the caller can try other methods.
+    Count filled stars. DogTime renders ALL star characters as ★ in HTML text
+    (empty stars are styled grey via CSS, invisible to scraping). So counting
+    ★ always gives 5 and is unreliable. Only return a value when we see a mix
+    of ★ and ☆ — which would mean the page uses actual Unicode empty stars.
     """
     filled = text.count("★")
     empty  = text.count("☆")
     if filled > 0 and empty > 0:
-        return filled   # proper mixed ★/☆ — reliable
-    if filled > 0 and empty == 0:
-        return filled   # might be all 5 filled, or CSS-styled empties — best guess
+        return filled   # genuine mixed ★/☆ — reliable
+    # All ★ (no ☆) means CSS-only styling — can't tell empty from filled
     return None
 
 
@@ -119,12 +120,22 @@ def is_noise(el: Tag) -> bool:
 def flatten_content(root: Tag) -> list[Tag]:
     """
     Walk root's subtree in document order and return a flat list of
-    significant elements: headings (h2-h5) and block content (p, ul, ol,
-    blockquote). Never returns an element that is a descendant of another
-    element already in the list (no double-counting).
+    significant elements: headings (h2-h5), paragraphs, and lists.
+
+    Special case: DogTime nests h3/h4 headings inside <ul><li> accordion
+    elements. When a <ul> or <ol> contains any heading descendants we recurse
+    into it (and into each <li>) rather than treating the whole list as one
+    item. This surfaces the inner headings as proper nodes so the hierarchy
+    builder can create subsections from them.
     """
     result = []
     seen   = set()
+
+    def seal(node):
+        """Mark node + all descendants as seen so they're never revisited."""
+        seen.add(id(node))
+        for d in node.find_all(True):
+            seen.add(id(d))
 
     def walk(node):
         if not isinstance(node, Tag):
@@ -136,15 +147,38 @@ def flatten_content(root: Tag) -> list[Tag]:
             return
 
         name = node.name
+
         if name in HEADING_LEVEL:
             seen.add(nid)
             result.append(node)
-        elif name in ("p", "ul", "ol", "blockquote"):
+
+        elif name in ("p", "blockquote"):
             seen.add(nid)
             result.append(node)
-            # mark all descendants so we don't recurse into them
-            for desc in node.find_all(True):
-                seen.add(id(desc))
+            seal(node)
+
+        elif name in ("ul", "ol"):
+            seen.add(nid)
+            if node.find(HEADING_TAGS):
+                # List contains headings → recurse so we surface them
+                for child in node.children:
+                    walk(child)
+            else:
+                # Simple flat list → treat as a unit
+                result.append(node)
+                seal(node)
+
+        elif name == "li":
+            seen.add(nid)
+            if node.find(HEADING_TAGS):
+                # This li wraps a subsection → recurse into its children
+                for child in node.children:
+                    walk(child)
+            else:
+                # Plain li (no inner headings) → treat as a text item
+                result.append(node)
+                seal(node)
+
         else:
             for child in node.children:
                 walk(child)
@@ -293,16 +327,22 @@ def scrape_content(html: str) -> dict | None:
 
         # ── Block content ──
         elif name in ("p", "blockquote"):
-            t = clean(el.get_text(" ", strip=True))
-            t = strip_stars(t)
+            t = strip_stars(clean(el.get_text(" ", strip=True)))
             if t:
                 add_to_current(text=t)
+
+        elif name == "li":
+            # Plain li surfaced by the heading-list walker — add as a single item
+            t = strip_stars(clean(el.get_text(" ", strip=True)))
+            if t:
+                add_to_current(items=[t])
 
         elif name in ("ul", "ol"):
             items = [
                 clean(li.get_text(" ", strip=True))
                 for li in el.find_all("li", recursive=False)
             ]
+            items = [strip_stars(i) for i in items if i]
             items = [i for i in items if i]
             if items:
                 add_to_current(items=items)

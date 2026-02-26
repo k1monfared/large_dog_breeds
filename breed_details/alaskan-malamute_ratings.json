@@ -1,0 +1,49 @@
+{
+  "breed": "Alaskan Malamute",
+  "slug": "alaskan-malamute",
+  "url": "https://dogtime.com/dog-breeds/alaskan-malamute",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adaptability - Overall": 2,
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "All-around friendliness - Overall": 4,
+      "Best Family Dogs": 4,
+      "Kid-Friendly": 3,
+      "Dog Friendly": 2,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Health And Grooming Needs - Overall": 3,
+      "Shedding": 5,
+      "Drooling Potential": 1,
+      "Easy To Groom": 1,
+      "General Health": 4,
+      "Potential For Weight Gain": 3,
+      "Size": 4
+    },
+    "Trainability": {
+      "Trainability - Overall": 4,
+      "Easy To Train": 4,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 4,
+      "Tendency To Bark Or Howl": 5,
+      "Wanderlust Potential": 5
+    },
+    "Exercise needs": {
+      "Exercise needs - Overall": 5,
+      "High Energy Level": 5,
+      "Intensity": 5,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}
