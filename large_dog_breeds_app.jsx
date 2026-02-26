@@ -598,11 +598,17 @@ export default function App() {
       }}>
         <div style={{ padding: "1rem 0.9rem 0.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#555" }}>Filters</span>
-          {hasAnyFilter && (
-            <span onClick={clearAll} style={{ fontSize: "0.62rem", color: "#c8a96e", cursor: "pointer", letterSpacing: "0.05em" }}>
-              clear all
-            </span>
-          )}
+          <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
+            {hasAnyFilter && (
+              <span onClick={clearAll} style={{ fontSize: "0.62rem", color: "#c8a96e", cursor: "pointer", letterSpacing: "0.05em" }}>
+                clear all
+              </span>
+            )}
+            <button onClick={() => setSidebarOpen(false)} title="Close filters"
+              style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontSize: "1.1rem", padding: "0 0.1rem", lineHeight: 1, fontFamily: "inherit" }}>
+              ‹
+            </button>
+          </div>
         </div>
 
         {/* Weight range */}
@@ -732,14 +738,15 @@ export default function App() {
         <div style={{ borderBottom: "1px solid #222", padding: isMobile ? "0.8rem 0.9rem 0.7rem" : "1.8rem 2rem 1.2rem", position: "sticky", top: 0, background: "#0d0d0d", zIndex: 20 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "0.5rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.7rem" }}>
-              {/* Hamburger */}
-              <button onClick={() => setSidebarOpen(p => !p)}
-                title={sidebarOpen ? "Hide filters" : "Show filters"}
-                style={{ background: "none", border: "none", color: sidebarOpen ? "#c8a96e" : "#666", cursor: "pointer", padding: "0.1rem 0.15rem", display: "flex", flexDirection: "column", gap: 4, flexShrink: 0 }}>
-                <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
-                <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
-                <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
-              </button>
+              {/* Hamburger — only visible when sidebar is closed */}
+              {!sidebarOpen && (
+                <button onClick={() => setSidebarOpen(true)} title="Show filters"
+                  style={{ background: "none", border: "none", color: "#666", cursor: "pointer", padding: "0.1rem 0.15rem", display: "flex", flexDirection: "column", gap: 4, flexShrink: 0 }}>
+                  <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
+                  <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
+                  <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
+                </button>
+              )}
               <div>
                 <h1 style={{ margin: 0, fontSize: "clamp(1rem, 2vw, 1.8rem)", fontWeight: 400, letterSpacing: "0.15em", color: "#c8a96e", textTransform: "uppercase" }}>
                   Large Dog Breeds
