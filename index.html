@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Large Dog Breeds</title>
+  <style>* { margin: 0; padding: 0; box-sizing: border-box; } body { background: #0d0d0d; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    fetch("large_dog_breeds_app.jsx")
+      .then(r => r.text())
+      .then(jsx => {
+        // Replace named React import with destructuring from the UMD global
+        const patched = jsx
+          .replace(
+            /^\s*import\s+\{([^}]+)\}\s+from\s+["']react["'];?\s*$/m,
+            (_, names) => `const { ${names.trim()} } = React;`
+          )
+          .replace(/^\s*import\s+\S.*$/mg, "")        // remove any remaining imports
+          .replace(/^\s*export\s+default\s+/m,        // expose App as a global
+            "window.__App = ");
+
+        const { code } = Babel.transform(patched, { presets: ["react"] });
+        const s = document.createElement("script");
+        s.textContent = code;
+        document.head.appendChild(s);
+        ReactDOM.createRoot(document.getElementById("root"))
+                .render(React.createElement(window.__App));
+      })
+      .catch(err => {
+        document.getElementById("root").textContent = "Error loading app: " + err;
+      });
+  </script>
+</body>
+</html>

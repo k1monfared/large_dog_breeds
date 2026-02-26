@@ -1,35 +1,23 @@
-# Project Name
+# Large Dog Breeds
 
-**Status**: 🔴 POC | **Mode**: 🤖 Claude Code | **Updated**: YYYY-MM-DD
+**Status**: 🟡 MVP | **Mode**: 🤖 Claude Code | **Updated**: 2026-02-25
 
-Brief description of what this project does.
+## Run locally
 
-## Features
+```bash
+python -m http.server 8000
+```
 
-- Feature 1
-- Feature 2
-- Feature 3
+Then open **http://localhost:8000** in your browser.
 
-## Getting Started
+## Data tools
 
-Instructions for setup and usage.
+```bash
+# Verify breed data against DogTime.com (writes corrections to JSON)
+python verify_breeds.py
 
-## Documentation
+# Download breed photos to images/
+python download_images.py
+```
 
-- `STATUS.log` - Project status and progress tracking
-- `CLAUDE.md` - Claude Code instructions and conventions
-- See other documentation files as needed
-
-## Status Legend
-
-- 🔴 POC / Early Stage
-- 🟡 MVP / In Progress
-- 🔵 Beta / Feature Complete
-- 🟢 Production / Active
-- ⚫ Maintenance / Template
-
-## Mode Legend
-
-- 🤖 Claude Code
-- 👤 Manual
-- 🔀 Hybrid
+Both scripts accept `--breed 'Name'` to target a single breed, and `--dry-run` to preview changes without writing.

@@ -1,0 +1,1201 @@
+[
+  {
+    "name": "Great Dane",
+    "dogtime_slug": "great-dane",
+    "source_url": "https://dogtime.com/dog-breeds/great-dane",
+    "origin": "Germany",
+    "weight_lbs": {
+      "min": 110,
+      "max": 200.0
+    },
+    "height_in": {
+      "min": 28,
+      "max": 32
+    },
+    "lifespan_yrs": {
+      "min": 7,
+      "max": 10
+    },
+    "temperament": [
+      "Friendly",
+      "Patient",
+      "Gentle"
+    ],
+    "purpose": [
+      "Guardian",
+      "Companion"
+    ],
+    "grooming": "Low",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Short, smooth",
+    "shedding": "Moderate",
+    "trainability": "Easy",
+    "health_notes": "Prone to bloat (GDV), hip dysplasia, heart disease",
+    "color": "#c8a96e",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2024/01/GettyImages-1372212075.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.max",
+        "original_value": 175,
+        "new_value": 200.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Irish Wolfhound",
+    "dogtime_slug": "irish-wolfhound",
+    "source_url": "https://dogtime.com/dog-breeds/irish-wolfhound",
+    "origin": "Ireland",
+    "weight_lbs": {
+      "min": 105,
+      "max": 180.0
+    },
+    "height_in": {
+      "min": 30,
+      "max": 35
+    },
+    "lifespan_yrs": {
+      "min": 6,
+      "max": 8
+    },
+    "temperament": [
+      "Dignified",
+      "Calm",
+      "Loyal"
+    ],
+    "purpose": [
+      "Hunter",
+      "Companion"
+    ],
+    "grooming": "Moderate",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Rough, wiry",
+    "shedding": "Low",
+    "trainability": "Moderate",
+    "health_notes": "Prone to hip dysplasia, GDV, heart disease",
+    "color": "#8b9e7a",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-802294198.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.max",
+        "original_value": 120,
+        "new_value": 180.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Saint Bernard",
+    "dogtime_slug": "saint-bernard",
+    "source_url": "https://dogtime.com/dog-breeds/saint-bernard",
+    "origin": "Switzerland",
+    "weight_lbs": {
+      "min": 120,
+      "max": 180
+    },
+    "height_in": {
+      "min": 26,
+      "max": 35.0
+    },
+    "lifespan_yrs": {
+      "min": 8,
+      "max": 10
+    },
+    "temperament": [
+      "Playful",
+      "Charming",
+      "Gentle"
+    ],
+    "purpose": [
+      "Rescue",
+      "Companion"
+    ],
+    "grooming": "High",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Dense, smooth or rough",
+    "shedding": "High",
+    "trainability": "Moderate",
+    "health_notes": "Hip/elbow dysplasia, heart disease, drools heavily",
+    "color": "#c77b3a",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-587079387.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "height_in.max",
+        "original_value": 30,
+        "new_value": 35.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Mastiff",
+    "dogtime_slug": "mastiff",
+    "source_url": "https://dogtime.com/dog-breeds/mastiff",
+    "origin": "England",
+    "weight_lbs": {
+      "min": 90.0,
+      "max": 230
+    },
+    "height_in": {
+      "min": 27,
+      "max": 30
+    },
+    "lifespan_yrs": {
+      "min": 6,
+      "max": 12.0
+    },
+    "temperament": [
+      "Courageous",
+      "Dignified",
+      "Docile"
+    ],
+    "purpose": [
+      "Guardian"
+    ],
+    "grooming": "Low",
+    "exercise": "Low",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, straight",
+    "shedding": "Moderate",
+    "trainability": "Moderate",
+    "health_notes": "Hip dysplasia, bloat, progressive retinal atrophy",
+    "color": "#b07840",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/11/GettyImages-1489183592.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.min",
+        "original_value": 120,
+        "new_value": 90.0,
+        "source": "dogtime.com"
+      },
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 10,
+        "new_value": 12.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Newfoundland",
+    "dogtime_slug": "newfoundland",
+    "source_url": "https://dogtime.com/dog-breeds/newfoundland",
+    "origin": "Canada",
+    "weight_lbs": {
+      "min": 100,
+      "max": 150
+    },
+    "height_in": {
+      "min": 26,
+      "max": 28
+    },
+    "lifespan_yrs": {
+      "min": 9,
+      "max": 12.0
+    },
+    "temperament": [
+      "Sweet",
+      "Patient",
+      "Devoted"
+    ],
+    "purpose": [
+      "Water Rescue",
+      "Companion"
+    ],
+    "grooming": "High",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Thick, oily double coat",
+    "shedding": "High",
+    "trainability": "Easy",
+    "health_notes": "Hip/elbow dysplasia, heart disease (SAS)",
+    "color": "#3a3a3a",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-971166282.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 10,
+        "new_value": 12.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Bernese Mountain Dog",
+    "dogtime_slug": "bernese-mountain-dog",
+    "source_url": "https://dogtime.com/dog-breeds/bernese-mountain-dog",
+    "origin": "Switzerland",
+    "weight_lbs": {
+      "min": 70,
+      "max": 115
+    },
+    "height_in": {
+      "min": 23,
+      "max": 27.5
+    },
+    "lifespan_yrs": {
+      "min": 7,
+      "max": 10
+    },
+    "temperament": [
+      "Affectionate",
+      "Loyal",
+      "Intelligent"
+    ],
+    "purpose": [
+      "Farm",
+      "Draft",
+      "Companion"
+    ],
+    "grooming": "High",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Thick, tri-color double coat",
+    "shedding": "High",
+    "trainability": "Easy",
+    "health_notes": "Cancer-prone, hip/elbow dysplasia, bloat",
+    "color": "#2c2c2c",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/11/GettyImages-537870596.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "Leonberger",
+    "dogtime_slug": "leonberger",
+    "source_url": "https://dogtime.com/dog-breeds/leonberger",
+    "origin": "Germany",
+    "weight_lbs": {
+      "min": 120.0,
+      "max": 170
+    },
+    "height_in": {
+      "min": 25,
+      "max": 31.5
+    },
+    "lifespan_yrs": {
+      "min": 7,
+      "max": 12.0
+    },
+    "temperament": [
+      "Gentle",
+      "Playful",
+      "Obedient"
+    ],
+    "purpose": [
+      "Companion",
+      "Draft"
+    ],
+    "grooming": "High",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Long, lion-like mane",
+    "shedding": "High",
+    "trainability": "Moderate",
+    "health_notes": "Joint problems, heart disease, polyneuropathy",
+    "color": "#c4a062",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-1222400991.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.min",
+        "original_value": 90,
+        "new_value": 120.0,
+        "source": "dogtime.com"
+      },
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 7,
+        "new_value": 12.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Rottweiler",
+    "dogtime_slug": "rottweiler",
+    "source_url": "https://dogtime.com/dog-breeds/rottweiler",
+    "origin": "Germany",
+    "weight_lbs": {
+      "min": 80,
+      "max": 135
+    },
+    "height_in": {
+      "min": 22,
+      "max": 27
+    },
+    "lifespan_yrs": {
+      "min": 9,
+      "max": 10
+    },
+    "temperament": [
+      "Loyal",
+      "Confident",
+      "Courageous"
+    ],
+    "purpose": [
+      "Guard",
+      "Police",
+      "Companion"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, dense double coat",
+    "shedding": "Moderate",
+    "trainability": "Easy",
+    "health_notes": "Hip/elbow dysplasia, aortic stenosis, osteosarcoma",
+    "color": "#2a2a1a",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/11/GettyImages-1198147566.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "German Shepherd",
+    "dogtime_slug": "german-shepherd-dog",
+    "source_url": "https://dogtime.com/dog-breeds/german-shepherd-dog",
+    "origin": "Germany",
+    "weight_lbs": {
+      "min": 50,
+      "max": 90
+    },
+    "height_in": {
+      "min": 22,
+      "max": 26
+    },
+    "lifespan_yrs": {
+      "min": 9,
+      "max": 13
+    },
+    "temperament": [
+      "Intelligent",
+      "Loyal",
+      "Obedient"
+    ],
+    "purpose": [
+      "Police",
+      "Military",
+      "Companion"
+    ],
+    "grooming": "Moderate",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Medium double coat",
+    "shedding": "High",
+    "trainability": "Very Easy",
+    "health_notes": "Hip dysplasia, degenerative myelopathy, bloat",
+    "color": "#8b6914",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/11/GettyImages-529202089.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "Labrador Retriever",
+    "dogtime_slug": "labrador-retriever",
+    "source_url": "https://dogtime.com/dog-breeds/labrador-retriever",
+    "origin": "Canada",
+    "weight_lbs": {
+      "min": 55,
+      "max": 80
+    },
+    "height_in": {
+      "min": 21.5,
+      "max": 24.5
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 14.0
+    },
+    "temperament": [
+      "Friendly",
+      "Active",
+      "Outgoing"
+    ],
+    "purpose": [
+      "Hunting",
+      "Guide",
+      "Companion"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Short, dense double coat",
+    "shedding": "High",
+    "trainability": "Very Easy",
+    "health_notes": "Hip/elbow dysplasia, obesity-prone, eye conditions",
+    "color": "#c8a96e",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2024/01/GettyImages-590608307.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 12,
+        "new_value": 14.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Golden Retriever",
+    "dogtime_slug": "golden-retriever",
+    "source_url": "https://dogtime.com/dog-breeds/golden-retriever",
+    "origin": "Scotland",
+    "weight_lbs": {
+      "min": 55,
+      "max": 75
+    },
+    "height_in": {
+      "min": 21.5,
+      "max": 24
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 12
+    },
+    "temperament": [
+      "Reliable",
+      "Trustworthy",
+      "Friendly"
+    ],
+    "purpose": [
+      "Hunting",
+      "Guide",
+      "Companion"
+    ],
+    "grooming": "Moderate",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Dense golden double coat",
+    "shedding": "High",
+    "trainability": "Very Easy",
+    "health_notes": "Cancer-prone, hip dysplasia, heart disease",
+    "color": "#d4a843",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2024/03/GettyImages-1285465107.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "Doberman Pinscher",
+    "dogtime_slug": "doberman-pinscher",
+    "source_url": "https://dogtime.com/dog-breeds/doberman-pinscher",
+    "origin": "Germany",
+    "weight_lbs": {
+      "min": 60,
+      "max": 100
+    },
+    "height_in": {
+      "min": 24,
+      "max": 28
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 12
+    },
+    "temperament": [
+      "Alert",
+      "Loyal",
+      "Fearless"
+    ],
+    "purpose": [
+      "Guard",
+      "Police"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, sleek",
+    "shedding": "Low",
+    "trainability": "Very Easy",
+    "health_notes": "Cardiomyopathy, von Willebrand's disease, wobbler syndrome",
+    "color": "#1a1a2e",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2024/04/GettyImages-1451526081.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "Anatolian Shepherd",
+    "dogtime_slug": "anatolian-shepherd-dog",
+    "source_url": "https://dogtime.com/dog-breeds/anatolian-shepherd-dog",
+    "origin": "Turkey",
+    "weight_lbs": {
+      "min": 80,
+      "max": 150
+    },
+    "height_in": {
+      "min": 27,
+      "max": 29
+    },
+    "lifespan_yrs": {
+      "min": 11,
+      "max": 13
+    },
+    "temperament": [
+      "Independent",
+      "Loyal",
+      "Reserved"
+    ],
+    "purpose": [
+      "Livestock Guardian"
+    ],
+    "grooming": "Moderate",
+    "exercise": "Moderate",
+    "good_with_kids": false,
+    "good_with_dogs": false,
+    "coat": "Short or rough double coat",
+    "shedding": "High",
+    "trainability": "Hard",
+    "health_notes": "Hip dysplasia, entropion (eye condition)",
+    "color": "#b09060",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-1477482048.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "Cane Corso",
+    "dogtime_slug": "cane-corso",
+    "source_url": "https://dogtime.com/dog-breeds/cane-corso",
+    "origin": "Italy",
+    "weight_lbs": {
+      "min": 88,
+      "max": 110
+    },
+    "height_in": {
+      "min": 23.5,
+      "max": 27.5
+    },
+    "lifespan_yrs": {
+      "min": 9,
+      "max": 12
+    },
+    "temperament": [
+      "Majestic",
+      "Loyal",
+      "Protective"
+    ],
+    "purpose": [
+      "Guardian",
+      "Companion"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, stiff",
+    "shedding": "Moderate",
+    "trainability": "Moderate",
+    "health_notes": "Hip dysplasia, gastric torsion, eye conditions",
+    "color": "#2d3436",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2014/08/GettyImages-1141876630-e1691880224156.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "Bullmastiff",
+    "dogtime_slug": "bullmastiff",
+    "source_url": "https://dogtime.com/dog-breeds/bullmastiff",
+    "origin": "England",
+    "weight_lbs": {
+      "min": 80.0,
+      "max": 130
+    },
+    "height_in": {
+      "min": 24,
+      "max": 27
+    },
+    "lifespan_yrs": {
+      "min": 7,
+      "max": 9
+    },
+    "temperament": [
+      "Affectionate",
+      "Reliable",
+      "Brave"
+    ],
+    "purpose": [
+      "Guardian"
+    ],
+    "grooming": "Low",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, dense",
+    "shedding": "Moderate",
+    "trainability": "Moderate",
+    "health_notes": "Hip/elbow dysplasia, subaortic valvular stenosis, cancer",
+    "color": "#c07840",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-1352427667.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.min",
+        "original_value": 100,
+        "new_value": 80.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Alaskan Malamute",
+    "dogtime_slug": "alaskan-malamute",
+    "source_url": "https://dogtime.com/dog-breeds/alaskan-malamute",
+    "origin": "USA (Alaska)",
+    "weight_lbs": {
+      "min": 75,
+      "max": 100.0
+    },
+    "height_in": {
+      "min": 23,
+      "max": 25
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 14
+    },
+    "temperament": [
+      "Playful",
+      "Affectionate",
+      "Dignified"
+    ],
+    "purpose": [
+      "Sled",
+      "Pack"
+    ],
+    "grooming": "High",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Thick double coat",
+    "shedding": "High",
+    "trainability": "Hard",
+    "health_notes": "Hip dysplasia, inherited polyneuropathy, day blindness",
+    "color": "#6e7f80",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-1435474615-1.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.max",
+        "original_value": 85,
+        "new_value": 100.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Akita",
+    "dogtime_slug": "akita",
+    "source_url": "https://dogtime.com/dog-breeds/akita",
+    "origin": "Japan",
+    "weight_lbs": {
+      "min": 60.0,
+      "max": 130
+    },
+    "height_in": {
+      "min": 24,
+      "max": 28
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 15.0
+    },
+    "temperament": [
+      "Loyal",
+      "Courageous",
+      "Dignified"
+    ],
+    "purpose": [
+      "Guardian",
+      "Hunter"
+    ],
+    "grooming": "High",
+    "exercise": "Moderate",
+    "good_with_kids": false,
+    "good_with_dogs": false,
+    "coat": "Thick double coat",
+    "shedding": "High",
+    "trainability": "Hard",
+    "health_notes": "Hip dysplasia, autoimmune disorders, hypothyroidism",
+    "color": "#c87941",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2024/01/GettyImages-1262676579-1-e1706034743817.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.min",
+        "original_value": 70,
+        "new_value": 60.0,
+        "source": "dogtime.com"
+      },
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 13,
+        "new_value": 15.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Bloodhound",
+    "dogtime_slug": "bloodhound",
+    "source_url": "https://dogtime.com/dog-breeds/bloodhound",
+    "origin": "Belgium/France",
+    "weight_lbs": {
+      "min": 70.0,
+      "max": 110
+    },
+    "height_in": {
+      "min": 23,
+      "max": 27
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 15.0
+    },
+    "temperament": [
+      "Tenacious",
+      "Gentle",
+      "Affectionate"
+    ],
+    "purpose": [
+      "Tracking",
+      "Search & Rescue"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Short, loose skin",
+    "shedding": "Moderate",
+    "trainability": "Hard",
+    "health_notes": "Hip/elbow dysplasia, bloat, ear infections",
+    "color": "#7b4e2d",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-823894968.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.min",
+        "original_value": 80,
+        "new_value": 70.0,
+        "source": "dogtime.com"
+      },
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 12,
+        "new_value": 15.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Dogue de Bordeaux",
+    "dogtime_slug": "dogue-de-bordeaux",
+    "source_url": "https://dogtime.com/dog-breeds/dogue-de-bordeaux",
+    "origin": "France",
+    "weight_lbs": {
+      "min": 99,
+      "max": 140
+    },
+    "height_in": {
+      "min": 23,
+      "max": 26
+    },
+    "lifespan_yrs": {
+      "min": 5,
+      "max": 12.0
+    },
+    "temperament": [
+      "Affectionate",
+      "Loyal",
+      "Stubborn"
+    ],
+    "purpose": [
+      "Guardian",
+      "Draft"
+    ],
+    "grooming": "Low",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, fine",
+    "shedding": "Moderate",
+    "trainability": "Moderate",
+    "health_notes": "Brachycephalic issues, hip dysplasia, heart disease, heavy drooling",
+    "color": "#b5622a",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-870835468.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 8,
+        "new_value": 12.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Boxer",
+    "dogtime_slug": "boxer",
+    "source_url": "https://dogtime.com/dog-breeds/boxer",
+    "origin": "Germany",
+    "weight_lbs": {
+      "min": 50,
+      "max": 70.0
+    },
+    "height_in": {
+      "min": 21.5,
+      "max": 25
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 12
+    },
+    "temperament": [
+      "Playful",
+      "Loyal",
+      "Energetic"
+    ],
+    "purpose": [
+      "Guard",
+      "Companion"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Short, shiny",
+    "shedding": "Low",
+    "trainability": "Moderate",
+    "health_notes": "Brachycephalic issues, heart conditions, cancer-prone",
+    "color": "#c8854d",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/08/GettyImages-463043655-1.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.max",
+        "original_value": 80,
+        "new_value": 70.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Weimaraner",
+    "dogtime_slug": "weimaraner",
+    "source_url": "https://dogtime.com/dog-breeds/weimaraner",
+    "origin": "Germany",
+    "weight_lbs": {
+      "min": 55,
+      "max": 90
+    },
+    "height_in": {
+      "min": 23,
+      "max": 27
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 13
+    },
+    "temperament": [
+      "Friendly",
+      "Fearless",
+      "Obedient"
+    ],
+    "purpose": [
+      "Hunting",
+      "Companion"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Short, sleek silver-grey",
+    "shedding": "Low",
+    "trainability": "Moderate",
+    "health_notes": "Bloat, hip dysplasia, von Willebrand's disease",
+    "color": "#9aabb0",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-91815079.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": []
+  },
+  {
+    "name": "Rhodesian Ridgeback",
+    "dogtime_slug": "rhodesian-ridgeback",
+    "source_url": "https://dogtime.com/dog-breeds/rhodesian-ridgeback",
+    "origin": "Zimbabwe",
+    "weight_lbs": {
+      "min": 60.0,
+      "max": 100.0
+    },
+    "height_in": {
+      "min": 24,
+      "max": 27
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 12
+    },
+    "temperament": [
+      "Loyal",
+      "Strong-willed",
+      "Mischievous"
+    ],
+    "purpose": [
+      "Hunting",
+      "Guardian"
+    ],
+    "grooming": "Low",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, dense with distinctive ridge",
+    "shedding": "Low",
+    "trainability": "Moderate",
+    "health_notes": "Hip dysplasia, dermoid sinus, hypothyroidism",
+    "color": "#b5713a",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-975716310.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.min",
+        "original_value": 70,
+        "new_value": 60.0,
+        "source": "dogtime.com"
+      },
+      {
+        "field": "weight_lbs.max",
+        "original_value": 85,
+        "new_value": 100.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Greater Swiss Mountain Dog",
+    "dogtime_slug": "greater-swiss-mountain-dog",
+    "source_url": "https://dogtime.com/dog-breeds/greater-swiss-mountain-dog",
+    "origin": "Switzerland",
+    "weight_lbs": {
+      "min": 85,
+      "max": 160.0
+    },
+    "height_in": {
+      "min": 23.5,
+      "max": 28.5
+    },
+    "lifespan_yrs": {
+      "min": 8,
+      "max": 11
+    },
+    "temperament": [
+      "Bold",
+      "Faithful",
+      "Enthusiastic"
+    ],
+    "purpose": [
+      "Draft",
+      "Herding",
+      "Guardian"
+    ],
+    "grooming": "Low",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Short tri-color double coat",
+    "shedding": "Moderate",
+    "trainability": "Easy",
+    "health_notes": "Hip/elbow dysplasia, bloat, splenic torsion",
+    "color": "#2a2a2a",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/10/GettyImages-481853236.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.max",
+        "original_value": 140,
+        "new_value": 160.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Black Russian Terrier",
+    "dogtime_slug": "black-russian-terrier",
+    "source_url": "https://dogtime.com/dog-breeds/black-russian-terrier",
+    "origin": "Russia",
+    "weight_lbs": {
+      "min": 80,
+      "max": 130
+    },
+    "height_in": {
+      "min": 26,
+      "max": 30
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 14.0
+    },
+    "temperament": [
+      "Confident",
+      "Calm",
+      "Intelligent"
+    ],
+    "purpose": [
+      "Guardian",
+      "Military"
+    ],
+    "grooming": "High",
+    "exercise": "High",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Thick, wavy double coat",
+    "shedding": "Low",
+    "trainability": "Easy",
+    "health_notes": "Hip/elbow dysplasia, JLPP (neurological condition), progressive retinal atrophy",
+    "color": "#111827",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/10/GettyImages-1187418372-1-1.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "lifespan_yrs.max",
+        "original_value": 12,
+        "new_value": 14.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Boerboel",
+    "dogtime_slug": "boerboel",
+    "source_url": "https://dogtime.com/dog-breeds/boerboel",
+    "origin": "South Africa",
+    "weight_lbs": {
+      "min": 110.0,
+      "max": 200
+    },
+    "height_in": {
+      "min": 22,
+      "max": 27
+    },
+    "lifespan_yrs": {
+      "min": 9,
+      "max": 11
+    },
+    "temperament": [
+      "Dominant",
+      "Intelligent",
+      "Loyal"
+    ],
+    "purpose": [
+      "Farm Guardian",
+      "Companion"
+    ],
+    "grooming": "Low",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Short, dense",
+    "shedding": "Moderate",
+    "trainability": "Moderate",
+    "health_notes": "Hip/elbow dysplasia, ectropion, vaginal hyperplasia",
+    "color": "#8b6340",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-843641198.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.min",
+        "original_value": 150,
+        "new_value": 110.0,
+        "source": "dogtime.com"
+      }
+    ]
+  },
+  {
+    "name": "Great Pyrenees",
+    "dogtime_slug": "great-pyrenees",
+    "source_url": "https://dogtime.com/dog-breeds/great-pyrenees",
+    "origin": "France/Spain",
+    "weight_lbs": {
+      "min": 85,
+      "max": 160.0
+    },
+    "height_in": {
+      "min": 25,
+      "max": 32
+    },
+    "lifespan_yrs": {
+      "min": 10,
+      "max": 12
+    },
+    "temperament": [
+      "Gentle",
+      "Patient",
+      "Strong-willed"
+    ],
+    "purpose": [
+      "Livestock Guardian",
+      "Companion"
+    ],
+    "grooming": "High",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": true,
+    "coat": "Thick white double coat",
+    "shedding": "High",
+    "trainability": "Hard",
+    "health_notes": "Hip dysplasia, bloat, bone cancer",
+    "color": "#e8e0d0",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/11/GettyImages-1392624178.jpg?resize=1200,630",
+    "verified": true,
+    "verification_date": "2026-02-25",
+    "corrections": [
+      {
+        "field": "weight_lbs.max",
+        "original_value": 115,
+        "new_value": 160.0,
+        "source": "dogtime.com"
+      }
+    ]
+  }
+]

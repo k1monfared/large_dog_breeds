@@ -1,0 +1,7 @@
+- I want to choose a breed or a set of breeds of large dogs
+- There is a database in the json file that has some info
+    - I need a way to automatically check if those info are correct (to some extent, I don't need it to be exact, but in the right ballpark
+    - There should be a function that is called on every dog (hopefully in parallel) and check the info with the website provided to make sure it is parsed correctly, and adds some verification flags to the entry in the json file, and if it is wrong, corrects it, there should be a flag that shows it is corrected if so and what was the previous value.
+- Then there is the jsx file that is supposed to give me a way to interact with the data
+    - I need some web interface that I can interact with it locally on my browser,
+    - also if this can be done in a way that on this repo on githuv it can be interactive that would be great too, if not some other way of making it available online with minimal setup, and then exporting the final results.
