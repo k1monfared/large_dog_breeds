@@ -223,6 +223,11 @@ export default function App() {
     () => new Set(RATING_CATEGORIES.map(c => c.key))
   );
 
+  // Sidebar open/close (default closed on mobile)
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => typeof window !== "undefined" && window.innerWidth >= 700
+  );
+
   // Sidebar filter state
   const [activeFilters, setActiveFilters] = useState({});
   const [weightRange,   setWeightRange]   = useState([0, 999]);
@@ -482,6 +487,8 @@ export default function App() {
     </div>
   );
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 700;
+
   return (
     <div style={{ minHeight: "100vh", background: "#0d0d0d", color: "#e8e0d0", fontFamily: "'Georgia','Times New Roman',serif", display: "flex" }}>
 
@@ -568,12 +575,26 @@ export default function App() {
         </div>
       )}
 
+      {/* ── Sidebar mobile backdrop ── */}
+      {isMobile && sidebarOpen && (
+        <div onClick={() => setSidebarOpen(false)}
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.65)", zIndex: 49 }} />
+      )}
+
       {/* ── Sidebar ── */}
       <aside style={{
-        width: 210, flexShrink: 0,
-        position: "sticky", top: 0, height: "100vh", overflowY: "auto",
+        width: isMobile ? 230 : (sidebarOpen ? 210 : 0),
+        flexShrink: 0,
+        position: isMobile ? "fixed" : "sticky",
+        top: 0,
+        left: isMobile ? (sidebarOpen ? 0 : -230) : "auto",
+        height: "100vh",
+        overflowY: sidebarOpen ? "auto" : "hidden",
+        overflowX: "hidden",
         borderRight: "1px solid #1a1a1a", background: "#0a0a0a",
         scrollbarWidth: "thin", scrollbarColor: "#222 transparent",
+        transition: "width 0.22s ease, left 0.22s ease",
+        zIndex: isMobile ? 50 : "auto",
       }}>
         <div style={{ padding: "1rem 0.9rem 0.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#555" }}>Filters</span>
@@ -708,17 +729,27 @@ export default function App() {
       <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
 
         {/* ── Header ── */}
-        <div style={{ borderBottom: "1px solid #222", padding: "1.8rem 2rem 1.2rem", position: "sticky", top: 0, background: "#0d0d0d", zIndex: 20 }}>
+        <div style={{ borderBottom: "1px solid #222", padding: isMobile ? "0.8rem 0.9rem 0.7rem" : "1.8rem 2rem 1.2rem", position: "sticky", top: 0, background: "#0d0d0d", zIndex: 20 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "0.5rem" }}>
-            <div>
-              <h1 style={{ margin: 0, fontSize: "clamp(1.2rem, 2vw, 1.8rem)", fontWeight: 400, letterSpacing: "0.15em", color: "#c8a96e", textTransform: "uppercase" }}>
-                Large Dog Breeds
-              </h1>
-              <p style={{ margin: "0.1rem 0 0", color: "#555", fontSize: "0.72rem", letterSpacing: "0.08em" }}>
-                {filtered.length} of {breeds.length} breeds{hasAnyFilter ? " · filters active" : ""}
-              </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.7rem" }}>
+              {/* Hamburger */}
+              <button onClick={() => setSidebarOpen(p => !p)}
+                title={sidebarOpen ? "Hide filters" : "Show filters"}
+                style={{ background: "none", border: "none", color: sidebarOpen ? "#c8a96e" : "#666", cursor: "pointer", padding: "0.1rem 0.15rem", display: "flex", flexDirection: "column", gap: 4, flexShrink: 0 }}>
+                <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
+                <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
+                <span style={{ display: "block", width: 18, height: 2, background: "currentColor", borderRadius: 1 }} />
+              </button>
+              <div>
+                <h1 style={{ margin: 0, fontSize: "clamp(1rem, 2vw, 1.8rem)", fontWeight: 400, letterSpacing: "0.15em", color: "#c8a96e", textTransform: "uppercase" }}>
+                  Large Dog Breeds
+                </h1>
+                <p style={{ margin: "0.1rem 0 0", color: "#555", fontSize: "0.72rem", letterSpacing: "0.08em" }}>
+                  {filtered.length} of {breeds.length} breeds{hasAnyFilter ? " · filters active" : ""}
+                </p>
+              </div>
             </div>
-            <div style={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "0.4rem", alignItems: "center", flexWrap: "wrap" }}>
               {["table", "cards"].map(v => (
                 <button key={v} onClick={() => setView(v)} style={{
                   background: view === v ? "#c8a96e" : "#1a1a1a", color: view === v ? "#0d0d0d" : "#777",
@@ -726,20 +757,22 @@ export default function App() {
                   fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer",
                 }}>{v}</button>
               ))}
-              <button onClick={() => { setAddModal(true); setAddStatus(null); setTimeout(() => addInputRef.current?.focus(), 50); }}
-                style={{ background: "#1a1a1a", color: "#c8a96e", border: "1px solid #333", padding: "0.35rem 0.9rem", fontFamily: "inherit", fontSize: "0.72rem", letterSpacing: "0.1em", cursor: "pointer" }}>
-                + Add Breed
-              </button>
+              {!isMobile && (
+                <button onClick={() => { setAddModal(true); setAddStatus(null); setTimeout(() => addInputRef.current?.focus(), 50); }}
+                  style={{ background: "#1a1a1a", color: "#c8a96e", border: "1px solid #333", padding: "0.35rem 0.9rem", fontFamily: "inherit", fontSize: "0.72rem", letterSpacing: "0.1em", cursor: "pointer" }}>
+                  + Add Breed
+                </button>
+              )}
             </div>
           </div>
-          <div style={{ marginTop: "0.9rem" }}>
+          <div style={{ marginTop: "0.7rem" }}>
             <input value={search} onChange={e => setSearch(e.target.value)}
               placeholder="Search name, origin, purpose, temperament…"
-              style={{ background: "#151515", border: "1px solid #2a2a2a", color: "#e8e0d0", padding: "0.45rem 0.9rem", fontFamily: "inherit", fontSize: "0.82rem", width: 260, outline: "none" }} />
+              style={{ background: "#151515", border: "1px solid #2a2a2a", color: "#e8e0d0", padding: "0.45rem 0.9rem", fontFamily: "inherit", fontSize: "0.82rem", width: isMobile ? "100%" : 260, outline: "none", boxSizing: "border-box" }} />
           </div>
         </div>
 
-        <div style={{ padding: "1.5rem 2rem 3rem" }}>
+        <div style={{ padding: isMobile ? "0.8rem 0.75rem 3rem" : "1.5rem 2rem 3rem" }}>
 
           {/* ── TABLE VIEW ── */}
           {view === "table" && (
