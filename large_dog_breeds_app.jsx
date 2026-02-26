@@ -605,7 +605,7 @@ export default function App() {
               </span>
             )}
             <button onClick={() => setSidebarOpen(false)} title="Close filters"
-              style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontSize: "1.1rem", padding: "0 0.1rem", lineHeight: 1, fontFamily: "inherit" }}>
+              style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontSize: "1.6rem", padding: "0 0.1rem", lineHeight: 1, fontFamily: "inherit" }}>
               ‹
             </button>
           </div>
