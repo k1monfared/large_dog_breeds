@@ -207,6 +207,41 @@ function RangeFilter({ globalMin, globalMax, value, onChange, step, unit }) {
   );
 }
 
+// ── CSV export ───────────────────────────────────────────────────────────────
+function downloadCSV(rows, filename = "breeds.csv") {
+  const cols = [
+    ["Name",           b => b.name],
+    ["Origin",         b => b.origin],
+    ["Min Wt (lbs)",   b => b.weight_lbs.min],
+    ["Max Wt (lbs)",   b => b.weight_lbs.max],
+    ["Min Ht (in)",    b => b.height_in.min],
+    ["Max Ht (in)",    b => b.height_in.max],
+    ["Min Life (yrs)", b => b.lifespan_yrs.min],
+    ["Max Life (yrs)", b => b.lifespan_yrs.max],
+    ["Coat",           b => b.coat],
+    ["Purpose",        b => b.purpose.join("; ")],
+    ["Exercise",       b => b.exercise],
+    ["Grooming",       b => b.grooming],
+    ["Shedding",       b => b.shedding],
+    ["Trainability",   b => b.trainability],
+    ["Temperament",    b => b.temperament.join("; ")],
+    ["Kids",           b => b.good_with_kids ? "Yes" : "No"],
+    ["Dogs",           b => b.good_with_dogs ? "Yes" : "No"],
+    ["Service Score",  b => b.service_dog_score ?? ""],
+    ["Health Notes",   b => b.health_notes],
+  ];
+  const esc   = v => `"${String(v == null ? "" : v).replace(/"/g, '""')}"`;
+  const lines = [
+    cols.map(([h]) => h).join(","),
+    ...rows.map(b => cols.map(([, fn]) => esc(fn(b))).join(",")),
+  ];
+  const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
 // ── Main app ────────────────────────────────────────────────────────────────
 export default function App() {
   const [breeds, setBreeds]         = useState([]);
@@ -221,6 +256,10 @@ export default function App() {
   const [addInput, setAddInput]       = useState("");
   const [addStatus, setAddStatus]     = useState(null);  // null | "loading" | {ok, breed, placeholders, error}
   const addInputRef                   = useRef(null);
+
+  // Row selection & export
+  const [selectedRows,   setSelectedRows]   = useState(new Set());
+  const [showExportMenu, setShowExportMenu] = useState(false);
 
   // Ratings data: slug → flat trait map
   const [ratingsData, setRatingsData] = useState({});
@@ -362,6 +401,23 @@ export default function App() {
     setLifespanRange([...dataRanges.lifespan]);
     setSvcScoreRange([1, 5]);
     setRatingFilters({});
+  };
+
+  const toggleRow = (slug) => setSelectedRows(prev => {
+    const next = new Set(prev);
+    next.has(slug) ? next.delete(slug) : next.add(slug);
+    return next;
+  });
+
+  const allVisibleSelected = filtered.length > 0 && filtered.every(b => selectedRows.has(b.dogtime_slug));
+  const someVisibleSelected = filtered.some(b => selectedRows.has(b.dogtime_slug));
+
+  const toggleSelectAllVisible = () => {
+    if (allVisibleSelected) {
+      setSelectedRows(prev => { const next = new Set(prev); filtered.forEach(b => next.delete(b.dogtime_slug)); return next; });
+    } else {
+      setSelectedRows(prev => { const next = new Set(prev); filtered.forEach(b => next.add(b.dogtime_slug)); return next; });
+    }
   };
 
   const toggleSection = (key) => {
@@ -617,16 +673,21 @@ export default function App() {
         <div style={{ padding: "1rem 0.9rem 0.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#555" }}>Filters</span>
           <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
-            {hasAnyFilter && (
-              <span onClick={clearAll} style={{ fontSize: "0.62rem", color: "#c8a96e", cursor: "pointer", letterSpacing: "0.05em" }}>
-                clear all
-              </span>
-            )}
             <button onClick={() => setSidebarOpen(false)} title="Close filters"
               style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontSize: "1.6rem", padding: "0 0.1rem", lineHeight: 1, fontFamily: "inherit" }}>
               ‹
             </button>
           </div>
+        </div>
+        <div style={{ padding: "0 0.9rem 0.6rem" }}>
+          <button onClick={clearAll}
+            disabled={!hasAnyFilter}
+            style={{ width: "100%", background: hasAnyFilter ? "#1a1a1a" : "#111", color: hasAnyFilter ? "#c8a96e" : "#333",
+                     border: `1px solid ${hasAnyFilter ? "#333" : "#1a1a1a"}`, padding: "0.38rem 0.5rem",
+                     fontFamily: "inherit", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase",
+                     cursor: hasAnyFilter ? "pointer" : "default", transition: "all 0.15s" }}>
+            Clear Filters
+          </button>
         </div>
 
         {/* Weight range */}
@@ -808,6 +869,32 @@ export default function App() {
                          textDecoration: "none", cursor: "pointer", whiteSpace: "nowrap" }}>
                 Svc Analysis
               </a>
+              {/* Export button */}
+              <div style={{ position: "relative" }}>
+                <button onClick={() => setShowExportMenu(v => !v)}
+                  style={{ background: "#1a1a1a", color: "#aaa", border: "1px solid #333", padding: "0.35rem 0.9rem",
+                           fontFamily: "inherit", fontSize: "0.72rem", letterSpacing: "0.1em", cursor: "pointer" }}>
+                  Export ▾
+                </button>
+                {showExportMenu && (
+                  <div style={{ position: "absolute", right: 0, top: "110%", background: "#111", border: "1px solid #2a2a2a",
+                                zIndex: 30, minWidth: 160, boxShadow: "0 4px 16px rgba(0,0,0,0.5)" }}>
+                    {[
+                      ["Visible rows",  () => downloadCSV(filtered, "breeds-visible.csv")],
+                      ["Selected rows", () => downloadCSV(breedsWithRatings.filter(b => selectedRows.has(b.dogtime_slug)), "breeds-selected.csv")],
+                    ].map(([label, action]) => (
+                      <button key={label} onClick={() => { action(); setShowExportMenu(false); }}
+                        style={{ display: "block", width: "100%", background: "none", border: "none", color: "#aaa",
+                                 padding: "0.55rem 0.9rem", fontFamily: "inherit", fontSize: "0.75rem",
+                                 textAlign: "left", cursor: "pointer", letterSpacing: "0.06em" }}
+                        onMouseEnter={e => e.target.style.background = "#1a1a1a"}
+                        onMouseLeave={e => e.target.style.background = "none"}>
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               {!isMobile && (
                 <button onClick={() => { setAddModal(true); setAddStatus(null); setTimeout(() => addInputRef.current?.focus(), 50); }}
                   style={{ background: "#1a1a1a", color: "#c8a96e", border: "1px solid #333", padding: "0.35rem 0.9rem", fontFamily: "inherit", fontSize: "0.72rem", letterSpacing: "0.1em", cursor: "pointer" }}>
@@ -869,8 +956,17 @@ export default function App() {
               <div style={{ overflowX: "auto", overflowY: "auto", maxHeight: "calc(100vh - 230px)" }}>
                 <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.88rem" }}>
                   <thead>
-                    {/* Row 1: existing columns (rowSpan=2) + category group headers */}
+                    {/* Row 1: checkbox + existing columns (rowSpan=2) + category group headers */}
                     <tr style={{ borderBottom: "1px solid #1a1a1a" }}>
+                      {/* Select-all checkbox */}
+                      <th rowSpan={2} style={{ padding: "0.4rem 0.5rem", position: "sticky", top: 0,
+                                              background: "#0d0d0d", zIndex: 8, verticalAlign: "bottom" }}>
+                        <input type="checkbox"
+                          checked={allVisibleSelected}
+                          ref={el => { if (el) el.indeterminate = someVisibleSelected && !allVisibleSelected; }}
+                          onChange={toggleSelectAllVisible}
+                          style={{ accentColor: "#c8a96e", cursor: "pointer", width: 13, height: 13 }} />
+                      </th>
                       {COLUMNS.map(([label, field, sortable]) => {
                         const active = sortable && sortField === field;
                         const isPhoto = field === "photo";
@@ -948,9 +1044,15 @@ export default function App() {
                   </thead>
                   <tbody>
                     {filtered.map((b, i) => {
-                      const rowBg = i % 2 === 0 ? "#111" : "#0d0d0d";
+                      const isSelected = selectedRows.has(b.dogtime_slug);
+                      const rowBg = isSelected ? "#1a150a" : (i % 2 === 0 ? "#111" : "#0d0d0d");
                       return (
                         <tr key={b.name} style={{ borderBottom: "1px solid #181818", background: rowBg }}>
+                          <td style={{ padding: "0.3rem 0.5rem", textAlign: "center" }}>
+                            <input type="checkbox" checked={isSelected}
+                              onChange={() => toggleRow(b.dogtime_slug)}
+                              style={{ accentColor: "#c8a96e", cursor: "pointer", width: 13, height: 13 }} />
+                          </td>
                           <td style={{ padding: "0.3rem 0.5rem", position: "sticky", left: 0, zIndex: 4, background: rowBg }}>
                             <img src={`images/${b.dogtime_slug}.jpg`} alt={b.name}
                               onClick={() => setPhotoModal(b)}
@@ -1104,6 +1206,16 @@ export default function App() {
             <span>Trainability: <span style={{ color: "#4ade80" }}>Very Easy</span> → <span style={{ color: "#f87171" }}>Hard</span></span>
             <span>Ratings: ●●●●● = 5/5 · — = not available · hover column header for full trait name</span>
             <span>Click column header to sort · click photo to enlarge · click breed name to open DogTime</span>
+            <span style={{ marginTop: "0.5rem", width: "100%", color: "#2a2a2a" }}>
+              Breed data and star ratings sourced from{" "}
+              <a href="https://dogtime.com/dog-breeds" target="_blank" rel="noopener noreferrer"
+                style={{ color: "#333", textDecoration: "underline", textDecorationColor: "#2a2a2a" }}>
+                DogTime.com
+              </a>. Service dog suitability scores computed from those ratings — see{" "}
+              <a href="analysis.html" style={{ color: "#333", textDecoration: "underline", textDecorationColor: "#2a2a2a" }}>
+                methodology
+              </a>.
+            </span>
           </div>
         </div>
       </div>

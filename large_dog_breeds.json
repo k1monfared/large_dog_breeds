@@ -2713,5 +2713,35 @@
       }
     ],
     "service_dog_score": 4
+  },
+  {
+    "name": "Border Collie",
+    "origin": "Unknown",
+    "weight_lbs": {
+      "min": 30.0,
+      "max": 45.0
+    },
+    "height_in": {
+      "min": 18.0,
+      "max": 22.0
+    },
+    "lifespan_yrs": {
+      "min": 12.0,
+      "max": 15.0
+    },
+    "temperament": [],
+    "purpose": [],
+    "grooming": "Moderate",
+    "exercise": "Moderate",
+    "good_with_kids": true,
+    "good_with_dogs": false,
+    "coat": "Unknown",
+    "shedding": "Moderate",
+    "trainability": "Moderate",
+    "health_notes": "See DogTime for details",
+    "color": "#50af50",
+    "dogtime_slug": "border-collie",
+    "source_url": "https://dogtime.com/dog-breeds/border-collie",
+    "dogtime_image_url": "https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-164855910-1.jpg?resize=1200,630"
   }
 ]

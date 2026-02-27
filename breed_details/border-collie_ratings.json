@@ -1,0 +1,44 @@
+{
+  "breed": "Border Collie",
+  "slug": "border-collie",
+  "url": "https://dogtime.com/dog-breeds/border-collie",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 2,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 5,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 4
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 4,
+      "Dog Friendly": 3,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 3,
+      "Drooling Potential": 1,
+      "Easy To Groom": 3,
+      "General Health": 2,
+      "Potential For Weight Gain": 3,
+      "Size": 3
+    },
+    "Trainability": {
+      "Easy To Train": 5,
+      "Intelligence": 5,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 3,
+      "Tendency To Bark Or Howl": 2,
+      "Wanderlust Potential": 3
+    },
+    "Exercise needs": {
+      "High Energy Level": 5,
+      "Intensity": 3,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}
