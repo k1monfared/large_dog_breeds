@@ -25,19 +25,23 @@ As a callable module:
 
 import argparse
 import hashlib
+import io
 import json
 import re
 import subprocess
 import sys
 import time
 from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
 
 import requests
 from bs4 import BeautifulSoup
+from PIL import Image
 
 DATA_FILE    = Path(__file__).parent / "large_dog_breeds.json"
 RATINGS_DIR  = Path(__file__).parent / "breed_details"
 RATINGS_JSON = Path(__file__).parent / "breed_ratings.json"
+IMAGES_DIR   = Path(__file__).parent / "images"
 
 HEADERS = {
     "User-Agent": (
@@ -213,6 +217,13 @@ def extract_ratings(html: str) -> dict[str, dict[str, int]] | None:
             continue
         category = re.sub(r"\s+", " ", h2.get_text(" ", strip=True)).strip()
         cat_ratings = {}
+
+        # Category-level overall rating (star span alongside the h2 in summary)
+        cat_star_span = summary.find("span", class_="xe-breed-star-rating")
+        if cat_star_span:
+            filled = len(cat_star_span.find_all("span", class_="xe-breed-star--selected"))
+            cat_ratings[f"{category} - Overall"] = filled
+
         for sub in details.find_all("details"):
             sub_summary = sub.find("summary", recursive=False)
             if not sub_summary:
@@ -230,6 +241,27 @@ def extract_ratings(html: str) -> dict[str, dict[str, int]] | None:
         if cat_ratings:
             ratings[category] = cat_ratings
     return ratings if ratings else None
+
+
+def download_image(img_url: str, slug: str) -> bool:
+    """Download breed image to images/<slug>.jpg. Returns True on success."""
+    IMAGES_DIR.mkdir(exist_ok=True)
+    dest = IMAGES_DIR / f"{slug}.jpg"
+    # Strip query params for full-resolution
+    parts = urlsplit(img_url)
+    clean_url = urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
+    for url in [clean_url, img_url]:  # fallback to original if stripped fails
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=20, stream=True)
+            if resp.status_code == 200:
+                img = Image.open(io.BytesIO(resp.content))
+                if img.mode not in ("RGB", "L"):
+                    img = img.convert("RGB")
+                img.save(dest, "JPEG", quality=90, optimize=True)
+                return True
+        except Exception:
+            continue
+    return False
 
 
 # ── Core function ─────────────────────────────────────────────────────────────
@@ -337,6 +369,13 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
     existing_breeds.append(entry)
     DATA_FILE.write_text(json.dumps(existing_breeds, indent=2, ensure_ascii=False))
     print(f"  Added '{entry['name']}' to large_dog_breeds.json")
+
+    # Download image
+    if img:
+        ok = download_image(img, found_slug)
+        print(f"  Image: {'saved → images/' + found_slug + '.jpg' if ok else 'download failed'}")
+    else:
+        print("  Image: not found on page")
 
     # Save ratings
     if ratings:
