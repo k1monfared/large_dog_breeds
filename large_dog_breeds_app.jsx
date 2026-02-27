@@ -257,6 +257,10 @@ export default function App() {
   const [addStatus, setAddStatus]     = useState(null);  // null | "loading" | {ok, breed, placeholders, error}
   const addInputRef                   = useRef(null);
 
+  // Remove breed modal state
+  const [removeTarget, setRemoveTarget] = useState(null);  // null | breed object
+  const [removeStatus, setRemoveStatus] = useState(null);  // null | "loading" | {ok, ...}
+
   // Row selection & export
   const [selectedRows,   setSelectedRows]   = useState(new Set());
   const [showExportMenu, setShowExportMenu] = useState(false);
@@ -448,6 +452,30 @@ export default function App() {
     }
   };
 
+  const handleRemoveBreed = async () => {
+    if (!removeTarget) return;
+    setRemoveStatus("loading");
+    try {
+      const resp = await fetch("/api/remove-breed", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ name: removeTarget.name }),
+      });
+      const data = await resp.json();
+      setRemoveStatus(data);
+      if (data.ok) {
+        fetch(DATA_URL).then(r => r.json()).then(setBreeds).catch(() => {});
+        fetch(RATINGS_URL).then(r => r.json()).then(setRatingsData).catch(() => {});
+      }
+    } catch {
+      setRemoveStatus({
+        ok:    false,
+        error: "Could not reach the API. Make sure you are running server.py.",
+        cli:   `python add_breed.py "${removeTarget.name}" --remove`,
+      });
+    }
+  };
+
   const handleColumnSort = (field, sortable) => {
     if (!sortable) return;
     const [cur, dir] = sortBy.split("-");
@@ -630,6 +658,61 @@ export default function App() {
                   </div>
                 )}
               </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ── Remove Breed modal ── */}
+      {removeTarget && (
+        <div onClick={() => { if (removeStatus !== "loading") { setRemoveTarget(null); setRemoveStatus(null); } }}
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.82)", zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div onClick={e => e.stopPropagation()}
+            style={{ background: "#111", border: "1px solid #2a2a2a", padding: "1.8rem 2rem", width: 400, maxWidth: "92vw" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.2rem" }}>
+              <span style={{ color: "#f87171", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Remove Breed</span>
+              <button onClick={() => { setRemoveTarget(null); setRemoveStatus(null); }}
+                style={{ background: "none", border: "none", color: "#555", fontSize: "1.4rem", cursor: "pointer", lineHeight: 1 }}>×</button>
+            </div>
+            {removeStatus?.ok ? (
+              <div style={{ fontSize: "0.8rem", color: "#4ade80" }}>
+                ✓ Removed: <strong>{removeStatus.name}</strong>
+                <div style={{ marginTop: "0.8rem" }}>
+                  <button onClick={() => { setRemoveTarget(null); setRemoveStatus(null); }}
+                    style={{ background: "#1a1a1a", color: "#aaa", border: "1px solid #333", padding: "0.4rem 1rem", fontFamily: "inherit", fontSize: "0.75rem", cursor: "pointer" }}>
+                    Close
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <p style={{ fontSize: "0.82rem", color: "#aaa", marginBottom: "1.4rem", lineHeight: 1.6 }}>
+                  Remove <strong style={{ color: "#e8e0d0" }}>{removeTarget.name}</strong> from the database?
+                  This will delete its image and ratings files and cannot be undone.
+                </p>
+                {removeStatus && removeStatus !== "loading" && !removeStatus.ok && (
+                  <div style={{ fontSize: "0.72rem", marginBottom: "1rem" }}>
+                    <div style={{ color: "#f87171", marginBottom: "0.4rem" }}>{removeStatus.error}</div>
+                    {removeStatus.cli && (
+                      <code style={{ display: "block", background: "#0a0a0a", padding: "0.4rem 0.6rem", color: "#c8a96e", fontSize: "0.72rem", userSelect: "all" }}>
+                        {removeStatus.cli}
+                      </code>
+                    )}
+                  </div>
+                )}
+                <div style={{ display: "flex", gap: "0.6rem" }}>
+                  <button onClick={handleRemoveBreed}
+                    disabled={removeStatus === "loading"}
+                    style={{ background: "#3a0a0a", color: "#f87171", border: "1px solid #5a1a1a", padding: "0.45rem 1.1rem", fontFamily: "inherit", fontSize: "0.75rem", letterSpacing: "0.1em", cursor: "pointer", opacity: removeStatus === "loading" ? 0.6 : 1 }}>
+                    {removeStatus === "loading" ? "Removing…" : "Yes, Remove"}
+                  </button>
+                  <button onClick={() => { setRemoveTarget(null); setRemoveStatus(null); }}
+                    disabled={removeStatus === "loading"}
+                    style={{ background: "#1a1a1a", color: "#888", border: "1px solid #333", padding: "0.45rem 1rem", fontFamily: "inherit", fontSize: "0.75rem", cursor: "pointer" }}>
+                    Cancel
+                  </button>
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -1008,6 +1091,8 @@ export default function App() {
                           {cat.label}
                         </th>
                       ))}
+                      {/* Delete column header */}
+                      <th rowSpan={2} style={{ padding: 0, position: "sticky", top: 0, background: "#0d0d0d", zIndex: 8, minWidth: 28 }} />
                     </tr>
                     {/* Row 2: individual trait column headers */}
                     <tr style={{ borderBottom: "1px solid #2a2a2a" }}>
@@ -1100,6 +1185,17 @@ export default function App() {
                               </td>
                             ))
                           )}
+                          <td style={{ padding: "0.2rem 0.4rem", textAlign: "center" }}>
+                            <button onClick={() => { setRemoveTarget(b); setRemoveStatus(null); }}
+                              title={`Remove ${b.name}`}
+                              style={{ background: "none", border: "none", color: "#333", fontSize: "1rem",
+                                       cursor: "pointer", lineHeight: 1, padding: "0.1rem 0.3rem",
+                                       fontFamily: "inherit" }}
+                              onMouseEnter={e => e.target.style.color = "#f87171"}
+                              onMouseLeave={e => e.target.style.color = "#333"}>
+                              ×
+                            </button>
+                          </td>
                         </tr>
                       );
                     })}

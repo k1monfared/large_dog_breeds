@@ -88,6 +88,30 @@ class Handler(BaseHTTPRequestHandler):
             self._json_response(result, status)
             return
 
+        if path == "/api/remove-breed":
+            length = int(self.headers.get("Content-Length", 0))
+            body   = self.rfile.read(length)
+            try:
+                data = json.loads(body)
+                name = data.get("name", "").strip()
+                if not name:
+                    self._json_response({"ok": False, "error": "Missing breed name"}, 400)
+                    return
+            except (json.JSONDecodeError, AttributeError):
+                self._json_response({"ok": False, "error": "Invalid JSON body"}, 400)
+                return
+
+            try:
+                from add_breed import remove_breed_entry
+                result = remove_breed_entry(name)
+            except Exception as exc:
+                self._json_response({"ok": False, "error": str(exc)}, 500)
+                return
+
+            status = 200 if result["ok"] else 422
+            self._json_response(result, status)
+            return
+
         self._send(404, "text/plain", b"Not Found")
 
     # ── Helpers ───────────────────────────────────────────────────────────────

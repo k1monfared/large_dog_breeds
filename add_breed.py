@@ -253,10 +253,21 @@ def _auto_gaps(breed: dict) -> list[str]:
     if not breed.get("dogtime_image_url"):
         gaps.append("dogtime_image_url")
     slug = breed.get("dogtime_slug", "")
-    if slug and not (IMAGES_DIR / f"{slug}.jpg").exists():
-        gaps.append("image_file")
-    if slug and not (RATINGS_DIR / f"{slug}_ratings.json").exists():
-        gaps.append("ratings")
+    if slug:
+        if not (IMAGES_DIR / f"{slug}.jpg").exists():
+            gaps.append("image_file")
+        rating_file = RATINGS_DIR / f"{slug}_ratings.json"
+        if not rating_file.exists():
+            gaps.append("ratings")
+        else:
+            # Check if category overall scores are present (added by the fixed scraper)
+            try:
+                data = json.loads(rating_file.read_text())
+                flat = {k: v for cat in data.get("ratings", {}).values() for k, v in cat.items()}
+                if not any(k.endswith(" - Overall") for k in flat):
+                    gaps.append("ratings_incomplete")
+            except Exception:
+                pass
     return gaps
 
 
@@ -279,6 +290,66 @@ def download_image(img_url: str, slug: str) -> bool:
         except Exception:
             continue
     return False
+
+
+# ── Remove breed ──────────────────────────────────────────────────────────────
+
+def remove_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
+    """
+    Remove a breed from large_dog_breeds.json and delete its associated files.
+
+    Returns:
+        {"ok": True,  "name": ..., "slug": ..., "removed_files": [...]}
+        {"ok": False, "error": "..."}
+    """
+    existing_breeds = json.loads(DATA_FILE.read_text())
+    match_idx = None
+    for i, b in enumerate(existing_breeds):
+        if b["name"].lower() == breed_name.lower():
+            match_idx = i
+            break
+
+    if match_idx is None:
+        return {"ok": False, "error": f"'{breed_name}' not found in large_dog_breeds.json"}
+
+    breed  = existing_breeds[match_idx]
+    slug   = breed.get("dogtime_slug", "")
+    name   = breed["name"]
+
+    # Identify files that would be removed
+    files_to_remove = []
+    if slug:
+        img_path    = IMAGES_DIR   / f"{slug}.jpg"
+        rating_path = RATINGS_DIR  / f"{slug}_ratings.json"
+        if img_path.exists():
+            files_to_remove.append(str(img_path))
+        if rating_path.exists():
+            files_to_remove.append(str(rating_path))
+
+    if dry_run:
+        return {"ok": True, "name": name, "slug": slug,
+                "removed_files": files_to_remove, "dry_run": True}
+
+    # Remove files
+    for path_str in files_to_remove:
+        Path(path_str).unlink(missing_ok=True)
+
+    # Remove from JSON
+    existing_breeds.pop(match_idx)
+    DATA_FILE.write_text(json.dumps(existing_breeds, indent=2, ensure_ascii=False))
+    print(f"  Removed '{name}' from large_dog_breeds.json")
+
+    # Rebuild breed_ratings.json
+    subprocess.run([sys.executable, str(Path(__file__).parent / "merge_ratings.py")],
+                   check=False, capture_output=True)
+    print("  Updated breed_ratings.json")
+
+    # Recompute service scores
+    from compute_service_score import update_service_scores
+    update_service_scores(verbose=False)
+    print("  Updated service_dog_score in large_dog_breeds.json")
+
+    return {"ok": True, "name": name, "slug": slug, "removed_files": files_to_remove}
 
 
 # ── Core function ─────────────────────────────────────────────────────────────
@@ -365,7 +436,7 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
 
         if dry_run:
             could_fill = updated + (["image_file"] if ("image_file" in gaps and img) else []) \
-                                 + (["ratings"]    if ("ratings"    in gaps and ratings) else [])
+                                 + (["ratings"]    if (("ratings" in gaps or "ratings_incomplete" in gaps) and ratings) else [])
             return {"ok": True, "breed": entry, "updated": could_fill,
                     "already_existed": True, "dry_run": True, "ratings": ratings}
 
@@ -383,8 +454,8 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
             if ok and "image_file" not in updated:
                 updated.append("image_file")
 
-        # Save ratings if missing
-        if "ratings" in gaps and ratings:
+        # Save ratings if missing or incomplete (missing category overall scores)
+        if ("ratings" in gaps or "ratings_incomplete" in gaps) and ratings:
             RATINGS_DIR.mkdir(exist_ok=True)
             from datetime import date
             rating_file = RATINGS_DIR / f"{found_slug}_ratings.json"
@@ -499,10 +570,28 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
 def main():
-    ap = argparse.ArgumentParser(description="Add a new breed to large_dog_breeds.json")
+    ap = argparse.ArgumentParser(description="Add or remove a breed in large_dog_breeds.json")
     ap.add_argument("name",      help="Breed name (e.g. 'Samoyed')")
+    ap.add_argument("--remove",  action="store_true", help="Remove the breed instead of adding it")
     ap.add_argument("--dry-run", action="store_true", help="Print result but don't save")
     args = ap.parse_args()
+
+    if args.remove:
+        print(f"\nRemoving breed: {args.name}\n")
+        result = remove_breed_entry(args.name, dry_run=args.dry_run)
+        if not result["ok"]:
+            print(f"\n[error] {result['error']}")
+            sys.exit(1)
+        if args.dry_run:
+            print(f"[dry-run] Would remove: {result['name']} (slug: {result['slug']})")
+            print(f"  Files: {result['removed_files'] or '(none)'}")
+        else:
+            print(f"\n[ok] Removed: {result['name']}")
+            if result["removed_files"]:
+                print("  Deleted files:")
+                for f in result["removed_files"]:
+                    print(f"    {f}")
+        return
 
     print(f"\nAdding breed: {args.name}\n")
     result = add_breed_entry(args.name, dry_run=args.dry_run)
