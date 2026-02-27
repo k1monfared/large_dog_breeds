@@ -243,6 +243,23 @@ def extract_ratings(html: str) -> dict[str, dict[str, int]] | None:
     return ratings if ratings else None
 
 
+def _auto_gaps(breed: dict) -> list[str]:
+    """Return auto-extractable fields that are missing or still at placeholder values."""
+    gaps = []
+    for key in ("weight_lbs", "height_in", "lifespan_yrs"):
+        r = breed.get(key, {})
+        if r.get("min", 0) == 0 and r.get("max", 0) == 0:
+            gaps.append(key)
+    if not breed.get("dogtime_image_url"):
+        gaps.append("dogtime_image_url")
+    slug = breed.get("dogtime_slug", "")
+    if slug and not (IMAGES_DIR / f"{slug}.jpg").exists():
+        gaps.append("image_file")
+    if slug and not (RATINGS_DIR / f"{slug}_ratings.json").exists():
+        gaps.append("ratings")
+    return gaps
+
+
 def download_image(img_url: str, slug: str) -> bool:
     """Download breed image to images/<slug>.jpg. Returns True on success."""
     IMAGES_DIR.mkdir(exist_ok=True)
@@ -274,11 +291,19 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
         {"ok": True,  "breed": {...}, "placeholders": [...]}
         {"ok": False, "error": "..."}
     """
-    # Check for duplicate
+    # Check for duplicate — if found, look for auto-extractable gaps to fill
     existing_breeds = json.loads(DATA_FILE.read_text())
-    for b in existing_breeds:
+    existing_idx = None
+    for i, b in enumerate(existing_breeds):
         if b["name"].lower() == breed_name.lower():
-            return {"ok": False, "error": f"'{b['name']}' is already in large_dog_breeds.json"}
+            existing_idx = i
+            break
+
+    if existing_idx is not None:
+        gaps = _auto_gaps(existing_breeds[existing_idx])
+        if not gaps:
+            return {"ok": False, "error": f"'{existing_breeds[existing_idx]['name']}' is already in the database and all auto-extractable fields are complete"}
+        print(f"  '{existing_breeds[existing_idx]['name']}' already exists — gaps to fill: {gaps}")
 
     # Find the DogTime page
     found_slug = None
@@ -323,6 +348,68 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
     # Extract star ratings
     ratings = extract_ratings(found_html)
 
+    # ── Update path: breed exists, fill in gaps ───────────────────────────────
+    if existing_idx is not None:
+        entry   = existing_breeds[existing_idx]
+        gaps    = _auto_gaps(entry)
+        updated = []
+
+        for key in ("weight_lbs", "height_in", "lifespan_yrs"):
+            if key in gaps and key in ranges:
+                entry[key] = ranges[key]
+                updated.append(key)
+
+        if "dogtime_image_url" in gaps and img:
+            entry["dogtime_image_url"] = img
+            updated.append("dogtime_image_url")
+
+        if dry_run:
+            could_fill = updated + (["image_file"] if ("image_file" in gaps and img) else []) \
+                                 + (["ratings"]    if ("ratings"    in gaps and ratings) else [])
+            return {"ok": True, "breed": entry, "updated": could_fill,
+                    "already_existed": True, "dry_run": True, "ratings": ratings}
+
+        # Write JSON if any scalar fields changed
+        if updated:
+            existing_breeds[existing_idx] = entry
+            DATA_FILE.write_text(json.dumps(existing_breeds, indent=2, ensure_ascii=False))
+            print(f"  Updated fields: {updated}")
+
+        # Download image if now available
+        img_url_to_use = entry.get("dogtime_image_url") or img
+        if ("image_file" in gaps or "dogtime_image_url" in updated) and img_url_to_use:
+            ok = download_image(img_url_to_use, found_slug)
+            print(f"  Image: {'saved → images/' + found_slug + '.jpg' if ok else 'download failed'}")
+            if ok and "image_file" not in updated:
+                updated.append("image_file")
+
+        # Save ratings if missing
+        if "ratings" in gaps and ratings:
+            RATINGS_DIR.mkdir(exist_ok=True)
+            from datetime import date
+            rating_file = RATINGS_DIR / f"{found_slug}_ratings.json"
+            rating_file.write_text(json.dumps({
+                "breed":      entry["name"],
+                "slug":       found_slug,
+                "url":        found_url,
+                "scraped_at": date.today().isoformat(),
+                "ratings":    ratings,
+            }, indent=2, ensure_ascii=False))
+            print(f"  Saved ratings → {rating_file.name}")
+            updated.append("ratings")
+            subprocess.run([sys.executable, str(Path(__file__).parent / "merge_ratings.py")],
+                           check=False, capture_output=True)
+            print("  Updated breed_ratings.json")
+            from compute_service_score import update_service_scores
+            update_service_scores(verbose=False)
+            print("  Updated service_dog_score in large_dog_breeds.json")
+
+        if not updated:
+            return {"ok": False, "error": f"'{entry['name']}' exists with gaps {gaps} but the DogTime page didn't have the missing data"}
+
+        return {"ok": True, "breed": entry, "updated": updated, "already_existed": True, "ratings": ratings}
+
+    # ── New breed path ────────────────────────────────────────────────────────
     # Build breed entry (placeholder for fields we can't extract)
     placeholders = []
 
@@ -425,20 +512,26 @@ def main():
         sys.exit(1)
 
     breed = result["breed"]
-    phs   = result["placeholders"]
 
-    if args.dry_run:
-        print("\n[dry-run] Would add:")
-        print(json.dumps(breed, indent=2, ensure_ascii=False))
-
-    print(f"\n[ok] Added: {breed['name']}")
-    print(f"     Slug:  {breed['dogtime_slug']}")
-    print(f"     URL:   {breed['source_url']}")
-
-    if phs:
-        print(f"\n[!] Fields needing manual update in large_dog_breeds.json:")
-        for p in phs:
-            print(f"     • {p}")
+    if result.get("already_existed"):
+        updated = result.get("updated", [])
+        if args.dry_run:
+            print("\n[dry-run] Would update:")
+            print(json.dumps(breed, indent=2, ensure_ascii=False))
+        print(f"\n[ok] Updated: {breed['name']}")
+        print(f"     Fields:  {updated if updated else '(none improved)'}")
+    else:
+        phs = result.get("placeholders", [])
+        if args.dry_run:
+            print("\n[dry-run] Would add:")
+            print(json.dumps(breed, indent=2, ensure_ascii=False))
+        print(f"\n[ok] Added: {breed['name']}")
+        print(f"     Slug:  {breed['dogtime_slug']}")
+        print(f"     URL:   {breed['source_url']}")
+        if phs:
+            print(f"\n[!] Fields needing manual update in large_dog_breeds.json:")
+            for p in phs:
+                print(f"     • {p}")
 
     if result.get("ratings"):
         total = sum(len(v) for v in result["ratings"].values())
