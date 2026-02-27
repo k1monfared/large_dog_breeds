@@ -209,6 +209,9 @@ function RangeFilter({ globalMin, globalMax, value, onChange, step, unit }) {
 
 // ── CSV export ───────────────────────────────────────────────────────────────
 function downloadCSV(rows, filename = "breeds.csv") {
+  const ratingCols = RATING_CATEGORIES.flatMap(cat =>
+    cat.traits.map(t => [`${cat.label}: ${t.label}`, b => b.ratings?.[t.trait] ?? ""])
+  );
   const cols = [
     ["Name",           b => b.name],
     ["Origin",         b => b.origin],
@@ -229,6 +232,7 @@ function downloadCSV(rows, filename = "breeds.csv") {
     ["Dogs",           b => b.good_with_dogs ? "Yes" : "No"],
     ["Service Score",  b => b.service_dog_score ?? ""],
     ["Health Notes",   b => b.health_notes],
+    ...ratingCols,
   ];
   const esc   = v => `"${String(v == null ? "" : v).replace(/"/g, '""')}"`;
   const lines = [

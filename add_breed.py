@@ -569,12 +569,53 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
+def refresh_all_breeds(dry_run: bool = False) -> None:
+    """
+    Check every breed in large_dog_breeds.json for auto-extractable gaps.
+    For any breed with gaps, fetch its DogTime page and fill them in.
+    """
+    breeds = json.loads(DATA_FILE.read_text())
+    needs_work = [(b["name"], _auto_gaps(b)) for b in breeds if _auto_gaps(b)]
+
+    if not needs_work:
+        print("All breeds are complete — nothing to update.")
+        return
+
+    print(f"{len(needs_work)} breed(s) have gaps:\n")
+    for name, gaps in needs_work:
+        print(f"  {name}: {gaps}")
+
+    if dry_run:
+        return
+
+    print()
+    for name, gaps in needs_work:
+        print(f"── {name} ──")
+        result = add_breed_entry(name, dry_run=False)
+        if result.get("ok"):
+            print(f"  Updated: {result.get('updated', [])}")
+        else:
+            print(f"  [error] {result.get('error')}")
+        print()
+
+    print("Done.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Add or remove a breed in large_dog_breeds.json")
-    ap.add_argument("name",      help="Breed name (e.g. 'Samoyed')")
-    ap.add_argument("--remove",  action="store_true", help="Remove the breed instead of adding it")
-    ap.add_argument("--dry-run", action="store_true", help="Print result but don't save")
+    ap.add_argument("name",          nargs="?", help="Breed name (e.g. 'Samoyed')")
+    ap.add_argument("--remove",      action="store_true", help="Remove the breed instead of adding it")
+    ap.add_argument("--refresh-all", action="store_true", help="Check all breeds for gaps and fill them in")
+    ap.add_argument("--dry-run",     action="store_true", help="Print result but don't save")
     args = ap.parse_args()
+
+    if args.refresh_all:
+        print("\nChecking all breeds for gaps…\n")
+        refresh_all_breeds(dry_run=args.dry_run)
+        return
+
+    if not args.name:
+        ap.error("breed name is required (or use --refresh-all)")
 
     if args.remove:
         print(f"\nRemoving breed: {args.name}\n")

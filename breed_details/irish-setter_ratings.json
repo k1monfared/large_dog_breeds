@@ -5,6 +5,7 @@
   "scraped_at": "2026-02-26",
   "ratings": {
     "Adaptability": {
+      "Adaptability - Overall": 3,
       "Adapts Well To Apartment Living": 1,
       "Good For Novice Dog Owners": 3,
       "Sensitivity Level": 4,
@@ -13,12 +14,14 @@
       "Tolerates Hot Weather": 3
     },
     "All-around friendliness": {
+      "All-around friendliness - Overall": 5,
       "Best Family Dogs": 5,
       "Kid-Friendly": 5,
       "Dog Friendly": 5,
       "Friendly Toward Strangers": 5
     },
     "Health And Grooming Needs": {
+      "Health And Grooming Needs - Overall": 3,
       "Shedding": 4,
       "Drooling Potential": 2,
       "Easy To Groom": 3,
@@ -27,6 +30,7 @@
       "Size": 4
     },
     "Trainability": {
+      "Trainability - Overall": 5,
       "Easy To Train": 4,
       "Intelligence": 5,
       "Potential For Mouthiness": 5,
@@ -35,6 +39,7 @@
       "Wanderlust Potential": 5
     },
     "Exercise needs": {
+      "Exercise needs - Overall": 5,
       "High Energy Level": 5,
       "Intensity": 3,
       "Exercise Needs": 5,
