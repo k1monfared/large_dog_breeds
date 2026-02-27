@@ -73,6 +73,22 @@ SANITY_BOUNDS = {
     "lifespan_yrs":(3.0,   25.0),
 }
 
+# Countries used for origin extraction (longer names first for greedy matching)
+COUNTRIES = sorted([
+    "Afghanistan", "Algeria", "Argentina", "Armenia", "Australia", "Austria",
+    "Azerbaijan", "Belgium", "Bolivia", "Brazil", "Bulgaria", "Canada",
+    "Chile", "China", "Colombia", "Croatia", "Cuba", "Czechoslovakia",
+    "Denmark", "Egypt", "Ethiopia", "Finland", "France", "Georgia",
+    "Germany", "Greece", "Hungary", "Iceland", "India", "Iran", "Iraq",
+    "Ireland", "Israel", "Italy", "Japan", "Jordan", "Kazakhstan",
+    "Kenya", "Korea", "Malta", "Mexico", "Mongolia", "Morocco", "Nepal",
+    "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru",
+    "Poland", "Portugal", "Romania", "Russia", "Saudi Arabia", "Scotland",
+    "Serbia", "Slovakia", "Slovenia", "South Africa", "Spain", "Sudan",
+    "Sweden", "Switzerland", "Syria", "Tibet", "Turkey", "Ukraine",
+    "United Kingdom", "United States", "Yugoslavia", "Zimbabwe",
+], key=len, reverse=True)
+
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -243,6 +259,150 @@ def extract_ratings(html: str) -> dict[str, dict[str, int]] | None:
     return ratings if ratings else None
 
 
+def extract_text_fields(text: str, breed_name: str) -> dict:
+    """
+    Extract coat, health_notes, and origin from DogTime page plain text.
+    Returns a dict with whichever keys were successfully found.
+    """
+    result = {}
+
+    # ── Coat ──────────────────────────────────────────────────────────────────
+    m = re.search(r'\bCoat:\s*(.{5,250})', text, re.I)
+    if m:
+        val = m.group(1).strip()
+        # Truncate at the next "Label:" pattern (capitalised word + colon)
+        val = re.split(r'\s+[A-Z][a-zA-Z]+(?:\s+[A-Za-z]+)?:', val)[0]
+        # Truncate at 3+ consecutive spaces (section breaks in get_text output)
+        val = re.split(r'\s{3,}', val)[0].strip().rstrip(" ,;")
+        # If still long, use just the first sentence
+        if len(val) > 80:
+            first = re.split(r'\.\s+', val)[0]
+            if 3 < len(first) < 200:
+                val = first.rstrip(".")
+        val = val.strip().rstrip(" ,;")
+        if 3 < len(val) < 200:
+            result["coat"] = val
+
+    # ── Health notes ──────────────────────────────────────────────────────────
+    health_val = None
+    # Pattern 1: "Health Considerations: ..."
+    m = re.search(r'Health Considerations?:\s*([^.]{10,300}\.)', text, re.I)
+    if m:
+        health_val = m.group(1).strip()
+    # Pattern 2: "Health: short phrase" from quick-facts section
+    if not health_val:
+        m = re.search(r'\bHealth:\s*([^.]{10,200})', text, re.I)
+        if m:
+            val = m.group(1).strip()
+            val = re.split(r'\s+[A-Z][a-zA-Z]+(?:\s+[A-Za-z]+)?:', val)[0]
+            val = re.split(r'\s{3,}', val)[0].strip().rstrip(" ,;")
+            if len(val) > 10:
+                health_val = val
+    # Pattern 3: "BreedName are/is prone to ..."
+    HEALTH_KEYWORDS = re.compile(
+        r'hip|elbow|dysplasia|cancer|disease|condition|disorder|syndrome|'
+        r'bloat|torsion|heart|eye|vision|thyroid|allergy|allergies|joint|'
+        r'issue|problem|health|obesity|epilepsy|skin|respiratory|breathing',
+        re.I,
+    )
+    if not health_val:
+        first = re.escape(breed_name.split()[0])
+        m = re.search(
+            rf'{first}[a-z\s]*(?:are|is)\s+(?:generally\s+)?prone\s+to\s+([^.]+\.)',
+            text, re.I,
+        )
+        if m and HEALTH_KEYWORDS.search(m.group(1)):
+            health_val = f"Prone to {m.group(1).strip()}"
+    # Pattern 4: generic "prone to X, Y, and Z"
+    if not health_val:
+        m = re.search(r'(?:commonly\s+)?prone\s+to\s+([^.]{15,200}\.)', text, re.I)
+        if m and HEALTH_KEYWORDS.search(m.group(1)):
+            health_val = f"Prone to {m.group(1).strip()}"
+    if health_val and len(health_val) > 10:
+        result["health_notes"] = health_val
+
+    # ── Origin ────────────────────────────────────────────────────────────────
+    origin_val = None
+    intro = text[:4000]
+
+    # Region/adjective → country mapping for cases where country name doesn't appear
+    REGION_TO_COUNTRY = {
+        "siberia": "Russia",         "siberian": "Russia",
+        "chukchi": "Russia",
+        "tibet": "China",            "tibetan": "China",
+        "alsace": "France",          "alsatian": "Germany",
+        "flanders": "Belgium",       "flemish": "Belgium",
+        "anatolia": "Turkey",        "anatolian": "Turkey",
+        "bohemia": "Czech Republic", "bohemian": "Czech Republic",
+        "england": "England",        "english": "England",
+        "britain": "United Kingdom", "british": "United Kingdom",
+        "wales": "Wales",            "welsh": "Wales",
+        "north africa": "North Africa",
+        "west africa": "West Africa",
+    }
+
+    def _match_country(candidate: str):
+        """Return the known country that is a prefix of candidate, or None."""
+        cand_lo = candidate.lower()
+        for country in COUNTRIES:  # sorted longest-first
+            if cand_lo.startswith(country.lower()):
+                return country
+        return None
+
+    def _scan_for_country(fragment: str):
+        """Return first known country found anywhere in fragment text."""
+        for country in COUNTRIES:
+            if re.search(rf'\b{re.escape(country)}\b', fragment, re.I):
+                return country
+        return None
+
+    # Pattern 0: "Origin: ..." quick-fact label — check for country names within it
+    m0 = re.search(r'\bOrigin:\s*([^.]{5,200})', intro, re.I)
+    if m0:
+        origin_text = m0.group(1)
+        origin_val = _scan_for_country(origin_text)
+        if not origin_val:
+            # Check region aliases
+            for region, country in REGION_TO_COUNTRY.items():
+                if re.search(rf'\b{re.escape(region)}\b', origin_text, re.I):
+                    origin_val = country
+                    break
+
+    # Pattern 1: explicit origin keywords — permissive lookahead, validate via country list
+    if not origin_val:
+        for pat in (
+            r'originated?\s+in\s+([A-Z][a-zA-Z\s]{2,40})',
+            r'developed?\s+in\s+([A-Z][a-zA-Z\s]{2,40})',
+            r'(?:bred?|raised?)\s+in\s+([A-Z][a-zA-Z\s]{2,40})',
+            r'\bbreed\s+from\s+([A-Z][a-zA-Z\s]{2,40})',
+            r'\bfrom\s+([A-Z][a-zA-Z\s]{2,40})',
+        ):
+            m = re.search(pat, intro)
+            if m:
+                candidate = m.group(1).strip()
+                country = _match_country(candidate)
+                if country:
+                    origin_val = country
+                    break
+
+    # Pattern 2: scan for any known country (skip "living in X" false positives)
+    if not origin_val:
+        cleaned = re.sub(r'living\s+in\s+[A-Z][a-zA-Z\s]+', '', intro)
+        origin_val = _scan_for_country(cleaned)
+
+    # Pattern 3: region aliases (Siberia → Russia, Tibet → China, etc.)
+    if not origin_val:
+        for region, country in REGION_TO_COUNTRY.items():
+            if re.search(rf'\b{re.escape(region)}\b', intro, re.I):
+                origin_val = country
+                break
+
+    if origin_val:
+        result["origin"] = origin_val
+
+    return result
+
+
 def _auto_gaps(breed: dict) -> list[str]:
     """Return auto-extractable fields that are missing or still at placeholder values."""
     gaps = []
@@ -252,6 +412,12 @@ def _auto_gaps(breed: dict) -> list[str]:
             gaps.append(key)
     if not breed.get("dogtime_image_url"):
         gaps.append("dogtime_image_url")
+    if breed.get("coat", "") in ("", "Unknown"):
+        gaps.append("coat")
+    if breed.get("health_notes", "") in ("", "See DogTime for details"):
+        gaps.append("health_notes")
+    if breed.get("origin", "") in ("", "Unknown"):
+        gaps.append("origin")
     slug = breed.get("dogtime_slug", "")
     if slug:
         if not (IMAGES_DIR / f"{slug}.jpg").exists():
@@ -419,6 +585,9 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
     # Extract star ratings
     ratings = extract_ratings(found_html)
 
+    # Extract text-based fields (coat, health_notes, origin)
+    text_fields = extract_text_fields(text, breed_name)
+
     # ── Update path: breed exists, fill in gaps ───────────────────────────────
     if existing_idx is not None:
         entry   = existing_breeds[existing_idx]
@@ -434,9 +603,16 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
             entry["dogtime_image_url"] = img
             updated.append("dogtime_image_url")
 
+        for key in ("coat", "health_notes", "origin"):
+            if key in gaps and key in text_fields:
+                entry[key] = text_fields[key]
+                updated.append(key)
+
         if dry_run:
-            could_fill = updated + (["image_file"] if ("image_file" in gaps and img) else []) \
-                                 + (["ratings"]    if (("ratings" in gaps or "ratings_incomplete" in gaps) and ratings) else [])
+            could_fill = updated \
+                + (["image_file"] if ("image_file" in gaps and img) else []) \
+                + (["ratings"]    if (("ratings" in gaps or "ratings_incomplete" in gaps) and ratings) else []) \
+                + [k for k in ("coat", "health_notes", "origin") if k in gaps and k in text_fields and k not in updated]
             return {"ok": True, "breed": entry, "updated": could_fill,
                     "already_existed": True, "dry_run": True, "ratings": ratings}
 
@@ -492,20 +668,20 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
         "name":          found_page_name.removesuffix(" Dog").strip()
                          if found_page_name.endswith(" Dog") and " " in found_page_name.rstrip(" Dog")
                          else found_page_name,
-        "origin":        placeholder("origin",       "Unknown"),
-        "weight_lbs":    ranges.get("weight_lbs",    placeholder("weight_lbs",    {"min": 0, "max": 0})),
-        "height_in":     ranges.get("height_in",     placeholder("height_in",     {"min": 0, "max": 0})),
-        "lifespan_yrs":  ranges.get("lifespan_yrs",  placeholder("lifespan_yrs",  {"min": 0, "max": 0})),
-        "temperament":   placeholder("temperament",  []),
-        "purpose":       placeholder("purpose",      []),
-        "grooming":      placeholder("grooming",     "Moderate"),
-        "exercise":      placeholder("exercise",     "Moderate"),
-        "good_with_kids":placeholder("good_with_kids", True),
-        "good_with_dogs":placeholder("good_with_dogs", False),
-        "coat":          placeholder("coat",         "Unknown"),
-        "shedding":      placeholder("shedding",     "Moderate"),
-        "trainability":  placeholder("trainability", "Moderate"),
-        "health_notes":  placeholder("health_notes", "See DogTime for details"),
+        "origin":        text_fields.get("origin",       placeholder("origin",       "Unknown")),
+        "weight_lbs":    ranges.get("weight_lbs",         placeholder("weight_lbs",    {"min": 0, "max": 0})),
+        "height_in":     ranges.get("height_in",          placeholder("height_in",     {"min": 0, "max": 0})),
+        "lifespan_yrs":  ranges.get("lifespan_yrs",       placeholder("lifespan_yrs",  {"min": 0, "max": 0})),
+        "temperament":   placeholder("temperament",        []),
+        "purpose":       placeholder("purpose",            []),
+        "grooming":      placeholder("grooming",           "Moderate"),
+        "exercise":      placeholder("exercise",           "Moderate"),
+        "good_with_kids":placeholder("good_with_kids",     True),
+        "good_with_dogs":placeholder("good_with_dogs",     False),
+        "coat":          text_fields.get("coat",          placeholder("coat",         "Unknown")),
+        "shedding":      placeholder("shedding",           "Moderate"),
+        "trainability":  placeholder("trainability",       "Moderate"),
+        "health_notes":  text_fields.get("health_notes",  placeholder("health_notes", "See DogTime for details")),
         "color":         slug_to_color(found_slug),
         "dogtime_slug":  found_slug,
         "source_url":    found_url,
@@ -516,6 +692,9 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
         if key in ranges:
             if key in placeholders:
                 placeholders.remove(key)
+    for key in ("origin", "coat", "health_notes"):
+        if key in text_fields and key in placeholders:
+            placeholders.remove(key)
 
     if img:
         entry["dogtime_image_url"] = img

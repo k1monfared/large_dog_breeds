@@ -1070,7 +1070,7 @@
   },
   {
     "name": "Tibetan Mastiff",
-    "origin": "Unknown",
+    "origin": "Tibet",
     "weight_lbs": {
       "min": 75.0,
       "max": 160.0
@@ -1089,7 +1089,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Thick double coat in a variety of colors",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -1104,7 +1104,7 @@
   },
   {
     "name": "Neapolitan Mastiff",
-    "origin": "Unknown",
+    "origin": "Italy",
     "weight_lbs": {
       "min": 120.0,
       "max": 200.0
@@ -1123,10 +1123,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth, and dense",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Like many large breeds, Neapolitan Mastiffs can be prone to certain health issues, including hip dysplasia, bloat, and skin problems due to their wrinkles.",
     "color": "#af57af",
     "dogtime_slug": "neapolitan-mastiff",
     "source_url": "https://dogtime.com/dog-breeds/neapolitan-mastiff",
@@ -1138,7 +1138,7 @@
   },
   {
     "name": "Komondor",
-    "origin": "Unknown",
+    "origin": "Hungary",
     "weight_lbs": {
       "min": 80.0,
       "max": 130.0
@@ -1160,7 +1160,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Hip dysplasia, elbow dysplasia, eye problems A Komondor made a cameo appearance in the Italian film “There Was a Castle with Forty Dogs” (1990)",
     "color": "#af8092",
     "dogtime_slug": "komondor",
     "source_url": "https://dogtime.com/dog-breeds/komondor",
@@ -1172,7 +1172,7 @@
   },
   {
     "name": "Kuvasz",
-    "origin": "Unknown",
+    "origin": "Hungary",
     "weight_lbs": {
       "min": 70.0,
       "max": 115.0
@@ -1194,7 +1194,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to some health problems, such as hip dysplasia, elbow dysplasia, bloat, and allergies.",
     "color": "#af509c",
     "dogtime_slug": "kuvasz",
     "source_url": "https://dogtime.com/dog-breeds/kuvasz",
@@ -1206,7 +1206,7 @@
   },
   {
     "name": "Old English Sheepdog",
-    "origin": "Unknown",
+    "origin": "England",
     "weight_lbs": {
       "min": 60.0,
       "max": 100.0
@@ -1225,10 +1225,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "The English Sheepdog has a long, double coat that can be straight or wavy",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "They are generally healthy dogs, but they are prone to some health problems, such as hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#685050",
     "dogtime_slug": "old-english-sheepdog",
     "source_url": "https://dogtime.com/dog-breeds/old-english-sheepdog",
@@ -1240,7 +1240,7 @@
   },
   {
     "name": "Scottish Deerhound",
-    "origin": "Unknown",
+    "origin": "Scotland",
     "weight_lbs": {
       "min": 75.0,
       "max": 110.0
@@ -1259,10 +1259,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Harsh, wiry, and weather-resistant",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy, but can be prone to some health problems, such as hip dysplasia and elbow dysplasia",
     "color": "#af50af",
     "dogtime_slug": "scottish-deerhound",
     "source_url": "https://dogtime.com/dog-breeds/scottish-deerhound",
@@ -1274,7 +1274,7 @@
   },
   {
     "name": "Borzoi",
-    "origin": "Unknown",
+    "origin": "Russia",
     "weight_lbs": {
       "min": 55.0,
       "max": 105.0
@@ -1293,10 +1293,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Long, silky",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Some health problems that are common in the Borzoi include hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#50afaf",
     "dogtime_slug": "borzoi",
     "source_url": "https://dogtime.com/dog-breeds/borzoi",
@@ -1315,7 +1315,7 @@
   },
   {
     "name": "Afghan Hound",
-    "origin": "Unknown",
+    "origin": "Afghanistan",
     "weight_lbs": {
       "min": 50.0,
       "max": 60.0
@@ -1334,10 +1334,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Long, silky, and flowing. Typically fawn, cream, red, brindle, black, or white.",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "The dog is generally healthy but prone to some conditions, such as hip dysplasia, cataracts, and ear infections",
     "color": "#6daf6e",
     "dogtime_slug": "afghan-hound",
     "source_url": "https://dogtime.com/dog-breeds/afghan-hound",
@@ -1368,10 +1368,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, sleek coat that comes in a variety of colors, including black, fawn, blue, brindle, and more",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Greyhounds are generally healthy, but they can be prone to certain conditions like bloat and heart issues",
     "color": "#505050",
     "dogtime_slug": "greyhound",
     "source_url": "https://dogtime.com/dog-breeds/greyhound",
@@ -1383,7 +1383,7 @@
   },
   {
     "name": "Giant Schnauzer",
-    "origin": "Unknown",
+    "origin": "Germany",
     "weight_lbs": {
       "min": 55.0,
       "max": 90.0
@@ -1402,10 +1402,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Harsh and wiry outer coat with a dense, soft undercoat.",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to certain genetic health issues like hip dysplasia and bloat",
     "color": "#509daf",
     "dogtime_slug": "giant-schnauzer",
     "source_url": "https://dogtime.com/dog-breeds/giant-schnauzer",
@@ -1417,7 +1417,7 @@
   },
   {
     "name": "Siberian Husky",
-    "origin": "Unknown",
+    "origin": "Russia",
     "weight_lbs": {
       "min": 35.0,
       "max": 70.0
@@ -1436,10 +1436,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "This thick double coat is designed for cold weather",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "While generally healthy, Siberian Huskies can be prone to certain health issues, including hip dysplasia, eye problems, and autoimmune disorders.",
     "color": "#657caf",
     "dogtime_slug": "siberian-husky",
     "source_url": "https://dogtime.com/dog-breeds/siberian-husky",
@@ -1451,7 +1451,7 @@
   },
   {
     "name": "Samoyed",
-    "origin": "Unknown",
+    "origin": "Russia",
     "weight_lbs": {
       "min": 50.0,
       "max": 60.0
@@ -1470,7 +1470,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Sammies have a thick, double coat that is white, cream, biscuit (grayish yellow), or white and biscuit",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -1485,7 +1485,7 @@
   },
   {
     "name": "Belgian Malinois",
-    "origin": "Unknown",
+    "origin": "Belgium",
     "weight_lbs": {
       "min": 40.0,
       "max": 80.0
@@ -1504,10 +1504,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, double coat that is weather-resistant and comes in a variety of colors, including fawn, mahogany, and black",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy but can be prone to some health conditions, such as hip dysplasia, elbow dysplasia, and allergies Suitability as a pet: Like the other Belgian Shepherds, Belgian Malinois are best su",
     "color": "#5050af",
     "dogtime_slug": "belgian-malinois",
     "source_url": "https://dogtime.com/dog-breeds/belgian-malinois",
@@ -1519,7 +1519,7 @@
   },
   {
     "name": "Bouvier des Flandres",
-    "origin": "Unknown",
+    "origin": "Belgium",
     "weight_lbs": {
       "min": 60.0,
       "max": 110.0
@@ -1538,10 +1538,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Rough, shaggy, and weather-resistant",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy but can be prone to some health problems, such as hip dysplasia and elbow dysplasia",
     "color": "#50af51",
     "dogtime_slug": "bouvier-des-flandres",
     "source_url": "https://dogtime.com/dog-breeds/bouvier-des-flandres",
@@ -1553,7 +1553,7 @@
   },
   {
     "name": "Briard",
-    "origin": "Unknown",
+    "origin": "France",
     "weight_lbs": {
       "min": 70.0,
       "max": 100.0
@@ -1575,7 +1575,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Like many breeds, Briards are prone to certain health issues, including hip dysplasia and progressive retinal atrophy",
     "color": "#6a5050",
     "dogtime_slug": "briard",
     "source_url": "https://dogtime.com/dog-breeds/briard",
@@ -1587,7 +1587,7 @@
   },
   {
     "name": "Flat-Coated Retriever",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 55.0,
       "max": 70.0
@@ -1606,10 +1606,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Flat-Coated Retrievers have a medium-length, flat coat that sheds relatively little",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to certain health conditions, such as hip dysplasia, elbow dysplasia, and eye problems.",
     "color": "#505050",
     "dogtime_slug": "flat-coated-retriever",
     "source_url": "https://dogtime.com/dog-breeds/flat-coated-retriever",
@@ -1621,7 +1621,7 @@
   },
   {
     "name": "Chesapeake Bay Retriever",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 55.0,
       "max": 80.0
@@ -1640,10 +1640,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Their double coat is water-resistant, and they come in solid brown, sedge, or deadgrass colors",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to hip dysplasia and elbow dysplasia.",
     "color": "#86986d",
     "dogtime_slug": "chesapeake-bay-retriever",
     "source_url": "https://dogtime.com/dog-breeds/chesapeake-bay-retriever",
@@ -1655,7 +1655,7 @@
   },
   {
     "name": "Gordon Setter",
-    "origin": "Unknown",
+    "origin": "Scotland",
     "weight_lbs": {
       "min": 45.0,
       "max": 83.0
@@ -1674,10 +1674,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Long, thick, and black with tan markings.",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy but prone to health problems, such as hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#5790a4",
     "dogtime_slug": "gordon-setter",
     "source_url": "https://dogtime.com/dog-breeds/gordon-setter",
@@ -1689,7 +1689,7 @@
   },
   {
     "name": "Irish Setter",
-    "origin": "Unknown",
+    "origin": "Ireland",
     "weight_lbs": {
       "min": 60.0,
       "max": 70.0
@@ -1723,7 +1723,7 @@
   },
   {
     "name": "English Setter",
-    "origin": "Unknown",
+    "origin": "England",
     "weight_lbs": {
       "min": 45.0,
       "max": 80.0
@@ -1742,7 +1742,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Long, silky coat in a variety of colors, including black, white, liver, and lemon",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -1757,7 +1757,7 @@
   },
   {
     "name": "Vizsla",
-    "origin": "Unknown",
+    "origin": "Hungary",
     "weight_lbs": {
       "min": 45.0,
       "max": 65.0
@@ -1776,10 +1776,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth, and dense coat in a solid golden rust color",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to certain health conditions, such as hip dysplasia, elbow dysplasia, eye problems, and allergies Some studies say Vizslas can reach speeds nearing 40mph .",
     "color": "#505050",
     "dogtime_slug": "vizsla",
     "source_url": "https://dogtime.com/dog-breeds/vizsla",
@@ -1791,7 +1791,7 @@
   },
   {
     "name": "German Shorthaired Pointer",
-    "origin": "Unknown",
+    "origin": "Germany",
     "weight_lbs": {
       "min": 45.0,
       "max": 70.0
@@ -1813,7 +1813,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Hip dysplasia, elbow dysplasia, eye problems, bloat Famous owners of German Shorthaired Pointers (GSP dog) include actor Bradley Cooper and country music stars Tim McGraw and Chase Bryant",
     "color": "#afafaf",
     "dogtime_slug": "german-shorthaired-pointer",
     "source_url": "https://dogtime.com/dog-breeds/german-shorthaired-pointer",
@@ -1825,7 +1825,7 @@
   },
   {
     "name": "Spinone Italiano",
-    "origin": "Unknown",
+    "origin": "Italy",
     "weight_lbs": {
       "min": 61.0,
       "max": 86.0
@@ -1844,7 +1844,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "The Spinone’s wiry coat, coming in solid colors like white, orange, or brown, is relatively low-maintenance, requiring occasional grooming to keep it in good condition",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -1859,7 +1859,7 @@
   },
   {
     "name": "Catahoula Leopard",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 40.0,
       "max": 90.0
@@ -1878,7 +1878,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth, or coarse.",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -1893,7 +1893,7 @@
   },
   {
     "name": "Bluetick Coonhound",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 45.0,
       "max": 100.0
@@ -1912,10 +1912,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Blueticks have a short, smooth coat that is blue ticked (black with white markings)",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Bluetick Coonhounds are generally healthy dogs, but they are prone to some health problems, such as hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#50afa5",
     "dogtime_slug": "bluetick-coonhound",
     "source_url": "https://dogtime.com/dog-breeds/bluetick-coonhound",
@@ -1927,7 +1927,7 @@
   },
   {
     "name": "Redbone Coonhound",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 45.0,
       "max": 70.0
@@ -1946,7 +1946,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth, and dense red coat",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -1961,7 +1961,7 @@
   },
   {
     "name": "Otterhound",
-    "origin": "Unknown",
+    "origin": "England",
     "weight_lbs": {
       "min": 80.0,
       "max": 115.0
@@ -1980,10 +1980,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Double coat with a dense, oily outer coat and a soft, wooly undercoat",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy but prone to hip dysplasia, elbow dysplasia, and bloat",
     "color": "#50afaf",
     "dogtime_slug": "otterhound",
     "source_url": "https://dogtime.com/dog-breeds/otterhound",
@@ -1995,7 +1995,7 @@
   },
   {
     "name": "Collie",
-    "origin": "Unknown",
+    "origin": "Scotland",
     "weight_lbs": {
       "min": 45.0,
       "max": 75.0
@@ -2017,7 +2017,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy dogs, but they can be prone to some health problems, such as hip dysplasia , elbow dysplasia , and Collie eye anomaly",
     "color": "#50af69",
     "dogtime_slug": "collie",
     "source_url": "https://dogtime.com/dog-breeds/collie",
@@ -2029,7 +2029,7 @@
   },
   {
     "name": "Belgian Tervuren",
-    "origin": "Unknown",
+    "origin": "Belgium",
     "weight_lbs": {
       "min": 40.0,
       "max": 70.0
@@ -2048,10 +2048,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Long, straight, fawn-colored coat with a black mask",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy, but can be prone to some health problems, such as hip dysplasia, elbow dysplasia, and eye problems The 1984 British fantasy film “The Company of Wolves” features Belgian Tervurens a",
     "color": "#509eaf",
     "dogtime_slug": "belgian-tervuren",
     "source_url": "https://dogtime.com/dog-breeds/belgian-tervuren",
@@ -2063,7 +2063,7 @@
   },
   {
     "name": "Beauceron",
-    "origin": "Unknown",
+    "origin": "France",
     "weight_lbs": {
       "min": 70.0,
       "max": 110.0
@@ -2082,10 +2082,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short and dense double coat with a soft undercoat",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy, but potential concerns include hip dysplasia, elbow dysplasia, degenerative myelopathy, and gastric torsion (bloat)",
     "color": "#6b50af",
     "dogtime_slug": "beauceron",
     "source_url": "https://dogtime.com/dog-breeds/beauceron",
@@ -2097,7 +2097,7 @@
   },
   {
     "name": "Saluki",
-    "origin": "Unknown",
+    "origin": "Egypt",
     "weight_lbs": {
       "min": 35.0,
       "max": 70.0
@@ -2116,10 +2116,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth, and silky.",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy but prone to some health problems, such as hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#a9af83",
     "dogtime_slug": "saluki",
     "source_url": "https://dogtime.com/dog-breeds/saluki",
@@ -2131,7 +2131,7 @@
   },
   {
     "name": "Chow Chow",
-    "origin": "Unknown",
+    "origin": "China",
     "weight_lbs": {
       "min": 40.0,
       "max": 70.0
@@ -2150,10 +2150,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Thick, double coat that comes in red, black, blue, cinnamon, and cream",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Chow Chows are generally healthy dogs, but they are prone to some health problems, such as hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#81afaf",
     "dogtime_slug": "chow-chow",
     "source_url": "https://dogtime.com/dog-breeds/chow-chow",
@@ -2165,7 +2165,7 @@
   },
   {
     "name": "Chinook",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 50.0,
       "max": 90.0
@@ -2184,10 +2184,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Thick, double coat: long, straight outer coat and soft, dense undercoat",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Some health problems that are common in the Chinook include hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#afa956",
     "dogtime_slug": "chinook",
     "source_url": "https://dogtime.com/dog-breeds/chinook",
@@ -2199,7 +2199,7 @@
   },
   {
     "name": "Irish Water Spaniel",
-    "origin": "Unknown",
+    "origin": "Ireland",
     "weight_lbs": {
       "min": 45.0,
       "max": 65.0
@@ -2218,10 +2218,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Curly, water-repellent coat that can be any color but the most common are black, red, wheaten, and liver",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy, but can be prone to certain health problems, such as hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#5050af",
     "dogtime_slug": "irish-water-spaniel",
     "source_url": "https://dogtime.com/dog-breeds/irish-water-spaniel",
@@ -2233,7 +2233,7 @@
   },
   {
     "name": "Dogo Argentino",
-    "origin": "Unknown",
+    "origin": "Argentina",
     "weight_lbs": {
       "min": 75.0,
       "max": 100.0
@@ -2252,10 +2252,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth coat that is completely white",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Responsible breeding practices are essential to address potential health issues, including hip dysplasia and deafness, which can occur in the breed.",
     "color": "#af9f82",
     "dogtime_slug": "dogo-argentino",
     "source_url": "https://dogtime.com/dog-breeds/dogo-argentino",
@@ -2267,7 +2267,7 @@
   },
   {
     "name": "Belgian Laekenois",
-    "origin": "Unknown",
+    "origin": "Belgium",
     "weight_lbs": {
       "min": 44.0,
       "max": 66.0
@@ -2289,7 +2289,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy, but can be prone to some health problems, such as hip dysplasia and elbow dysplasia",
     "color": "#afaf50",
     "dogtime_slug": "belgian-laekenois",
     "source_url": "https://dogtime.com/dog-breeds/belgian-laekenois",
@@ -2301,7 +2301,7 @@
   },
   {
     "name": "Belgian Sheepdog",
-    "origin": "Unknown",
+    "origin": "Belgium",
     "weight_lbs": {
       "min": 45.0,
       "max": 75.0
@@ -2320,7 +2320,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Long, dense, and black, with white markings on the chest, feet, tail, and muzzle",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -2335,7 +2335,7 @@
   },
   {
     "name": "American Bulldog",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 50.0,
       "max": 120.0
@@ -2354,10 +2354,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth American",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Some health problems that are common in the breed include hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#9daf50",
     "dogtime_slug": "american-bulldog",
     "source_url": "https://dogtime.com/dog-breeds/american-bulldog",
@@ -2369,7 +2369,7 @@
   },
   {
     "name": "Dalmatian",
-    "origin": "Unknown",
+    "origin": "Croatia",
     "weight_lbs": {
       "min": 40.0,
       "max": 70.0
@@ -2388,10 +2388,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short and dense, distinctive black or liver spots on white",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy",
     "color": "#74af50",
     "dogtime_slug": "dalmatian",
     "source_url": "https://dogtime.com/dog-breeds/dalmatian",
@@ -2403,7 +2403,7 @@
   },
   {
     "name": "Norwegian Elkhound",
-    "origin": "Unknown",
+    "origin": "Norway",
     "weight_lbs": {
       "min": 35.0,
       "max": 60.0
@@ -2422,10 +2422,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Thick, double coat that is gray or black in color",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Some common health problems in the breed include hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#50af50",
     "dogtime_slug": "norwegian-elkhound",
     "source_url": "https://dogtime.com/dog-breeds/norwegian-elkhound",
@@ -2437,7 +2437,7 @@
   },
   {
     "name": "Black and Tan Coonhound",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 55.0,
       "max": 100.0
@@ -2456,10 +2456,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Some health problems that are common in the Black and Tan Coonhound include hip dysplasia, elbow dysplasia, and eye problems",
     "color": "#afafaf",
     "dogtime_slug": "black-and-tan-coonhound",
     "source_url": "https://dogtime.com/dog-breeds/black-and-tan-coonhound",
@@ -2471,7 +2471,7 @@
   },
   {
     "name": "Treeing Walker Coonhound",
-    "origin": "Unknown",
+    "origin": "United States",
     "weight_lbs": {
       "min": 50.0,
       "max": 70.0
@@ -2493,7 +2493,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to certain health issues such as hip dysplasia and ear infections.",
     "color": "#505050",
     "dogtime_slug": "treeing-walker-coonhound",
     "source_url": "https://dogtime.com/dog-breeds/treeing-walker-coonhound",
@@ -2505,7 +2505,7 @@
   },
   {
     "name": "Ibizan Hound",
-    "origin": "Unknown",
+    "origin": "Spain",
     "weight_lbs": {
       "min": 40.0,
       "max": 50.0
@@ -2527,7 +2527,7 @@
     "coat": "Unknown",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Beezers are generally healthy dogs, but they are prone to some health problems, such as hip dysplasia, eye problems, and allergies",
     "color": "#50506a",
     "dogtime_slug": "ibizan-hound",
     "source_url": "https://dogtime.com/dog-breeds/ibizan-hound",
@@ -2539,7 +2539,7 @@
   },
   {
     "name": "Azawakh",
-    "origin": "Unknown",
+    "origin": "Egypt",
     "weight_lbs": {
       "min": 22.0,
       "max": 55.0
@@ -2558,10 +2558,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, fine",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Some common health problems include hip dysplasia, elbow dysplasia, and eye problems Azawakhs are known for their speed and agility, and they can run up to 40 miles per hour",
     "color": "#af5050",
     "dogtime_slug": "azawakh",
     "source_url": "https://dogtime.com/dog-breeds/azawakh",
@@ -2573,7 +2573,7 @@
   },
   {
     "name": "Sloughi",
-    "origin": "Unknown",
+    "origin": "North Africa",
     "weight_lbs": {
       "min": 40.0,
       "max": 63.0
@@ -2592,10 +2592,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, smooth, and fine coat that can be any shade of light sand to mahogany red fawn",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to certain health conditions, such as progressive retinal atrophy, hip dysplasia, and elbow dysplasia.",
     "color": "#af7c80",
     "dogtime_slug": "sloughi",
     "source_url": "https://dogtime.com/dog-breeds/sloughi",
@@ -2607,7 +2607,7 @@
   },
   {
     "name": "Dutch Shepherd",
-    "origin": "Unknown",
+    "origin": "Netherlands",
     "weight_lbs": {
       "min": 50.0,
       "max": 70.0
@@ -2626,7 +2626,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Short, medium, or long coat in brindle, gold, or silver",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -2641,7 +2641,7 @@
   },
   {
     "name": "Entlebucher Mountain",
-    "origin": "Unknown",
+    "origin": "Switzerland",
     "weight_lbs": {
       "min": 35.0,
       "max": 65.0
@@ -2660,7 +2660,7 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Medium-length, tricolored coat (black, white, and tan)",
     "shedding": "Moderate",
     "trainability": "Moderate",
     "health_notes": "See DogTime for details",
@@ -2675,7 +2675,7 @@
   },
   {
     "name": "Poodle",
-    "origin": "Unknown",
+    "origin": "Germany",
     "weight_lbs": {
       "min": 45.0,
       "max": 70.0
@@ -2694,10 +2694,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Their curly, dense coat is hypoallergenic, which can be ideal for allergy sufferers",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Prone to hip dysplasia, Addison’s disease, and eye problems.",
     "color": "#af5e50",
     "dogtime_slug": "poodle",
     "source_url": "https://dogtime.com/dog-breeds/poodle",
@@ -2716,7 +2716,7 @@
   },
   {
     "name": "Border Collie",
-    "origin": "Unknown",
+    "origin": "United Kingdom",
     "weight_lbs": {
       "min": 30.0,
       "max": 45.0
@@ -2735,10 +2735,10 @@
     "exercise": "Moderate",
     "good_with_kids": true,
     "good_with_dogs": false,
-    "coat": "Unknown",
+    "coat": "Medium length, can be smooth or rough",
     "shedding": "Moderate",
     "trainability": "Moderate",
-    "health_notes": "See DogTime for details",
+    "health_notes": "Generally healthy, but can be prone to some health problems, such as hip dysplasia and collie eye anomaly",
     "color": "#50af50",
     "dogtime_slug": "border-collie",
     "source_url": "https://dogtime.com/dog-breeds/border-collie",

@@ -117,14 +117,45 @@ function StatBar({ value, max, color = "#c8a96e" }) {
   );
 }
 
-function RatingPips({ value, color = "#c8a96e" }) {
-  if (value == null) return <span style={{ color: "#2a2a2a", fontSize: "0.7rem" }}>—</span>;
+function RatingPips({ value, color = "#c8a96e", size = "sm" }) {
+  const sz = size === "lg" ? "0.92rem" : "0.72rem";
+  const sp = size === "lg" ? "0.05em"  : "0.03em";
+  if (value == null) return <span style={{ color: "#2a2a2a", fontSize: sz }}>—</span>;
   return (
-    <span style={{ letterSpacing: "0.03em", fontSize: "0.72rem", whiteSpace: "nowrap" }}>
+    <span style={{ letterSpacing: sp, fontSize: sz, whiteSpace: "nowrap" }}>
       {[1,2,3,4,5].map(i => (
         <span key={i} style={{ color: i <= value ? color : "#252525" }}>●</span>
       ))}
     </span>
+  );
+}
+
+// ── Collapsible rating category row (used in card view) ─────────────────────
+function CollapsibleRatingCat({ cat, ratings }) {
+  const [open, setOpen] = useState(false);
+  const overallVal = ratings[cat.overallTrait];
+  const subTraits  = cat.traits.filter(t => !t.isOverall);
+  return (
+    <div style={{ marginBottom: "0.25rem" }}>
+      <div onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 6, cursor: "pointer", userSelect: "none", padding: "0.15rem 0" }}>
+        <span style={{ flex: 1, fontSize: "0.62rem", color: cat.color + "cc", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+          {cat.label}
+        </span>
+        <RatingPips value={overallVal} color={cat.color} size="lg" />
+        <span style={{ color: "#555", fontSize: "0.55rem", marginLeft: 2 }}>{open ? "▾" : "▸"}</span>
+      </div>
+      {open && (
+        <div style={{ paddingLeft: "0.7rem", paddingTop: "0.2rem", borderLeft: `1px solid ${cat.color}33` }}>
+          {subTraits.map(t => (
+            <div key={t.key} style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: "0.22rem" }}>
+              <span style={{ flex: 1, fontSize: "0.6rem", color: "#666" }}>{t.label}</span>
+              <RatingPips value={ratings[t.trait]} color={cat.color} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -1232,6 +1263,12 @@ export default function App() {
                     <div style={{ textAlign: "right" }}>
                       <div style={{ color: "#c8a96e", fontSize: "0.74rem" }}>{fmtL(b)}</div>
                       <div style={{ color: "#777", fontSize: "0.7rem" }}>lifespan</div>
+                      {b.service_dog_score != null && (
+                        <div style={{ marginTop: 5, borderTop: "1px solid #1e1e1e", paddingTop: 4 }}>
+                          <div style={{ color: "#c8a96e", fontSize: "1rem", fontWeight: 600, lineHeight: 1 }}>{b.service_dog_score}</div>
+                          <div style={{ color: "#555", fontSize: "0.6rem", letterSpacing: "0.05em" }}>svc</div>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div style={{ fontSize: "0.72rem", color: "#888", marginBottom: "0.6rem" }}>{b.temperament.join(" · ")}</div>
@@ -1269,22 +1306,14 @@ export default function App() {
                     <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>Coat</div>
                     <div style={{ color: "#999", fontSize: "0.78rem" }}>{b.coat}</div>
                   </div>
-                  {/* DogTime ratings summary on card */}
+                  {/* DogTime ratings summary on card — collapsible per category */}
                   {b.ratings && (
                     <div style={{ background: "#0e0e0e", border: "1px solid #1a1a1a", padding: "0.5rem 0.6rem", marginBottom: "0.7rem" }}>
-                      <div style={{ color: "#777", fontSize: "0.62rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.45rem" }}>DogTime Ratings</div>
+                      <div style={{ color: "#555", fontSize: "0.6rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.45rem" }}>
+                        DogTime Ratings <span style={{ color: "#333", fontWeight: 400 }}>· tap category to expand</span>
+                      </div>
                       {RATING_CATEGORIES.map(cat => (
-                        <div key={cat.key} style={{ marginBottom: "0.35rem" }}>
-                          <div style={{ fontSize: "0.62rem", color: cat.color + "aa", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>{cat.label}</div>
-                          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.25rem 0.5rem" }}>
-                            {cat.traits.map(t => (
-                              <div key={t.key} style={{ display: "flex", alignItems: "center", gap: 3, fontSize: "0.62rem", color: "#777" }}>
-                                <span>{t.label}:</span>
-                                <RatingPips value={b.ratings[t.trait]} color={cat.color} />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
+                        <CollapsibleRatingCat key={cat.key} cat={cat} ratings={b.ratings} />
                       ))}
                     </div>
                   )}
