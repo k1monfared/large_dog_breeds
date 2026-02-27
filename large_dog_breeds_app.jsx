@@ -409,17 +409,6 @@ export default function App() {
     return next;
   });
 
-  const allVisibleSelected = filtered.length > 0 && filtered.every(b => selectedRows.has(b.dogtime_slug));
-  const someVisibleSelected = filtered.some(b => selectedRows.has(b.dogtime_slug));
-
-  const toggleSelectAllVisible = () => {
-    if (allVisibleSelected) {
-      setSelectedRows(prev => { const next = new Set(prev); filtered.forEach(b => next.delete(b.dogtime_slug)); return next; });
-    } else {
-      setSelectedRows(prev => { const next = new Set(prev); filtered.forEach(b => next.add(b.dogtime_slug)); return next; });
-    }
-  };
-
   const toggleSection = (key) => {
     setCollapsedSections(prev => {
       const next = new Set(prev);
@@ -526,6 +515,17 @@ export default function App() {
       return dir === "desc" ? -cmp : cmp;
     });
   }, [breedsWithRatings, search, sortBy, activeFilters, weightRange, heightRange, lifespanRange, svcScoreRange, ratingFilters]);
+
+  const allVisibleSelected = filtered.length > 0 && filtered.every(b => selectedRows.has(b.dogtime_slug));
+  const someVisibleSelected = filtered.some(b => selectedRows.has(b.dogtime_slug));
+
+  const toggleSelectAllVisible = () => {
+    if (allVisibleSelected) {
+      setSelectedRows(prev => { const next = new Set(prev); filtered.forEach(b => next.delete(b.dogtime_slug)); return next; });
+    } else {
+      setSelectedRows(prev => { const next = new Set(prev); filtered.forEach(b => next.add(b.dogtime_slug)); return next; });
+    }
+  };
 
   const fmt  = b => `${b.weight_lbs.min}–${b.weight_lbs.max} lbs`;
   const fmtH = b => `${b.height_in.min}–${b.height_in.max} in`;
