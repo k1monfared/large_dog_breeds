@@ -1,0 +1,44 @@
+{
+  "breed": "Siberian Husky",
+  "slug": "siberian-husky",
+  "url": "https://dogtime.com/dog-breeds/siberian-husky",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 2,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 3
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 4,
+      "Drooling Potential": 3,
+      "Easy To Groom": 2,
+      "General Health": 4,
+      "Potential For Weight Gain": 2,
+      "Size": 3
+    },
+    "Trainability": {
+      "Easy To Train": 2,
+      "Intelligence": 3,
+      "Potential For Mouthiness": 4,
+      "Prey Drive": 3,
+      "Tendency To Bark Or Howl": 5,
+      "Wanderlust Potential": 5
+    },
+    "Exercise needs": {
+      "High Energy Level": 5,
+      "Intensity": 3,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}

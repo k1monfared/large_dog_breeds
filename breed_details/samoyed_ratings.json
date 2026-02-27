@@ -1,0 +1,44 @@
+{
+  "breed": "Samoyed",
+  "slug": "samoyed",
+  "url": "https://dogtime.com/dog-breeds/samoyed",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 2,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 1
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 5,
+      "Drooling Potential": 2,
+      "Easy To Groom": 1,
+      "General Health": 3,
+      "Potential For Weight Gain": 4,
+      "Size": 3
+    },
+    "Trainability": {
+      "Easy To Train": 3,
+      "Intelligence": 3,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 5,
+      "Tendency To Bark Or Howl": 3,
+      "Wanderlust Potential": 4
+    },
+    "Exercise needs": {
+      "High Energy Level": 5,
+      "Intensity": 2,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}

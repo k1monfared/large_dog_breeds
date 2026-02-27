@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Dog Score — Methodology</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d0d0d;
+      color: #e8e0d0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      padding: 2rem 1.5rem 4rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    a { color: #c8a96e; text-decoration: underline; text-decoration-color: #444; }
+    a:hover { text-decoration-color: #c8a96e; }
+    h1 { font-size: 1.5rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: #c8a96e; margin-bottom: 0.3rem; }
+    h2 { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: #c8a96e; margin: 2.5rem 0 0.9rem; border-bottom: 1px solid #1e1e1e; padding-bottom: 0.45rem; }
+    h3 { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin: 1.2rem 0 0.5rem; }
+    p  { color: #aaa; margin-bottom: 0.7rem; font-size: 0.86rem; }
+    code { background: #151515; color: #c8a96e; padding: 1px 5px; font-size: 0.82rem; border-radius: 2px; }
+
+    /* nav */
+    .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #1e1e1e; }
+    .nav-title { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #555; }
+
+    /* correlation matrix */
+    .corr-wrap { overflow-x: auto; margin: 1rem 0; }
+    .corr-table { border-collapse: collapse; font-size: 0.68rem; }
+    .corr-table th, .corr-table td { padding: 0.28rem 0.35rem; text-align: center; white-space: nowrap; border: 1px solid #181818; }
+    .corr-table th { color: #777; font-weight: 400; letter-spacing: 0.05em; background: #0a0a0a; }
+    .corr-table td { font-variant-numeric: tabular-nums; }
+    .diag { background: #1a1a1a !important; color: #444 !important; }
+    .highlight-pair { outline: 2px solid #c8a96e44; }
+
+    /* groups */
+    .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+    .group-card { background: #111; border: 1px solid #1e1e1e; padding: 0.9rem 1rem; }
+    .group-name { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #c8a96e; margin-bottom: 0.45rem; }
+    .group-trait { font-size: 0.74rem; color: #888; padding: 0.15rem 0; border-left: 2px solid #2a2a2a; padding-left: 0.5rem; margin-bottom: 0.2rem; }
+    .badge-pos { display: inline-block; background: #0f2a0f; color: #4ade80; font-size: 0.6rem; padding: 1px 6px; border-radius: 2px; letter-spacing: 0.05em; margin-bottom: 0.45rem; }
+    .badge-neg { display: inline-block; background: #2a0f0f; color: #f87171; font-size: 0.6rem; padding: 1px 6px; border-radius: 2px; letter-spacing: 0.05em; margin-bottom: 0.45rem; }
+    .weight-tag { float: right; font-size: 0.65rem; color: #555; margin-top: -1.5rem; }
+
+    /* formula table */
+    .formula-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.82rem; }
+    .formula-table th { padding: 0.4rem 0.7rem; text-align: left; color: #555; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; border-bottom: 1px solid #1a1a1a; }
+    .formula-table td { padding: 0.5rem 0.7rem; border-bottom: 1px solid #161616; color: #aaa; }
+    .formula-table .pos { color: #4ade80; }
+    .formula-table .neg { color: #f87171; }
+    .formula-table .w   { color: #c8a96e; font-variant-numeric: tabular-nums; }
+
+    /* scores table */
+    .scores-wrap { overflow-x: auto; margin: 1rem 0; }
+    .scores-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .scores-table th { padding: 0.45rem 0.8rem; text-align: left; color: #c8a96e; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; border-bottom: 1px solid #2a2a2a; cursor: pointer; user-select: none; white-space: nowrap; background: #0d0d0d; position: sticky; top: 0; }
+    .scores-table th:hover { color: #e8d49a; }
+    .scores-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #161616; color: #aaa; }
+    .scores-table tr:nth-child(even) td { background: #111; }
+    .scores-table .rank { color: #444; font-size: 0.72rem; }
+    .scores-table .score-val { color: #c8a96e; font-variant-numeric: tabular-nums; text-align: right; }
+    .scores-table .score-null { color: #2a2a2a; }
+    .score-bar { height: 4px; background: #1a1a1a; border-radius: 2px; min-width: 80px; margin-top: 3px; }
+    .score-fill { height: 4px; background: #c8a96e; border-radius: 2px; transition: width 0.3s; }
+    .sort-arrow { color: #666; margin-left: 3px; }
+    .note-box { background: #111; border-left: 3px solid #c8a96e44; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.78rem; color: #888; }
+
+    /* corr pair highlight */
+    .pair-row { display: flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; color: #888; padding: 0.25rem 0; }
+    .pair-row .r-val { color: #c8a96e; font-variant-numeric: tabular-nums; min-width: 48px; }
+    .no-pairs { color: #444; font-size: 0.78rem; font-style: italic; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <div>
+      <h1>Service Dog Score</h1>
+      <p class="nav-title">Methodology &amp; correlation analysis</p>
+    </div>
+    <a href="index.html">← Back to breed table</a>
+  </div>
+
+  <!-- 1. The Problem -->
+  <h2>The Problem with Naive Trait Weighting</h2>
+  <p>
+    A straightforward approach to scoring "service dog suitability" would be to pick a list
+    of relevant traits and weight them directly. For example: <em>Easy To Train × 3 + Intelligence × 2 + …</em>
+  </p>
+  <p>
+    But if two traits are highly correlated — say <em>Easy To Train</em> and <em>Intelligence</em>
+    both have r&nbsp;=&nbsp;0.85 — then they carry nearly the same signal. Weighting each one
+    independently amplifies that shared signal and drowns out genuinely different information.
+    The fix: compute the full Pearson correlation matrix, identify clusters of correlated traits,
+    and replace each cluster with a single averaged signal before applying weights.
+  </p>
+
+  <!-- 2. Correlation Matrix -->
+  <h2>Pearson Correlation Matrix</h2>
+  <p>
+    Computed across all breeds that have all 12 candidate traits. Values range from −1 (inverse)
+    to +1 (co-linear). Cells are colored green (strong positive), red (strong negative), or
+    dark (near zero). Diagonal is always 1.
+  </p>
+  <div id="corr-section">
+    <p style="color:#444; font-size:0.78rem;">Loading…</p>
+  </div>
+
+  <!-- 3. Factor Groups -->
+  <h2>Factor Groups</h2>
+  <p>
+    Pairs with |r|&nbsp;&gt;&nbsp;0.7 are merged into a single averaged signal to avoid double-counting.
+    Domain-knowledge groups are used where correlation confirms the relationship.
+  </p>
+  <div id="groups-section">
+    <p style="color:#444; font-size:0.78rem;">Loading…</p>
+  </div>
+
+  <!-- 4. Formula -->
+  <h2>Final Formula</h2>
+  <div id="formula-section">
+    <p style="color:#444; font-size:0.78rem;">Loading…</p>
+  </div>
+
+  <!-- 5. Breed Scores -->
+  <h2>Breed Scores</h2>
+  <p>Click any column header to sort. Breeds without ratings (Labrador, Golden Retriever, Cane Corso) use a JS-rendered DogTime page and show N/A.</p>
+  <div class="scores-wrap">
+    <table class="scores-table" id="scores-table">
+      <thead>
+        <tr>
+          <th data-sort="rank" onclick="sortScores('rank')">Rank <span class="sort-arrow" id="arr-rank">▾</span></th>
+          <th data-sort="name" onclick="sortScores('name')">Breed <span class="sort-arrow" id="arr-name"></span></th>
+          <th data-sort="score" onclick="sortScores('score')" style="text-align:right">Score <span class="sort-arrow" id="arr-score"></span></th>
+          <th>Bar</th>
+        </tr>
+      </thead>
+      <tbody id="scores-body">
+        <tr><td colspan="4" style="color:#444; padding:1rem;">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    let analysisData = null;
+    let sortField = "rank";
+    let sortDir = "asc";
+    let scoredList = [];
+
+    fetch("service_score_analysis.json")
+      .then(r => r.json())
+      .then(data => {
+        analysisData = data;
+        scoredList = data.scores.map((s, i) => ({ ...s, rank: i + 1 }));
+        renderCorr(data);
+        renderGroups(data);
+        renderFormula(data);
+        renderScores();
+      })
+      .catch(err => {
+        document.querySelectorAll("[id$='-section']").forEach(el => {
+          el.innerHTML = `<p style="color:#f87171; font-size:0.78rem;">Error loading service_score_analysis.json: ${err}</p>`;
+        });
+      });
+
+    // ── Correlation matrix ────────────────────────────────────────────────────
+    function cellColor(r) {
+      if (r === null) return "#111";
+      const a = Math.abs(r);
+      if (a < 0.2) return "#111";
+      const t = (a - 0.2) / 0.8;
+      const intens = Math.round(t * 160);
+      if (r > 0) return `rgb(0,${intens},0)`;
+      return `rgb(${intens},0,0)`;
+    }
+
+    function renderCorr(data) {
+      const traits = data.traits;
+      const matrix = data.correlation_matrix;
+      const pairs  = new Set((data.correlated_pairs || []).flatMap(p => [p.trait_a, p.trait_b]));
+
+      let html = '<div class="corr-wrap"><table class="corr-table"><thead><tr><th></th>';
+      traits.forEach(t => {
+        html += `<th title="${t}">${t.split(" ").slice(0,2).join(" ")}</th>`;
+      });
+      html += "</tr></thead><tbody>";
+
+      matrix.forEach((row, i) => {
+        html += `<tr><th title="${traits[i]}">${traits[i].split(" ").slice(0,2).join(" ")}</th>`;
+        row.forEach((v, j) => {
+          const diag  = i === j;
+          const bg    = diag ? "" : cellColor(v);
+          const cls   = diag ? "diag" : "";
+          const style = diag ? "" : `background:${bg};`;
+          const txt   = diag ? "—" : (v === null ? "?" : v.toFixed(2));
+          html += `<td class="${cls}" style="${style}" title="${traits[i]} ↔ ${traits[j]}: ${v}">${txt}</td>`;
+        });
+        html += "</tr>";
+      });
+      html += "</tbody></table></div>";
+
+      // Correlated pairs list
+      if (data.correlated_pairs && data.correlated_pairs.length > 0) {
+        html += "<h3>Pairs with |r| &gt; 0.7</h3>";
+        data.correlated_pairs.forEach(p => {
+          html += `<div class="pair-row"><span class="r-val">r = ${p.r.toFixed(3)}</span><span>${p.trait_a}</span><span style="color:#333">↔</span><span>${p.trait_b}</span></div>`;
+        });
+      } else {
+        html += `<div class="note-box">No trait pairs exceeded |r| = 0.7 in this dataset. The strongest correlation was <em>Friendly Toward Strangers ↔ Dog Friendly</em> at r ≈ 0.64. The groups below are therefore based on domain knowledge (they represent conceptually related signals) rather than statistically redundant ones. Using groups still produces a cleaner, more interpretable formula.</div>`;
+      }
+
+      document.getElementById("corr-section").innerHTML = html;
+    }
+
+    // ── Groups ────────────────────────────────────────────────────────────────
+    function renderGroups(data) {
+      let html = '<div class="groups-grid">';
+
+      data.groups.forEach(g => {
+        const badgeCls = g.direction === "positive" ? "badge-pos" : "badge-neg";
+        const badgeTxt = g.direction === "positive" ? "positive" : "negative";
+        html += `<div class="group-card">
+          <div class="group-name">${g.name}</div>
+          <span class="${badgeCls}">${badgeTxt}</span>
+          <span class="weight-tag">×${g.weight}</span>
+          ${g.traits.map(t => `<div class="group-trait">${t}</div>`).join("")}
+          <div style="font-size:0.64rem; color:#444; margin-top:0.5rem;">avg of ${g.traits.length} trait${g.traits.length > 1 ? "s" : ""} × ${g.weight}</div>
+        </div>`;
+      });
+
+      // Standalones
+      data.standalone.forEach(s => {
+        const badgeCls = s.direction === "positive" ? "badge-pos" : "badge-neg";
+        const badgeTxt = s.direction === "positive" ? "positive" : "negative";
+        html += `<div class="group-card">
+          <div class="group-name" style="color:#888">${s.trait}</div>
+          <span class="${badgeCls}">${badgeTxt}</span>
+          <span class="weight-tag">×${s.weight}</span>
+          <div class="group-trait">${s.trait}</div>
+          <div style="font-size:0.64rem; color:#444; margin-top:0.5rem;">standalone × ${s.weight}</div>
+        </div>`;
+      });
+
+      html += "</div>";
+      document.getElementById("groups-section").innerHTML = html;
+    }
+
+    // ── Formula ───────────────────────────────────────────────────────────────
+    function renderFormula(data) {
+      let html = `<table class="formula-table">
+        <thead><tr>
+          <th>Signal</th><th>Traits Averaged</th><th>Weight</th><th>Direction</th>
+        </tr></thead><tbody>`;
+
+      data.groups.forEach(g => {
+        const dir = g.direction === "positive";
+        html += `<tr>
+          <td>${g.name}</td>
+          <td style="font-size:0.75rem;">${g.traits.join(", ")}</td>
+          <td class="w">×${g.weight}</td>
+          <td class="${dir ? "pos" : "neg"}">${dir ? "+" : "−"}</td>
+        </tr>`;
+      });
+      data.standalone.forEach(s => {
+        const dir = s.direction === "positive";
+        html += `<tr>
+          <td>${s.trait}</td>
+          <td style="font-size:0.75rem; color:#555;">standalone</td>
+          <td class="w">×${s.weight}</td>
+          <td class="${dir ? "pos" : "neg"}">${dir ? "+" : "−"}</td>
+        </tr>`;
+      });
+
+      html += `</tbody></table>`;
+
+      html += `<div class="note-box">
+        <strong style="color:#c8a96e;">Normalization:</strong><br>
+        <code>raw_min = ${data.raw_min.toFixed(2)}</code> &nbsp;(all positives = 1, all negatives = 5)<br>
+        <code>raw_max = ${data.raw_max.toFixed(2)}</code> &nbsp;(all positives = 5, all negatives = 1)<br>
+        <code>score = (raw − ${data.raw_min.toFixed(2)}) / ${(data.raw_max - data.raw_min).toFixed(2)} × 100</code><br>
+        <span style="font-size:0.72rem; color:#555; margin-top:0.4rem; display:block;">${data.formula_notes}</span>
+      </div>`;
+
+      document.getElementById("formula-section").innerHTML = html;
+    }
+
+    // ── Scores table ──────────────────────────────────────────────────────────
+    function sortScores(field) {
+      if (sortField === field) {
+        sortDir = sortDir === "asc" ? "desc" : "asc";
+      } else {
+        sortField = field;
+        sortDir = field === "rank" ? "asc" : (field === "score" ? "desc" : "asc");
+      }
+      renderScores();
+    }
+
+    function renderScores() {
+      const arr = [...scoredList].sort((a, b) => {
+        let cmp = 0;
+        if (sortField === "rank")  cmp = a.rank - b.rank;
+        if (sortField === "name")  cmp = a.name.localeCompare(b.name);
+        if (sortField === "score") {
+          // nulls always last
+          if (a.score === null && b.score === null) cmp = 0;
+          else if (a.score === null) cmp = 1;
+          else if (b.score === null) cmp = -1;
+          else cmp = a.score - b.score;
+        }
+        return sortDir === "desc" ? -cmp : cmp;
+      });
+
+      // Update arrows
+      ["rank", "name", "score"].forEach(f => {
+        const el = document.getElementById(`arr-${f}`);
+        if (!el) return;
+        el.textContent = sortField === f ? (sortDir === "asc" ? "▲" : "▾") : "";
+      });
+
+      const maxScore = Math.max(...scoredList.filter(s => s.score !== null).map(s => s.score));
+
+      let html = "";
+      arr.forEach(row => {
+        const hasScore = row.score !== null;
+        const scoreStr = hasScore ? row.score.toFixed(1) : "N/A";
+        const barPct   = hasScore ? (row.score / maxScore * 100).toFixed(1) : 0;
+        html += `<tr>
+          <td class="rank">${row.rank}</td>
+          <td>${row.name}</td>
+          <td class="${hasScore ? "score-val" : "score-null"}">${scoreStr}</td>
+          <td>
+            <div class="score-bar">
+              <div class="score-fill" style="width:${barPct}%"></div>
+            </div>
+          </td>
+        </tr>`;
+      });
+
+      document.getElementById("scores-body").innerHTML = html || "<tr><td colspan='4' style='color:#444'>No data</td></tr>";
+    }
+  </script>
+
+</body>
+</html>

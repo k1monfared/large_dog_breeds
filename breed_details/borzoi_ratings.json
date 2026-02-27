@@ -1,0 +1,44 @@
+{
+  "breed": "Borzoi",
+  "slug": "borzoi",
+  "url": "https://dogtime.com/dog-breeds/borzoi",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 5,
+      "Good For Novice Dog Owners": 3,
+      "Sensitivity Level": 5,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 3
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 4,
+      "Kid-Friendly": 3,
+      "Dog Friendly": 4,
+      "Friendly Toward Strangers": 4
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 5,
+      "Drooling Potential": 1,
+      "Easy To Groom": 4,
+      "General Health": 4,
+      "Potential For Weight Gain": 2,
+      "Size": 5
+    },
+    "Trainability": {
+      "Easy To Train": 3,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 5,
+      "Tendency To Bark Or Howl": 2,
+      "Wanderlust Potential": 4
+    },
+    "Exercise needs": {
+      "High Energy Level": 2,
+      "Intensity": 2,
+      "Exercise Needs": 2,
+      "Potential For Playfulness": 3
+    }
+  }
+}

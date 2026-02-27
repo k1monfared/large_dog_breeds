@@ -1,0 +1,623 @@
+{
+  "traits": [
+    "Easy To Train",
+    "Intelligence",
+    "General Health",
+    "Sensitivity Level",
+    "Friendly Toward Strangers",
+    "Dog Friendly",
+    "Tolerates Being Alone",
+    "Tendency To Bark Or Howl",
+    "Wanderlust Potential",
+    "Prey Drive",
+    "Potential For Mouthiness",
+    "Drooling Potential"
+  ],
+  "correlation_matrix": [
+    [
+      1.0,
+      0.435,
+      0.0,
+      0.332,
+      0.236,
+      0.063,
+      -0.235,
+      0.071,
+      -0.093,
+      -0.111,
+      -0.023,
+      -0.128
+    ],
+    [
+      0.435,
+      1.0,
+      0.148,
+      0.465,
+      0.347,
+      0.268,
+      -0.356,
+      0.151,
+      0.274,
+      0.122,
+      0.006,
+      -0.234
+    ],
+    [
+      0.0,
+      0.148,
+      1.0,
+      0.148,
+      0.028,
+      0.105,
+      -0.036,
+      0.068,
+      0.425,
+      0.112,
+      -0.162,
+      -0.281
+    ],
+    [
+      0.332,
+      0.465,
+      0.148,
+      1.0,
+      0.2,
+      0.2,
+      -0.468,
+      0.178,
+      0.126,
+      0.01,
+      0.06,
+      -0.036
+    ],
+    [
+      0.236,
+      0.347,
+      0.028,
+      0.2,
+      1.0,
+      0.639,
+      -0.228,
+      0.178,
+      0.2,
+      0.309,
+      0.123,
+      -0.057
+    ],
+    [
+      0.063,
+      0.268,
+      0.105,
+      0.2,
+      0.639,
+      1.0,
+      -0.05,
+      -0.011,
+      0.283,
+      0.275,
+      -0.011,
+      -0.224
+    ],
+    [
+      -0.235,
+      -0.356,
+      -0.036,
+      -0.468,
+      -0.228,
+      -0.05,
+      1.0,
+      -0.213,
+      -0.064,
+      0.118,
+      -0.036,
+      -0.217
+    ],
+    [
+      0.071,
+      0.151,
+      0.068,
+      0.178,
+      0.178,
+      -0.011,
+      -0.213,
+      1.0,
+      0.276,
+      0.013,
+      0.037,
+      -0.002
+    ],
+    [
+      -0.093,
+      0.274,
+      0.425,
+      0.126,
+      0.2,
+      0.283,
+      -0.064,
+      0.276,
+      1.0,
+      0.442,
+      0.111,
+      -0.266
+    ],
+    [
+      -0.111,
+      0.122,
+      0.112,
+      0.01,
+      0.309,
+      0.275,
+      0.118,
+      0.013,
+      0.442,
+      1.0,
+      0.192,
+      -0.197
+    ],
+    [
+      -0.023,
+      0.006,
+      -0.162,
+      0.06,
+      0.123,
+      -0.011,
+      -0.036,
+      0.037,
+      0.111,
+      0.192,
+      1.0,
+      0.036
+    ],
+    [
+      -0.128,
+      -0.234,
+      -0.281,
+      -0.036,
+      -0.057,
+      -0.224,
+      -0.217,
+      -0.002,
+      -0.266,
+      -0.197,
+      0.036,
+      1.0
+    ]
+  ],
+  "correlated_pairs": [],
+  "groups": [
+    {
+      "name": "Cognitive",
+      "traits": [
+        "Easy To Train",
+        "Intelligence"
+      ],
+      "weight": 3.0,
+      "direction": "positive"
+    },
+    {
+      "name": "Public Demeanor",
+      "traits": [
+        "Friendly Toward Strangers",
+        "Dog Friendly"
+      ],
+      "weight": 2.0,
+      "direction": "positive"
+    },
+    {
+      "name": "Distraction",
+      "traits": [
+        "Prey Drive",
+        "Wanderlust Potential"
+      ],
+      "weight": 2.0,
+      "direction": "negative"
+    }
+  ],
+  "standalone": [
+    {
+      "trait": "General Health",
+      "weight": 2.0,
+      "direction": "positive"
+    },
+    {
+      "trait": "Sensitivity Level",
+      "weight": 1.5,
+      "direction": "positive"
+    },
+    {
+      "trait": "Tolerates Being Alone",
+      "weight": 1.0,
+      "direction": "positive"
+    },
+    {
+      "trait": "Tendency To Bark Or Howl",
+      "weight": 2.0,
+      "direction": "negative"
+    },
+    {
+      "trait": "Potential For Mouthiness",
+      "weight": 0.5,
+      "direction": "negative"
+    },
+    {
+      "trait": "Drooling Potential",
+      "weight": 0.5,
+      "direction": "negative"
+    }
+  ],
+  "raw_min": -15.5,
+  "raw_max": 42.5,
+  "formula_notes": "Raw score = sum of (group_avg or trait_value) \u00d7 weight \u00d7 sign. Positive signals add to score; negative signals subtract. Normalized: score = (raw \u2212 -15.50) / 58.00 \u00d7 100. Breeds missing any of the 12 traits receive null.",
+  "scores": [
+    {
+      "name": "Chinook",
+      "slug": "chinook",
+      "score": 76.7
+    },
+    {
+      "name": "Belgian Sheepdog",
+      "slug": "belgian-sheepdog",
+      "score": 75.0
+    },
+    {
+      "name": "Belgian Malinois",
+      "slug": "belgian-malinois",
+      "score": 70.7
+    },
+    {
+      "name": "Old English Sheepdog",
+      "slug": "old-english-sheepdog",
+      "score": 69.0
+    },
+    {
+      "name": "Spinone Italiano",
+      "slug": "spinone-italiano",
+      "score": 69.0
+    },
+    {
+      "name": "Dalmatian",
+      "slug": "dalmatian",
+      "score": 69.0
+    },
+    {
+      "name": "Doberman Pinscher",
+      "slug": "doberman-pinscher",
+      "score": 67.2
+    },
+    {
+      "name": "Dutch Shepherd",
+      "slug": "dutch-shepherd",
+      "score": 66.4
+    },
+    {
+      "name": "Flat-Coated Retriever",
+      "slug": "flat-coated-retriever",
+      "score": 65.5
+    },
+    {
+      "name": "Poodle",
+      "slug": "poodle",
+      "score": 65.5
+    },
+    {
+      "name": "Greyhound",
+      "slug": "greyhound",
+      "score": 64.7
+    },
+    {
+      "name": "Beauceron",
+      "slug": "beauceron",
+      "score": 64.7
+    },
+    {
+      "name": "Great Dane",
+      "slug": "great-dane",
+      "score": 63.8
+    },
+    {
+      "name": "German Shepherd",
+      "slug": "german-shepherd-dog",
+      "score": 63.8
+    },
+    {
+      "name": "Saint Bernard",
+      "slug": "saint-bernard",
+      "score": 62.9
+    },
+    {
+      "name": "Vizsla",
+      "slug": "vizsla",
+      "score": 62.1
+    },
+    {
+      "name": "Collie",
+      "slug": "collie",
+      "score": 62.1
+    },
+    {
+      "name": "Borzoi",
+      "slug": "borzoi",
+      "score": 61.2
+    },
+    {
+      "name": "Ibizan Hound",
+      "slug": "ibizan-hound",
+      "score": 60.3
+    },
+    {
+      "name": "Saluki",
+      "slug": "saluki",
+      "score": 59.5
+    },
+    {
+      "name": "Sloughi",
+      "slug": "sloughi",
+      "score": 58.6
+    },
+    {
+      "name": "Rhodesian Ridgeback",
+      "slug": "rhodesian-ridgeback",
+      "score": 57.8
+    },
+    {
+      "name": "Bouvier des Flandres",
+      "slug": "bouvier-des-flandres",
+      "score": 57.8
+    },
+    {
+      "name": "Otterhound",
+      "slug": "otterhound",
+      "score": 57.8
+    },
+    {
+      "name": "Belgian Tervuren",
+      "slug": "belgian-tervuren",
+      "score": 57.8
+    },
+    {
+      "name": "Anatolian Shepherd",
+      "slug": "anatolian-shepherd-dog",
+      "score": 56.9
+    },
+    {
+      "name": "Azawakh",
+      "slug": "azawakh",
+      "score": 56.9
+    },
+    {
+      "name": "Irish Wolfhound",
+      "slug": "irish-wolfhound",
+      "score": 56.0
+    },
+    {
+      "name": "Tibetan Mastiff",
+      "slug": "tibetan-mastiff",
+      "score": 56.0
+    },
+    {
+      "name": "Irish Water Spaniel",
+      "slug": "irish-water-spaniel",
+      "score": 56.0
+    },
+    {
+      "name": "Kuvasz",
+      "slug": "kuvasz",
+      "score": 55.2
+    },
+    {
+      "name": "Giant Schnauzer",
+      "slug": "giant-schnauzer",
+      "score": 55.2
+    },
+    {
+      "name": "Briard",
+      "slug": "briard",
+      "score": 55.2
+    },
+    {
+      "name": "Boxer",
+      "slug": "boxer",
+      "score": 54.3
+    },
+    {
+      "name": "German Shorthaired Pointer",
+      "slug": "german-shorthaired-pointer",
+      "score": 54.3
+    },
+    {
+      "name": "Weimaraner",
+      "slug": "weimaraner",
+      "score": 53.4
+    },
+    {
+      "name": "Black Russian Terrier",
+      "slug": "black-russian-terrier",
+      "score": 53.4
+    },
+    {
+      "name": "Neapolitan Mastiff",
+      "slug": "neapolitan-mastiff",
+      "score": 53.4
+    },
+    {
+      "name": "Samoyed",
+      "slug": "samoyed",
+      "score": 53.4
+    },
+    {
+      "name": "Belgian Laekenois",
+      "slug": "belgian-laekenois",
+      "score": 52.6
+    },
+    {
+      "name": "Norwegian Elkhound",
+      "slug": "norwegian-elkhound",
+      "score": 52.6
+    },
+    {
+      "name": "Black and Tan Coonhound",
+      "slug": "black-and-tan-coonhound",
+      "score": 52.6
+    },
+    {
+      "name": "Gordon Setter",
+      "slug": "gordon-setter",
+      "score": 50.9
+    },
+    {
+      "name": "Irish Setter",
+      "slug": "irish-setter",
+      "score": 50.9
+    },
+    {
+      "name": "English Setter",
+      "slug": "english-setter",
+      "score": 50.9
+    },
+    {
+      "name": "Mastiff",
+      "slug": "mastiff",
+      "score": 50.0
+    },
+    {
+      "name": "Bloodhound",
+      "slug": "bloodhound",
+      "score": 50.0
+    },
+    {
+      "name": "Scottish Deerhound",
+      "slug": "scottish-deerhound",
+      "score": 50.0
+    },
+    {
+      "name": "American Bulldog",
+      "slug": "american-bulldog",
+      "score": 50.0
+    },
+    {
+      "name": "Rottweiler",
+      "slug": "rottweiler",
+      "score": 49.1
+    },
+    {
+      "name": "Alaskan Malamute",
+      "slug": "alaskan-malamute",
+      "score": 49.1
+    },
+    {
+      "name": "Greater Swiss Mountain Dog",
+      "slug": "greater-swiss-mountain-dog",
+      "score": 49.1
+    },
+    {
+      "name": "Afghan Hound",
+      "slug": "afghan-hound",
+      "score": 49.1
+    },
+    {
+      "name": "Bluetick Coonhound",
+      "slug": "bluetick-coonhound",
+      "score": 49.1
+    },
+    {
+      "name": "Redbone Coonhound",
+      "slug": "redbone-coonhound",
+      "score": 47.4
+    },
+    {
+      "name": "Newfoundland",
+      "slug": "newfoundland",
+      "score": 46.6
+    },
+    {
+      "name": "Boerboel",
+      "slug": "boerboel",
+      "score": 45.7
+    },
+    {
+      "name": "Siberian Husky",
+      "slug": "siberian-husky",
+      "score": 45.7
+    },
+    {
+      "name": "Chesapeake Bay Retriever",
+      "slug": "chesapeake-bay-retriever",
+      "score": 45.7
+    },
+    {
+      "name": "Treeing Walker Coonhound",
+      "slug": "treeing-walker-coonhound",
+      "score": 45.7
+    },
+    {
+      "name": "Entlebucher Mountain",
+      "slug": "entlebucher-mountain-dog",
+      "score": 45.7
+    },
+    {
+      "name": "Bullmastiff",
+      "slug": "bullmastiff",
+      "score": 44.0
+    },
+    {
+      "name": "Bernese Mountain Dog",
+      "slug": "bernese-mountain-dog",
+      "score": 41.4
+    },
+    {
+      "name": "Catahoula Leopard",
+      "slug": "catahoula-leopard-dog",
+      "score": 41.4
+    },
+    {
+      "name": "Chow Chow",
+      "slug": "chow-chow",
+      "score": 41.4
+    },
+    {
+      "name": "Dogo Argentino",
+      "slug": "dogo-argentino",
+      "score": 41.4
+    },
+    {
+      "name": "Dogue de Bordeaux",
+      "slug": "dogue-de-bordeaux",
+      "score": 40.5
+    },
+    {
+      "name": "Leonberger",
+      "slug": "leonberger",
+      "score": 38.8
+    },
+    {
+      "name": "Komondor",
+      "slug": "komondor",
+      "score": 37.9
+    },
+    {
+      "name": "Great Pyrenees",
+      "slug": "great-pyrenees",
+      "score": 36.2
+    },
+    {
+      "name": "Akita",
+      "slug": "akita",
+      "score": 35.3
+    },
+    {
+      "name": "Labrador Retriever",
+      "slug": "labrador-retriever",
+      "score": null
+    },
+    {
+      "name": "Golden Retriever",
+      "slug": "golden-retriever",
+      "score": null
+    },
+    {
+      "name": "Cane Corso",
+      "slug": "cane-corso",
+      "score": null
+    }
+  ]
+}

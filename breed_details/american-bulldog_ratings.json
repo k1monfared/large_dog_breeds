@@ -1,0 +1,44 @@
+{
+  "breed": "American Bulldog",
+  "slug": "american-bulldog",
+  "url": "https://dogtime.com/dog-breeds/american-bulldog",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 2,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 4,
+      "Dog Friendly": 2,
+      "Friendly Toward Strangers": 2
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 1,
+      "Drooling Potential": 4,
+      "Easy To Groom": 4,
+      "General Health": 3,
+      "Potential For Weight Gain": 2,
+      "Size": 4
+    },
+    "Trainability": {
+      "Easy To Train": 4,
+      "Intelligence": 3,
+      "Potential For Mouthiness": 2,
+      "Prey Drive": 4,
+      "Tendency To Bark Or Howl": 2,
+      "Wanderlust Potential": 3
+    },
+    "Exercise needs": {
+      "High Energy Level": 4,
+      "Intensity": 4,
+      "Exercise Needs": 4,
+      "Potential For Playfulness": 4
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "breed": "Kuvasz",
+  "slug": "kuvasz",
+  "url": "https://dogtime.com/dog-breeds/kuvasz",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 5,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 1,
+      "Dog Friendly": 2,
+      "Friendly Toward Strangers": 1
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 4,
+      "Drooling Potential": 3,
+      "Easy To Groom": 4,
+      "General Health": 4,
+      "Potential For Weight Gain": 4,
+      "Size": 5
+    },
+    "Trainability": {
+      "Easy To Train": 2,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 1,
+      "Prey Drive": 1,
+      "Tendency To Bark Or Howl": 3,
+      "Wanderlust Potential": 3
+    },
+    "Exercise needs": {
+      "High Energy Level": 4,
+      "Intensity": 4,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 4
+    }
+  }
+}

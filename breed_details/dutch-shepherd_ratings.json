@@ -1,0 +1,44 @@
+{
+  "breed": "Dutch Shepherd",
+  "slug": "dutch-shepherd",
+  "url": "https://dogtime.com/dog-breeds/dutch-shepherd",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 3,
+      "Good For Novice Dog Owners": 3,
+      "Sensitivity Level": 3,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 4
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 4,
+      "Kid-Friendly": 4,
+      "Dog Friendly": 4,
+      "Friendly Toward Strangers": 2
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 4,
+      "Drooling Potential": 2,
+      "Easy To Groom": 3,
+      "General Health": 4,
+      "Potential For Weight Gain": 2,
+      "Size": 3
+    },
+    "Trainability": {
+      "Easy To Train": 5,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 2,
+      "Prey Drive": 3,
+      "Tendency To Bark Or Howl": 2,
+      "Wanderlust Potential": 2
+    },
+    "Exercise needs": {
+      "High Energy Level": 4,
+      "Intensity": 3,
+      "Exercise Needs": 4,
+      "Potential For Playfulness": 4
+    }
+  }
+}

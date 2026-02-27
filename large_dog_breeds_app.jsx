@@ -93,6 +93,7 @@ const COLUMNS = [
   ["Health Notes", "health",       false],
   ["Kids",         "kids",         true],
   ["Dogs",         "dogs",         true],
+  ["Svc",          "service_dog_score", true],
 ];
 
 // ── Shared sub-components ───────────────────────────────────────────────────
@@ -233,6 +234,7 @@ export default function App() {
   const [weightRange,   setWeightRange]   = useState([0, 999]);
   const [heightRange,   setHeightRange]   = useState([0, 99]);
   const [lifespanRange, setLifespanRange] = useState([0, 99]);
+  const [svcScoreRange, setSvcScoreRange] = useState([0, 100]);
   const [collapsedSections, setCollapsedSections] = useState(() =>
     new Set(["coat", "temperament", "rat_adaptability", "rat_friendliness", "rat_health", "rat_trainability", "rat_exercise"])
   );
@@ -311,9 +313,10 @@ export default function App() {
   };
 
   const clearSection = (field) => {
-    if (field === "weight")   { setWeightRange([...dataRanges.weight]);     return; }
-    if (field === "height")   { setHeightRange([...dataRanges.height]);     return; }
-    if (field === "lifespan") { setLifespanRange([...dataRanges.lifespan]); return; }
+    if (field === "weight")    { setWeightRange([...dataRanges.weight]);     return; }
+    if (field === "height")    { setHeightRange([...dataRanges.height]);     return; }
+    if (field === "lifespan")  { setLifespanRange([...dataRanges.lifespan]); return; }
+    if (field === "svc_score") { setSvcScoreRange([0, 100]);                 return; }
     // rating category clear
     const ratCat = RATING_CATEGORIES.find(c => `rat_${c.key}` === field);
     if (ratCat) {
@@ -338,15 +341,17 @@ export default function App() {
     if (weightRange[0]   > dataRanges.weight[0]   || weightRange[1]   < dataRanges.weight[1])   return true;
     if (heightRange[0]   > dataRanges.height[0]   || heightRange[1]   < dataRanges.height[1])   return true;
     if (lifespanRange[0] > dataRanges.lifespan[0] || lifespanRange[1] < dataRanges.lifespan[1]) return true;
+    if (svcScoreRange[0] > 0 || svcScoreRange[1] < 100) return true;
     if (Object.values(ratingFilters).some(v => v > 1)) return true;
     return false;
-  }, [activeFilters, weightRange, heightRange, lifespanRange, dataRanges, ratingFilters]);
+  }, [activeFilters, weightRange, heightRange, lifespanRange, svcScoreRange, dataRanges, ratingFilters]);
 
   const clearAll = () => {
     setActiveFilters({});
     setWeightRange([...dataRanges.weight]);
     setHeightRange([...dataRanges.height]);
     setLifespanRange([...dataRanges.lifespan]);
+    setSvcScoreRange([0, 100]);
     setRatingFilters({});
   };
 
@@ -403,6 +408,8 @@ export default function App() {
       if (b.weight_lbs.max   < weightRange[0]   || b.weight_lbs.min   > weightRange[1])   return false;
       if (b.height_in.max    < heightRange[0]   || b.height_in.min    > heightRange[1])   return false;
       if (b.lifespan_yrs.max < lifespanRange[0] || b.lifespan_yrs.min > lifespanRange[1]) return false;
+      if (b.service_dog_score != null &&
+          (b.service_dog_score < svcScoreRange[0] || b.service_dog_score > svcScoreRange[1])) return false;
       if (getSet("origin").size       && !getSet("origin").has(b.origin))                         return false;
       if (getSet("exercise").size     && !getSet("exercise").has(b.exercise))                     return false;
       if (getSet("grooming").size     && !getSet("grooming").has(b.grooming))                     return false;
@@ -442,6 +449,7 @@ export default function App() {
       if (field === "temperament")  cmp = a.temperament[0].localeCompare(b.temperament[0]);
       if (field === "kids")         cmp = (a.good_with_kids ? 1 : 0) - (b.good_with_kids ? 1 : 0);
       if (field === "dogs")         cmp = (a.good_with_dogs ? 1 : 0) - (b.good_with_dogs ? 1 : 0);
+      if (field === "service_dog_score") cmp = (a.service_dog_score ?? -1) - (b.service_dog_score ?? -1);
       // rating sort
       const ratInfo = RATING_TRAIT_MAP[field];
       if (ratInfo) {
@@ -451,7 +459,7 @@ export default function App() {
       }
       return dir === "desc" ? -cmp : cmp;
     });
-  }, [breedsWithRatings, search, sortBy, activeFilters, weightRange, heightRange, lifespanRange, ratingFilters]);
+  }, [breedsWithRatings, search, sortBy, activeFilters, weightRange, heightRange, lifespanRange, svcScoreRange, ratingFilters]);
 
   const fmt  = b => `${b.weight_lbs.min}–${b.weight_lbs.max} lbs`;
   const fmtH = b => `${b.height_in.min}–${b.height_in.max} in`;
@@ -638,6 +646,15 @@ export default function App() {
             value={lifespanRange} onChange={setLifespanRange} step={1} unit=" yrs" />
         </SidebarSection>
 
+        {/* Service Score range */}
+        <SidebarSection title="Service Score" sectionKey="svc_score"
+          collapsed={collapsedSections.has("svc_score")} onToggle={toggleSection}
+          activeCount={rangeActive(svcScoreRange, [0, 100]) ? 1 : 0}
+          onClear={clearSection}>
+          <RangeFilter globalMin={0} globalMax={100}
+            value={svcScoreRange} onChange={setSvcScoreRange} step={1} unit="" />
+        </SidebarSection>
+
         {/* Origin */}
         <SidebarSection title="Origin" sectionKey="origin"
           collapsed={collapsedSections.has("origin")} onToggle={toggleSection}
@@ -764,6 +781,12 @@ export default function App() {
                   fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer",
                 }}>{v}</button>
               ))}
+              <a href="analysis.html"
+                style={{ background: "#1a1a1a", color: "#888", border: "1px solid #333", padding: "0.35rem 0.9rem",
+                         fontFamily: "inherit", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase",
+                         textDecoration: "none", cursor: "pointer", whiteSpace: "nowrap" }}>
+                Svc Analysis
+              </a>
               {!isMobile && (
                 <button onClick={() => { setAddModal(true); setAddStatus(null); setTimeout(() => addInputRef.current?.focus(), 50); }}
                   style={{ background: "#1a1a1a", color: "#c8a96e", border: "1px solid #333", padding: "0.35rem 0.9rem", fontFamily: "inherit", fontSize: "0.72rem", letterSpacing: "0.1em", cursor: "pointer" }}>
@@ -842,7 +865,7 @@ export default function App() {
                               position: "sticky", top: 0, background: "#0d0d0d",
                               verticalAlign: "bottom",
                               ...(isPhoto ? { left: 0, zIndex: 12, minWidth: 64 } :
-                                   isBreed ? { left: 64, zIndex: 12 } :
+                                   isBreed && !isMobile ? { left: 64, zIndex: 12 } :
                                              { zIndex: 8 }),
                             }}>
                             {label}{active ? (sortDir === "asc" ? " ▲" : " ▼") : ""}
@@ -913,7 +936,7 @@ export default function App() {
                               style={{ width: 48, height: 36, objectFit: "cover", display: "block", cursor: "zoom-in" }}
                               onError={e => { e.target.style.display = "none"; }} />
                           </td>
-                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap", fontWeight: 600, position: "sticky", left: 64, zIndex: 4, background: rowBg }}>
+                          <td style={{ padding: "0.6rem 0.7rem", whiteSpace: "nowrap", fontWeight: 600, ...(isMobile ? {} : { position: "sticky", left: 64, zIndex: 4 }), background: rowBg }}>
                             <span style={{ display: "inline-block", width: 7, height: 7, borderRadius: "50%", background: b.color, marginRight: 7, verticalAlign: "middle" }} />
                             <a href={b.source_url} target="_blank" rel="noopener noreferrer"
                               style={{ color: "inherit", textDecoration: "underline", textDecorationColor: "#333" }}>
@@ -937,6 +960,10 @@ export default function App() {
                           <td style={{ padding: "0.6rem 0.7rem", color: "#888", maxWidth: 220, whiteSpace: "normal", lineHeight: 1.45 }}>{b.health_notes}</td>
                           <td style={{ padding: "0.6rem 0.7rem", textAlign: "center", color: b.good_with_kids ? "#4ade80" : "#555" }}>{b.good_with_kids ? "✓" : "✕"}</td>
                           <td style={{ padding: "0.6rem 0.7rem", textAlign: "center", color: b.good_with_dogs ? "#4ade80" : "#555" }}>{b.good_with_dogs ? "✓" : "✕"}</td>
+                          <td style={{ padding: "0.6rem 0.7rem", textAlign: "right",
+                                       color: b.service_dog_score != null ? "#c8a96e" : "#444" }}>
+                            {b.service_dog_score != null ? b.service_dog_score : "–"}
+                          </td>
                           {/* Rating cells */}
                           {RATING_CATEGORIES.filter(c => visibleRatingCats.has(c.key)).flatMap(cat =>
                             cat.traits.map((t, i) => (

@@ -1,0 +1,44 @@
+{
+  "breed": "Chow Chow",
+  "slug": "chow-chow",
+  "url": "https://dogtime.com/dog-breeds/chow-chow",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 3,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 2,
+      "Tolerates Being Alone": 5,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 2,
+      "Kid-Friendly": 1,
+      "Dog Friendly": 1,
+      "Friendly Toward Strangers": 1
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 1,
+      "Drooling Potential": 3,
+      "Easy To Groom": 1,
+      "General Health": 2,
+      "Potential For Weight Gain": 4,
+      "Size": 4
+    },
+    "Trainability": {
+      "Easy To Train": 2,
+      "Intelligence": 1,
+      "Potential For Mouthiness": 5,
+      "Prey Drive": 2,
+      "Tendency To Bark Or Howl": 1,
+      "Wanderlust Potential": 2
+    },
+    "Exercise needs": {
+      "High Energy Level": 2,
+      "Intensity": 2,
+      "Exercise Needs": 2,
+      "Potential For Playfulness": 1
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "breed": "Tibetan Mastiff",
+  "slug": "tibetan-mastiff",
+  "url": "https://dogtime.com/dog-breeds/tibetan-mastiff",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 5,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 5,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 2
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 2,
+      "Drooling Potential": 2,
+      "Easy To Groom": 4,
+      "General Health": 3,
+      "Potential For Weight Gain": 4,
+      "Size": 5
+    },
+    "Trainability": {
+      "Easy To Train": 1,
+      "Intelligence": 5,
+      "Potential For Mouthiness": 5,
+      "Prey Drive": 3,
+      "Tendency To Bark Or Howl": 2,
+      "Wanderlust Potential": 3
+    },
+    "Exercise needs": {
+      "High Energy Level": 4,
+      "Intensity": 2,
+      "Exercise Needs": 2,
+      "Potential For Playfulness": 5
+    }
+  }
+}

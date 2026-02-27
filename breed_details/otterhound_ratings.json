@@ -1,0 +1,44 @@
+{
+  "breed": "Otterhound",
+  "slug": "otterhound",
+  "url": "https://dogtime.com/dog-breeds/otterhound",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 4,
+      "Sensitivity Level": 2,
+      "Tolerates Being Alone": 5,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 3
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 4
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 4,
+      "Drooling Potential": 1,
+      "Easy To Groom": 2,
+      "General Health": 4,
+      "Potential For Weight Gain": 3,
+      "Size": 4
+    },
+    "Trainability": {
+      "Easy To Train": 2,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 5,
+      "Tendency To Bark Or Howl": 2,
+      "Wanderlust Potential": 5
+    },
+    "Exercise needs": {
+      "High Energy Level": 5,
+      "Intensity": 4,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "breed": "Black and Tan Coonhound",
+  "slug": "black-and-tan-coonhound",
+  "url": "https://dogtime.com/dog-breeds/black-and-tan-coonhound",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 3,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 4
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 5,
+      "Drooling Potential": 3,
+      "Easy To Groom": 4,
+      "General Health": 5,
+      "Potential For Weight Gain": 5,
+      "Size": 3
+    },
+    "Trainability": {
+      "Easy To Train": 2,
+      "Intelligence": 5,
+      "Potential For Mouthiness": 1,
+      "Prey Drive": 5,
+      "Tendency To Bark Or Howl": 5,
+      "Wanderlust Potential": 5
+    },
+    "Exercise needs": {
+      "High Energy Level": 5,
+      "Intensity": 5,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}

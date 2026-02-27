@@ -1,0 +1,44 @@
+{
+  "breed": "Neapolitan Mastiff",
+  "slug": "neapolitan-mastiff",
+  "url": "https://dogtime.com/dog-breeds/neapolitan-mastiff",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 2,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 1,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 4,
+      "Dog Friendly": 2,
+      "Friendly Toward Strangers": 1
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 3,
+      "Drooling Potential": 5,
+      "Easy To Groom": 3,
+      "General Health": 2,
+      "Potential For Weight Gain": 5,
+      "Size": 5
+    },
+    "Trainability": {
+      "Easy To Train": 3,
+      "Intelligence": 3,
+      "Potential For Mouthiness": 2,
+      "Prey Drive": 1,
+      "Tendency To Bark Or Howl": 1,
+      "Wanderlust Potential": 1
+    },
+    "Exercise needs": {
+      "High Energy Level": 3,
+      "Intensity": 1,
+      "Exercise Needs": 3,
+      "Potential For Playfulness": 4
+    }
+  }
+}

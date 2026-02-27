@@ -1,0 +1,44 @@
+{
+  "breed": "Collie",
+  "slug": "collie",
+  "url": "https://dogtime.com/dog-breeds/collie",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 3,
+      "Good For Novice Dog Owners": 4,
+      "Sensitivity Level": 5,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 3
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 4,
+      "Friendly Toward Strangers": 4
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 5,
+      "Drooling Potential": 1,
+      "Easy To Groom": 2,
+      "General Health": 3,
+      "Potential For Weight Gain": 3,
+      "Size": 3
+    },
+    "Trainability": {
+      "Easy To Train": 4,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 4,
+      "Tendency To Bark Or Howl": 4,
+      "Wanderlust Potential": 1
+    },
+    "Exercise needs": {
+      "High Energy Level": 3,
+      "Intensity": 2,
+      "Exercise Needs": 3,
+      "Potential For Playfulness": 4
+    }
+  }
+}

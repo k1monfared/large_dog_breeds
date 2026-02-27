@@ -1,0 +1,44 @@
+{
+  "breed": "Azawakh",
+  "slug": "azawakh",
+  "url": "https://dogtime.com/dog-breeds/azawakh",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 5,
+      "Good For Novice Dog Owners": 2,
+      "Sensitivity Level": 3,
+      "Tolerates Being Alone": 3,
+      "Tolerates Cold Weather": 1,
+      "Tolerates Hot Weather": 5
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 4,
+      "Kid-Friendly": 2,
+      "Dog Friendly": 3,
+      "Friendly Toward Strangers": 2
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 3,
+      "Drooling Potential": 1,
+      "Easy To Groom": 5,
+      "General Health": 3,
+      "Potential For Weight Gain": 3,
+      "Size": 4
+    },
+    "Trainability": {
+      "Easy To Train": 3,
+      "Intelligence": 3,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 4,
+      "Tendency To Bark Or Howl": 1,
+      "Wanderlust Potential": 2
+    },
+    "Exercise needs": {
+      "High Energy Level": 3,
+      "Intensity": 2,
+      "Exercise Needs": 4,
+      "Potential For Playfulness": 3
+    }
+  }
+}

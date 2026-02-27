@@ -1,0 +1,44 @@
+{
+  "breed": "Belgian Sheepdog",
+  "slug": "belgian-sheepdog",
+  "url": "https://dogtime.com/dog-breeds/belgian-sheepdog",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 3,
+      "Good For Novice Dog Owners": 3,
+      "Sensitivity Level": 5,
+      "Tolerates Being Alone": 3,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 3
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 4,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 4
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 5,
+      "Drooling Potential": 1,
+      "Easy To Groom": 3,
+      "General Health": 3,
+      "Potential For Weight Gain": 2,
+      "Size": 4
+    },
+    "Trainability": {
+      "Easy To Train": 5,
+      "Intelligence": 5,
+      "Potential For Mouthiness": 2,
+      "Prey Drive": 5,
+      "Tendency To Bark Or Howl": 1,
+      "Wanderlust Potential": 4
+    },
+    "Exercise needs": {
+      "High Energy Level": 5,
+      "Intensity": 3,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}

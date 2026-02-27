@@ -1,0 +1,44 @@
+{
+  "breed": "English Setter",
+  "slug": "english-setter",
+  "url": "https://dogtime.com/dog-breeds/english-setter",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 3,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 1,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 3
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 5,
+      "Dog Friendly": 5,
+      "Friendly Toward Strangers": 5
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 3,
+      "Drooling Potential": 2,
+      "Easy To Groom": 3,
+      "General Health": 3,
+      "Potential For Weight Gain": 5,
+      "Size": 3
+    },
+    "Trainability": {
+      "Easy To Train": 3,
+      "Intelligence": 5,
+      "Potential For Mouthiness": 4,
+      "Prey Drive": 5,
+      "Tendency To Bark Or Howl": 4,
+      "Wanderlust Potential": 5
+    },
+    "Exercise needs": {
+      "High Energy Level": 4,
+      "Intensity": 2,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}

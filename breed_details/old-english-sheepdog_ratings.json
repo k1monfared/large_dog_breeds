@@ -1,0 +1,44 @@
+{
+  "breed": "Old English Sheepdog",
+  "slug": "old-english-sheepdog",
+  "url": "https://dogtime.com/dog-breeds/old-english-sheepdog",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 5,
+      "Good For Novice Dog Owners": 4,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 4,
+      "Dog Friendly": 4,
+      "Friendly Toward Strangers": 4
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 1,
+      "Drooling Potential": 4,
+      "Easy To Groom": 1,
+      "General Health": 4,
+      "Potential For Weight Gain": 4,
+      "Size": 4
+    },
+    "Trainability": {
+      "Easy To Train": 3,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 2,
+      "Prey Drive": 3,
+      "Tendency To Bark Or Howl": 1,
+      "Wanderlust Potential": 2
+    },
+    "Exercise needs": {
+      "High Energy Level": 4,
+      "Intensity": 3,
+      "Exercise Needs": 4,
+      "Potential For Playfulness": 4
+    }
+  }
+}

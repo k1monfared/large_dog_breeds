@@ -1,0 +1,44 @@
+{
+  "breed": "Giant Schnauzer",
+  "slug": "giant-schnauzer",
+  "url": "https://dogtime.com/dog-breeds/giant-schnauzer",
+  "scraped_at": "2026-02-26",
+  "ratings": {
+    "Adaptability": {
+      "Adapts Well To Apartment Living": 1,
+      "Good For Novice Dog Owners": 1,
+      "Sensitivity Level": 4,
+      "Tolerates Being Alone": 2,
+      "Tolerates Cold Weather": 4,
+      "Tolerates Hot Weather": 2
+    },
+    "All-around friendliness": {
+      "Best Family Dogs": 5,
+      "Kid-Friendly": 3,
+      "Dog Friendly": 3,
+      "Friendly Toward Strangers": 2
+    },
+    "Health And Grooming Needs": {
+      "Shedding": 4,
+      "Drooling Potential": 1,
+      "Easy To Groom": 2,
+      "General Health": 4,
+      "Potential For Weight Gain": 3,
+      "Size": 4
+    },
+    "Trainability": {
+      "Easy To Train": 5,
+      "Intelligence": 4,
+      "Potential For Mouthiness": 3,
+      "Prey Drive": 4,
+      "Tendency To Bark Or Howl": 4,
+      "Wanderlust Potential": 4
+    },
+    "Exercise needs": {
+      "High Energy Level": 5,
+      "Intensity": 2,
+      "Exercise Needs": 5,
+      "Potential For Playfulness": 5
+    }
+  }
+}
