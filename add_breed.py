@@ -398,6 +398,11 @@ def add_breed_entry(breed_name: str, dry_run: bool = False) -> dict:
         subprocess.run([sys.executable, str(Path(__file__).parent / "merge_ratings.py")],
                        check=False, capture_output=True)
         print("  Updated breed_ratings.json")
+
+        # Recompute service dog scores now that ratings include the new breed
+        from compute_service_score import update_service_scores
+        update_service_scores(verbose=False)
+        print("  Updated service_dog_score in large_dog_breeds.json")
     else:
         print("  Warning: no star ratings found for this breed (page may use a different template)")
 
