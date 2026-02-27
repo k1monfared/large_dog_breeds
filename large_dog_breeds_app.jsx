@@ -158,42 +158,51 @@ function SidebarSection({ title, sectionKey, collapsed, onToggle, activeCount, o
   );
 }
 
-function RangeFilter({ globalMin, globalMax, value, onChange, step, unit }) {
+// Dual-handle range slider — both handles on one track
+function DualRangeSlider({ globalMin, globalMax, value, onChange, step = 1, color = "#c8a96e" }) {
+  const [low, high] = value;
+  const span    = globalMax - globalMin || 1;
+  const pctLow  = (low  - globalMin) / span * 100;
+  const pctHigh = (high - globalMin) / span * 100;
+  const mid     = (globalMin + globalMax) / 2;
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "space-between", color: "#c8a96e", fontSize: "0.68rem", marginBottom: "0.4rem" }}>
-        <span>{value[0]}{unit}</span>
-        <span>{value[1]}{unit}</span>
+    <div style={{ position: "relative", height: 18 }}>
+      {/* track */}
+      <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 3,
+                    background: "#1a1a1a", transform: "translateY(-50%)", borderRadius: 2, pointerEvents: "none" }}>
+        <div style={{ position: "absolute", left: `${pctLow}%`, width: `${pctHigh - pctLow}%`,
+                      height: "100%", background: color, borderRadius: 2 }} />
       </div>
-      {[["min", 0], ["max", 1]].map(([label, idx]) => (
-        <div key={label} style={{ marginBottom: "0.3rem" }}>
-          <div style={{ fontSize: "0.58rem", color: "#444", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>{label}</div>
-          <input type="range"
-            min={globalMin} max={globalMax} step={step}
-            value={value[idx]}
-            onChange={e => {
-              const v = +e.target.value;
-              onChange(idx === 0 ? [Math.min(v, value[1]), value[1]] : [value[0], Math.max(v, value[0])]);
-            }}
-            style={{ width: "100%", accentColor: "#c8a96e", cursor: "pointer", height: 14 }}
-          />
-        </div>
+      {/* thumb dots */}
+      {[pctLow, pctHigh].map((pct, i) => (
+        <div key={i} style={{ position: "absolute", top: "50%", left: `${pct}%`,
+                              width: 10, height: 10, background: color, borderRadius: "50%",
+                              border: "2px solid #0a0a0a", transform: "translate(-50%,-50%)",
+                              pointerEvents: "none", zIndex: 3 }} />
       ))}
+      {/* invisible low handle */}
+      <input type="range" min={globalMin} max={globalMax} step={step} value={low}
+        onChange={e => onChange([Math.min(+e.target.value, high), high])}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
+                 opacity: 0, cursor: "pointer", margin: 0, zIndex: low > mid ? 1 : 2 }} />
+      {/* invisible high handle */}
+      <input type="range" min={globalMin} max={globalMax} step={step} value={high}
+        onChange={e => onChange([low, Math.max(+e.target.value, low)])}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
+                 opacity: 0, cursor: "pointer", margin: 0, zIndex: low > mid ? 2 : 1 }} />
     </div>
   );
 }
 
-function RatingMinSlider({ label, traitKey, value, catColor, onChange }) {
-  const isActive = value > 1;
+// Labeled range filter (weight / height / lifespan)
+function RangeFilter({ globalMin, globalMax, value, onChange, step, unit }) {
   return (
-    <div style={{ marginBottom: "0.55rem" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.65rem", color: isActive ? catColor : "#555", marginBottom: 2 }}>
-        <span>{label}</span>
-        <span style={{ letterSpacing: "0.05em" }}>{isActive ? `≥ ${value}` : "any"}</span>
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", color: "#c8a96e", fontSize: "0.68rem", marginBottom: "0.5rem" }}>
+        <span>{value[0]}{unit}</span>
+        <span>{value[1]}{unit}</span>
       </div>
-      <input type="range" min={1} max={5} step={1} value={value}
-        onChange={e => onChange(traitKey, +e.target.value)}
-        style={{ width: "100%", accentColor: catColor, cursor: "pointer", height: 14 }} />
+      <DualRangeSlider globalMin={globalMin} globalMax={globalMax} value={value} onChange={onChange} step={step} />
     </div>
   );
 }
@@ -216,7 +225,7 @@ export default function App() {
   // Ratings data: slug → flat trait map
   const [ratingsData, setRatingsData] = useState({});
 
-  // Rating min-score filters: traitKey → minScore (1 = no filter)
+  // Rating range filters: traitKey → [min, max]  (absent or [1,5] = no filter)
   const [ratingFilters, setRatingFilters] = useState({});
 
   // Which rating categories are visible as table columns
@@ -234,7 +243,7 @@ export default function App() {
   const [weightRange,   setWeightRange]   = useState([0, 999]);
   const [heightRange,   setHeightRange]   = useState([0, 99]);
   const [lifespanRange, setLifespanRange] = useState([0, 99]);
-  const [svcMinScore,   setSvcMinScore]   = useState(1);
+  const [svcScoreRange, setSvcScoreRange] = useState([1, 5]);
   const [collapsedSections, setCollapsedSections] = useState(() =>
     new Set(["coat", "temperament", "rat_adaptability", "rat_friendliness", "rat_health", "rat_trainability", "rat_exercise"])
   );
@@ -316,13 +325,13 @@ export default function App() {
     if (field === "weight")    { setWeightRange([...dataRanges.weight]);     return; }
     if (field === "height")    { setHeightRange([...dataRanges.height]);     return; }
     if (field === "lifespan")  { setLifespanRange([...dataRanges.lifespan]); return; }
-    if (field === "svc_score") { setSvcMinScore(1);                          return; }
+    if (field === "svc_score") { setSvcScoreRange([1, 5]);                   return; }
     // rating category clear
     const ratCat = RATING_CATEGORIES.find(c => `rat_${c.key}` === field);
     if (ratCat) {
       setRatingFilters(prev => {
         const next = { ...prev };
-        ratCat.traits.forEach(t => { next[t.key] = 1; });
+        ratCat.traits.forEach(t => { delete next[t.key]; });
         return next;
       });
       return;
@@ -330,7 +339,7 @@ export default function App() {
     setActiveFilters(prev => ({ ...prev, [field]: new Set() }));
   };
 
-  const ratingFilterActive = (traitKey) => (ratingFilters[traitKey] || 1) > 1;
+  const ratingFilterActive = (traitKey) => { const v = ratingFilters[traitKey] || [1, 5]; return v[0] > 1 || v[1] < 5; };
   const ratingCatActiveCount = (catKey) => {
     const cat = RATING_CATEGORIES.find(c => c.key === catKey);
     return cat ? cat.traits.filter(t => ratingFilterActive(t.key)).length : 0;
@@ -341,17 +350,17 @@ export default function App() {
     if (weightRange[0]   > dataRanges.weight[0]   || weightRange[1]   < dataRanges.weight[1])   return true;
     if (heightRange[0]   > dataRanges.height[0]   || heightRange[1]   < dataRanges.height[1])   return true;
     if (lifespanRange[0] > dataRanges.lifespan[0] || lifespanRange[1] < dataRanges.lifespan[1]) return true;
-    if (svcMinScore > 1) return true;
-    if (Object.values(ratingFilters).some(v => v > 1)) return true;
+    if (svcScoreRange[0] > 1 || svcScoreRange[1] < 5) return true;
+    if (Object.values(ratingFilters).some(v => v[0] > 1 || v[1] < 5)) return true;
     return false;
-  }, [activeFilters, weightRange, heightRange, lifespanRange, svcMinScore, dataRanges, ratingFilters]);
+  }, [activeFilters, weightRange, heightRange, lifespanRange, svcScoreRange, dataRanges, ratingFilters]);
 
   const clearAll = () => {
     setActiveFilters({});
     setWeightRange([...dataRanges.weight]);
     setHeightRange([...dataRanges.height]);
     setLifespanRange([...dataRanges.lifespan]);
-    setSvcMinScore(1);
+    setSvcScoreRange([1, 5]);
     setRatingFilters({});
   };
 
@@ -408,7 +417,8 @@ export default function App() {
       if (b.weight_lbs.max   < weightRange[0]   || b.weight_lbs.min   > weightRange[1])   return false;
       if (b.height_in.max    < heightRange[0]   || b.height_in.min    > heightRange[1])   return false;
       if (b.lifespan_yrs.max < lifespanRange[0] || b.lifespan_yrs.min > lifespanRange[1]) return false;
-      if (svcMinScore > 1 && (b.service_dog_score == null || b.service_dog_score < svcMinScore)) return false;
+      if ((svcScoreRange[0] > 1 || svcScoreRange[1] < 5) &&
+          (b.service_dog_score == null || b.service_dog_score < svcScoreRange[0] || b.service_dog_score > svcScoreRange[1])) return false;
       if (getSet("origin").size       && !getSet("origin").has(b.origin))                         return false;
       if (getSet("exercise").size     && !getSet("exercise").has(b.exercise))                     return false;
       if (getSet("grooming").size     && !getSet("grooming").has(b.grooming))                     return false;
@@ -419,13 +429,14 @@ export default function App() {
       if (getSet("temperament").size  && !b.temperament.some(t => getSet("temperament").has(t))) return false;
       if (getSet("kids").size         && !getSet("kids").has(b.good_with_kids ? "Yes" : "No"))   return false;
       if (getSet("dogs").size         && !getSet("dogs").has(b.good_with_dogs ? "Yes" : "No"))   return false;
-      // rating min-score filters
-      for (const [traitKey, minScore] of Object.entries(ratingFilters)) {
-        if (!minScore || minScore <= 1) continue;
+      // rating range filters
+      for (const [traitKey, range] of Object.entries(ratingFilters)) {
+        const [lo, hi] = range || [1, 5];
+        if (lo <= 1 && hi >= 5) continue;
         const info = RATING_TRAIT_MAP[traitKey];
         if (!info) continue;
         const score = b.ratings?.[info.t.trait];
-        if (score == null || score < minScore) return false;
+        if (score == null || score < lo || score > hi) return false;
       }
       return true;
     });
@@ -458,7 +469,7 @@ export default function App() {
       }
       return dir === "desc" ? -cmp : cmp;
     });
-  }, [breedsWithRatings, search, sortBy, activeFilters, weightRange, heightRange, lifespanRange, svcMinScore, ratingFilters]);
+  }, [breedsWithRatings, search, sortBy, activeFilters, weightRange, heightRange, lifespanRange, svcScoreRange, ratingFilters]);
 
   const fmt  = b => `${b.weight_lbs.min}–${b.weight_lbs.max} lbs`;
   const fmtH = b => `${b.height_in.min}–${b.height_in.max} in`;
@@ -645,14 +656,16 @@ export default function App() {
             value={lifespanRange} onChange={setLifespanRange} step={1} unit=" yrs" />
         </SidebarSection>
 
-        {/* Service Score min filter */}
+        {/* Service Score range filter */}
         <SidebarSection title="Service Score" sectionKey="svc_score"
           collapsed={collapsedSections.has("svc_score")} onToggle={toggleSection}
-          activeCount={svcMinScore > 1 ? 1 : 0}
+          activeCount={rangeActive(svcScoreRange, [1, 5]) ? 1 : 0}
           onClear={clearSection}>
-          <RatingMinSlider label="Min score" traitKey="svc_score"
-            value={svcMinScore} catColor="#c8a96e"
-            onChange={(_, val) => setSvcMinScore(val)} />
+          <div style={{ display: "flex", justifyContent: "space-between", color: "#c8a96e", fontSize: "0.68rem", marginBottom: "0.5rem" }}>
+            <span>{svcScoreRange[0]}</span><span>{svcScoreRange[1]}</span>
+          </div>
+          <DualRangeSlider globalMin={1} globalMax={5} step={1}
+            value={svcScoreRange} onChange={setSvcScoreRange} color="#c8a96e" />
         </SidebarSection>
 
         {/* Origin */}
@@ -723,7 +736,7 @@ export default function App() {
         {/* ── DogTime Rating Filters ── */}
         <div style={{ padding: "0.6rem 0.9rem 0.3rem", borderTop: "1px solid #1e1e1e" }}>
           <span style={{ fontSize: "0.58rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#444" }}>
-            DogTime Ratings (min score)
+            DogTime Ratings
           </span>
         </div>
 
@@ -735,15 +748,23 @@ export default function App() {
             onToggle={toggleSection}
             activeCount={ratingCatActiveCount(cat.key)}
             onClear={clearSection}>
-            {cat.traits.map(t => (
-              <RatingMinSlider key={t.key}
-                label={t.label}
-                traitKey={t.key}
-                value={ratingFilters[t.key] || 1}
-                catColor={cat.color}
-                onChange={(key, val) => setRatingFilters(prev => ({ ...prev, [key]: val }))}
-              />
-            ))}
+            {cat.traits.map(t => {
+              const range = ratingFilters[t.key] || [1, 5];
+              const isActive = range[0] > 1 || range[1] < 5;
+              return (
+                <div key={t.key} style={{ marginBottom: "0.6rem" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.65rem",
+                                color: isActive ? cat.color : "#555", marginBottom: "0.3rem" }}>
+                    <span>{t.label}</span>
+                    <span>{isActive ? `${range[0]}–${range[1]}` : "any"}</span>
+                  </div>
+                  <DualRangeSlider globalMin={1} globalMax={5} step={1}
+                    value={range}
+                    onChange={v => setRatingFilters(prev => ({ ...prev, [t.key]: v }))}
+                    color={cat.color} />
+                </div>
+              );
+            })}
           </SidebarSection>
         ))}
       </aside>
