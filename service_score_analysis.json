@@ -254,359 +254,359 @@
   "formula_notes": "Groups confirmed by data (|r| \u2265 0.7): none. Unconfirmed group traits become standalones. Raw score range: [-17.00, 47.00]. score = (raw \u2212 -17.00) / 64.00 \u00d7 4 + 1  (1\u20135 scale). Breeds missing any of the 12 traits receive null.",
   "scores": [
     {
-      "name": "Chinook",
-      "slug": "chinook",
-      "score": 4.1
-    },
-    {
-      "name": "Belgian Sheepdog",
-      "slug": "belgian-sheepdog",
-      "score": 3.9
-    },
-    {
-      "name": "Doberman Pinscher",
-      "slug": "doberman-pinscher",
-      "score": 3.8
-    },
-    {
-      "name": "Belgian Malinois",
-      "slug": "belgian-malinois",
-      "score": 3.8
-    },
-    {
-      "name": "Spinone Italiano",
-      "slug": "spinone-italiano",
-      "score": 3.8
-    },
-    {
-      "name": "Dalmatian",
-      "slug": "dalmatian",
-      "score": 3.8
-    },
-    {
-      "name": "Old English Sheepdog",
-      "slug": "old-english-sheepdog",
-      "score": 3.7
-    },
-    {
-      "name": "Flat-Coated Retriever",
-      "slug": "flat-coated-retriever",
-      "score": 3.7
-    },
-    {
-      "name": "Poodle",
-      "slug": "poodle",
-      "score": 3.7
-    },
-    {
       "name": "Great Dane",
       "slug": "great-dane",
-      "score": 3.6
+      "score": 4
     },
     {
       "name": "Saint Bernard",
       "slug": "saint-bernard",
-      "score": 3.6
+      "score": 4
     },
     {
       "name": "German Shepherd",
       "slug": "german-shepherd-dog",
-      "score": 3.6
+      "score": 4
+    },
+    {
+      "name": "Doberman Pinscher",
+      "slug": "doberman-pinscher",
+      "score": 4
+    },
+    {
+      "name": "Old English Sheepdog",
+      "slug": "old-english-sheepdog",
+      "score": 4
     },
     {
       "name": "Greyhound",
       "slug": "greyhound",
-      "score": 3.6
+      "score": 4
+    },
+    {
+      "name": "Belgian Malinois",
+      "slug": "belgian-malinois",
+      "score": 4
+    },
+    {
+      "name": "Flat-Coated Retriever",
+      "slug": "flat-coated-retriever",
+      "score": 4
     },
     {
       "name": "Vizsla",
       "slug": "vizsla",
-      "score": 3.6
+      "score": 4
+    },
+    {
+      "name": "Spinone Italiano",
+      "slug": "spinone-italiano",
+      "score": 4
     },
     {
       "name": "Beauceron",
       "slug": "beauceron",
-      "score": 3.6
+      "score": 4
+    },
+    {
+      "name": "Chinook",
+      "slug": "chinook",
+      "score": 4
+    },
+    {
+      "name": "Belgian Sheepdog",
+      "slug": "belgian-sheepdog",
+      "score": 4
+    },
+    {
+      "name": "Dalmatian",
+      "slug": "dalmatian",
+      "score": 4
     },
     {
       "name": "Dutch Shepherd",
       "slug": "dutch-shepherd",
-      "score": 3.6
+      "score": 4
     },
     {
-      "name": "Collie",
-      "slug": "collie",
-      "score": 3.5
-    },
-    {
-      "name": "Borzoi",
-      "slug": "borzoi",
-      "score": 3.4
-    },
-    {
-      "name": "Belgian Tervuren",
-      "slug": "belgian-tervuren",
-      "score": 3.4
-    },
-    {
-      "name": "Bouvier des Flandres",
-      "slug": "bouvier-des-flandres",
-      "score": 3.3
-    },
-    {
-      "name": "Irish Water Spaniel",
-      "slug": "irish-water-spaniel",
-      "score": 3.3
-    },
-    {
-      "name": "Ibizan Hound",
-      "slug": "ibizan-hound",
-      "score": 3.3
+      "name": "Poodle",
+      "slug": "poodle",
+      "score": 4
     },
     {
       "name": "Irish Wolfhound",
       "slug": "irish-wolfhound",
-      "score": 3.2
-    },
-    {
-      "name": "Anatolian Shepherd",
-      "slug": "anatolian-shepherd-dog",
-      "score": 3.2
-    },
-    {
-      "name": "Boxer",
-      "slug": "boxer",
-      "score": 3.2
-    },
-    {
-      "name": "Rhodesian Ridgeback",
-      "slug": "rhodesian-ridgeback",
-      "score": 3.2
-    },
-    {
-      "name": "Black Russian Terrier",
-      "slug": "black-russian-terrier",
-      "score": 3.2
-    },
-    {
-      "name": "Kuvasz",
-      "slug": "kuvasz",
-      "score": 3.2
-    },
-    {
-      "name": "Giant Schnauzer",
-      "slug": "giant-schnauzer",
-      "score": 3.2
-    },
-    {
-      "name": "Briard",
-      "slug": "briard",
-      "score": 3.2
-    },
-    {
-      "name": "German Shorthaired Pointer",
-      "slug": "german-shorthaired-pointer",
-      "score": 3.2
-    },
-    {
-      "name": "Otterhound",
-      "slug": "otterhound",
-      "score": 3.2
-    },
-    {
-      "name": "Saluki",
-      "slug": "saluki",
-      "score": 3.2
-    },
-    {
-      "name": "Azawakh",
-      "slug": "azawakh",
-      "score": 3.2
-    },
-    {
-      "name": "Sloughi",
-      "slug": "sloughi",
-      "score": 3.2
-    },
-    {
-      "name": "Bloodhound",
-      "slug": "bloodhound",
-      "score": 3.1
-    },
-    {
-      "name": "Weimaraner",
-      "slug": "weimaraner",
-      "score": 3.1
-    },
-    {
-      "name": "Tibetan Mastiff",
-      "slug": "tibetan-mastiff",
-      "score": 3.1
-    },
-    {
-      "name": "Neapolitan Mastiff",
-      "slug": "neapolitan-mastiff",
-      "score": 3.1
-    },
-    {
-      "name": "Samoyed",
-      "slug": "samoyed",
-      "score": 3.1
-    },
-    {
-      "name": "Gordon Setter",
-      "slug": "gordon-setter",
-      "score": 3.1
-    },
-    {
-      "name": "Irish Setter",
-      "slug": "irish-setter",
-      "score": 3.1
-    },
-    {
-      "name": "Belgian Laekenois",
-      "slug": "belgian-laekenois",
-      "score": 3.1
-    },
-    {
-      "name": "Norwegian Elkhound",
-      "slug": "norwegian-elkhound",
-      "score": 3.1
-    },
-    {
-      "name": "Black and Tan Coonhound",
-      "slug": "black-and-tan-coonhound",
-      "score": 3.1
+      "score": 3
     },
     {
       "name": "Mastiff",
       "slug": "mastiff",
-      "score": 3.0
-    },
-    {
-      "name": "Rottweiler",
-      "slug": "rottweiler",
-      "score": 3.0
-    },
-    {
-      "name": "Alaskan Malamute",
-      "slug": "alaskan-malamute",
-      "score": 3.0
-    },
-    {
-      "name": "Scottish Deerhound",
-      "slug": "scottish-deerhound",
-      "score": 3.0
-    },
-    {
-      "name": "English Setter",
-      "slug": "english-setter",
-      "score": 3.0
-    },
-    {
-      "name": "American Bulldog",
-      "slug": "american-bulldog",
-      "score": 3.0
+      "score": 3
     },
     {
       "name": "Newfoundland",
       "slug": "newfoundland",
-      "score": 2.9
-    },
-    {
-      "name": "Greater Swiss Mountain Dog",
-      "slug": "greater-swiss-mountain-dog",
-      "score": 2.9
-    },
-    {
-      "name": "Siberian Husky",
-      "slug": "siberian-husky",
-      "score": 2.9
-    },
-    {
-      "name": "Bluetick Coonhound",
-      "slug": "bluetick-coonhound",
-      "score": 2.9
-    },
-    {
-      "name": "Redbone Coonhound",
-      "slug": "redbone-coonhound",
-      "score": 2.9
-    },
-    {
-      "name": "Bullmastiff",
-      "slug": "bullmastiff",
-      "score": 2.8
-    },
-    {
-      "name": "Boerboel",
-      "slug": "boerboel",
-      "score": 2.8
-    },
-    {
-      "name": "Afghan Hound",
-      "slug": "afghan-hound",
-      "score": 2.8
-    },
-    {
-      "name": "Chesapeake Bay Retriever",
-      "slug": "chesapeake-bay-retriever",
-      "score": 2.8
-    },
-    {
-      "name": "Treeing Walker Coonhound",
-      "slug": "treeing-walker-coonhound",
-      "score": 2.8
-    },
-    {
-      "name": "Entlebucher Mountain",
-      "slug": "entlebucher-mountain-dog",
-      "score": 2.8
+      "score": 3
     },
     {
       "name": "Bernese Mountain Dog",
       "slug": "bernese-mountain-dog",
-      "score": 2.7
+      "score": 3
     },
     {
-      "name": "Catahoula Leopard",
-      "slug": "catahoula-leopard-dog",
-      "score": 2.7
+      "name": "Rottweiler",
+      "slug": "rottweiler",
+      "score": 3
     },
     {
-      "name": "Komondor",
-      "slug": "komondor",
-      "score": 2.6
+      "name": "Anatolian Shepherd",
+      "slug": "anatolian-shepherd-dog",
+      "score": 3
     },
     {
-      "name": "Chow Chow",
-      "slug": "chow-chow",
-      "score": 2.6
+      "name": "Bullmastiff",
+      "slug": "bullmastiff",
+      "score": 3
     },
     {
-      "name": "Dogo Argentino",
-      "slug": "dogo-argentino",
-      "score": 2.6
+      "name": "Alaskan Malamute",
+      "slug": "alaskan-malamute",
+      "score": 3
     },
     {
-      "name": "Leonberger",
-      "slug": "leonberger",
-      "score": 2.5
+      "name": "Bloodhound",
+      "slug": "bloodhound",
+      "score": 3
     },
     {
       "name": "Dogue de Bordeaux",
       "slug": "dogue-de-bordeaux",
-      "score": 2.5
+      "score": 3
+    },
+    {
+      "name": "Boxer",
+      "slug": "boxer",
+      "score": 3
+    },
+    {
+      "name": "Weimaraner",
+      "slug": "weimaraner",
+      "score": 3
+    },
+    {
+      "name": "Rhodesian Ridgeback",
+      "slug": "rhodesian-ridgeback",
+      "score": 3
+    },
+    {
+      "name": "Greater Swiss Mountain Dog",
+      "slug": "greater-swiss-mountain-dog",
+      "score": 3
+    },
+    {
+      "name": "Black Russian Terrier",
+      "slug": "black-russian-terrier",
+      "score": 3
+    },
+    {
+      "name": "Boerboel",
+      "slug": "boerboel",
+      "score": 3
+    },
+    {
+      "name": "Tibetan Mastiff",
+      "slug": "tibetan-mastiff",
+      "score": 3
+    },
+    {
+      "name": "Neapolitan Mastiff",
+      "slug": "neapolitan-mastiff",
+      "score": 3
+    },
+    {
+      "name": "Komondor",
+      "slug": "komondor",
+      "score": 3
+    },
+    {
+      "name": "Kuvasz",
+      "slug": "kuvasz",
+      "score": 3
+    },
+    {
+      "name": "Scottish Deerhound",
+      "slug": "scottish-deerhound",
+      "score": 3
+    },
+    {
+      "name": "Borzoi",
+      "slug": "borzoi",
+      "score": 3
+    },
+    {
+      "name": "Afghan Hound",
+      "slug": "afghan-hound",
+      "score": 3
+    },
+    {
+      "name": "Giant Schnauzer",
+      "slug": "giant-schnauzer",
+      "score": 3
+    },
+    {
+      "name": "Siberian Husky",
+      "slug": "siberian-husky",
+      "score": 3
+    },
+    {
+      "name": "Samoyed",
+      "slug": "samoyed",
+      "score": 3
+    },
+    {
+      "name": "Bouvier des Flandres",
+      "slug": "bouvier-des-flandres",
+      "score": 3
+    },
+    {
+      "name": "Briard",
+      "slug": "briard",
+      "score": 3
+    },
+    {
+      "name": "Chesapeake Bay Retriever",
+      "slug": "chesapeake-bay-retriever",
+      "score": 3
+    },
+    {
+      "name": "Gordon Setter",
+      "slug": "gordon-setter",
+      "score": 3
+    },
+    {
+      "name": "Irish Setter",
+      "slug": "irish-setter",
+      "score": 3
+    },
+    {
+      "name": "English Setter",
+      "slug": "english-setter",
+      "score": 3
+    },
+    {
+      "name": "German Shorthaired Pointer",
+      "slug": "german-shorthaired-pointer",
+      "score": 3
+    },
+    {
+      "name": "Catahoula Leopard",
+      "slug": "catahoula-leopard-dog",
+      "score": 3
+    },
+    {
+      "name": "Bluetick Coonhound",
+      "slug": "bluetick-coonhound",
+      "score": 3
+    },
+    {
+      "name": "Redbone Coonhound",
+      "slug": "redbone-coonhound",
+      "score": 3
+    },
+    {
+      "name": "Otterhound",
+      "slug": "otterhound",
+      "score": 3
+    },
+    {
+      "name": "Collie",
+      "slug": "collie",
+      "score": 3
+    },
+    {
+      "name": "Belgian Tervuren",
+      "slug": "belgian-tervuren",
+      "score": 3
+    },
+    {
+      "name": "Saluki",
+      "slug": "saluki",
+      "score": 3
+    },
+    {
+      "name": "Chow Chow",
+      "slug": "chow-chow",
+      "score": 3
+    },
+    {
+      "name": "Irish Water Spaniel",
+      "slug": "irish-water-spaniel",
+      "score": 3
+    },
+    {
+      "name": "Dogo Argentino",
+      "slug": "dogo-argentino",
+      "score": 3
+    },
+    {
+      "name": "Belgian Laekenois",
+      "slug": "belgian-laekenois",
+      "score": 3
+    },
+    {
+      "name": "American Bulldog",
+      "slug": "american-bulldog",
+      "score": 3
+    },
+    {
+      "name": "Norwegian Elkhound",
+      "slug": "norwegian-elkhound",
+      "score": 3
+    },
+    {
+      "name": "Black and Tan Coonhound",
+      "slug": "black-and-tan-coonhound",
+      "score": 3
+    },
+    {
+      "name": "Treeing Walker Coonhound",
+      "slug": "treeing-walker-coonhound",
+      "score": 3
+    },
+    {
+      "name": "Ibizan Hound",
+      "slug": "ibizan-hound",
+      "score": 3
+    },
+    {
+      "name": "Azawakh",
+      "slug": "azawakh",
+      "score": 3
+    },
+    {
+      "name": "Sloughi",
+      "slug": "sloughi",
+      "score": 3
+    },
+    {
+      "name": "Entlebucher Mountain",
+      "slug": "entlebucher-mountain-dog",
+      "score": 3
+    },
+    {
+      "name": "Leonberger",
+      "slug": "leonberger",
+      "score": 2
     },
     {
       "name": "Akita",
       "slug": "akita",
-      "score": 2.4
+      "score": 2
     },
     {
       "name": "Great Pyrenees",
       "slug": "great-pyrenees",
-      "score": 2.4
+      "score": 2
     },
     {
       "name": "Labrador Retriever",

@@ -338,7 +338,7 @@ def update_service_scores(
             if v is None:
                 return None
             raw += s["weight"] * v if s["direction"] == "positive" else -s["weight"] * v
-        return round((raw - raw_min) / raw_range * 4 + 1, 1)
+        return int(round((raw - raw_min) / raw_range * 4 + 1))
 
     # Score every breed in breed_ratings.json
     with open(ratings_file) as f:
@@ -384,10 +384,10 @@ def update_service_scores(
         scored_only = [e for e in scored_list if e["score"] is not None]
         print("\n── Top 10 ──────────────────────────────")
         for e in scored_only[:10]:
-            print(f"  {e['score']:5.1f}  {e['name']}")
+            print(f"  {e['score']:3d}  {e['name']}")
         print("\n── Bottom 10 ───────────────────────────")
         for e in scored_only[-10:]:
-            print(f"  {e['score']:5.1f}  {e['name']}")
+            print(f"  {e['score']:3d}  {e['name']}")
         null_names = [e["name"] for e in scored_list if e["score"] is None]
         if null_names:
             print(f"\n── No score (missing ratings) ──────────")

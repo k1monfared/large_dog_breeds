@@ -489,7 +489,7 @@ export default function App() {
   );
 
   if (loading) return (
-    <div style={{ minHeight: "100vh", background: "#0d0d0d", display: "flex", alignItems: "center", justifyContent: "center", color: "#c8a96e", fontFamily: "Georgia, serif", letterSpacing: "0.2em" }}>
+    <div style={{ minHeight: "100vh", background: "#0d0d0d", display: "flex", alignItems: "center", justifyContent: "center", color: "#c8a96e", fontFamily: "'Inter', system-ui, sans-serif", letterSpacing: "0.05em" }}>
       Loading dataset…
     </div>
   );
@@ -497,7 +497,7 @@ export default function App() {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 700;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0d0d0d", color: "#e8e0d0", fontFamily: "'Georgia','Times New Roman',serif", display: "flex" }}>
+    <div style={{ minHeight: "100vh", background: "#0d0d0d", color: "#e8e0d0", fontFamily: "'Inter', system-ui, sans-serif", display: "flex" }}>
 
       {/* ── Add Breed modal ── */}
       {addModal && (
