@@ -38,7 +38,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 65.6
+    "service_dog_score": 3.6
   },
   {
     "name": "Irish Wolfhound",
@@ -79,7 +79,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 55.5
+    "service_dog_score": 3.2
   },
   {
     "name": "Saint Bernard",
@@ -120,7 +120,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 64.1
+    "service_dog_score": 3.6
   },
   {
     "name": "Mastiff",
@@ -160,7 +160,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 50.0
+    "service_dog_score": 3.0
   },
   {
     "name": "Newfoundland",
@@ -201,7 +201,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 48.4
+    "service_dog_score": 2.9
   },
   {
     "name": "Bernese Mountain Dog",
@@ -243,7 +243,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 43.0
+    "service_dog_score": 2.7
   },
   {
     "name": "Leonberger",
@@ -284,7 +284,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 37.5
+    "service_dog_score": 2.5
   },
   {
     "name": "Rottweiler",
@@ -326,7 +326,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 50.0
+    "service_dog_score": 3.0
   },
   {
     "name": "German Shepherd",
@@ -368,7 +368,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 64.1
+    "service_dog_score": 3.6
   },
   {
     "name": "Labrador Retriever",
@@ -493,7 +493,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 68.8
+    "service_dog_score": 3.8
   },
   {
     "name": "Anatolian Shepherd",
@@ -533,7 +533,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 56.2
+    "service_dog_score": 3.2
   },
   {
     "name": "Cane Corso",
@@ -614,7 +614,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 44.5
+    "service_dog_score": 2.8
   },
   {
     "name": "Alaskan Malamute",
@@ -655,7 +655,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 50.8
+    "service_dog_score": 3.0
   },
   {
     "name": "Akita",
@@ -696,7 +696,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 34.4
+    "service_dog_score": 2.4
   },
   {
     "name": "Bloodhound",
@@ -737,7 +737,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 51.6
+    "service_dog_score": 3.1
   },
   {
     "name": "Dogue de Bordeaux",
@@ -778,7 +778,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 38.3
+    "service_dog_score": 2.5
   },
   {
     "name": "Boxer",
@@ -819,7 +819,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 55.5
+    "service_dog_score": 3.2
   },
   {
     "name": "Weimaraner",
@@ -860,7 +860,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 52.3
+    "service_dog_score": 3.1
   },
   {
     "name": "Rhodesian Ridgeback",
@@ -901,7 +901,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 54.7
+    "service_dog_score": 3.2
   },
   {
     "name": "Greater Swiss Mountain Dog",
@@ -943,7 +943,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 48.4
+    "service_dog_score": 2.9
   },
   {
     "name": "Black Russian Terrier",
@@ -984,7 +984,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 53.9
+    "service_dog_score": 3.2
   },
   {
     "name": "Boerboel",
@@ -1025,7 +1025,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 44.5
+    "service_dog_score": 2.8
   },
   {
     "name": "Great Pyrenees",
@@ -1066,7 +1066,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 34.4
+    "service_dog_score": 2.4
   },
   {
     "name": "Tibetan Mastiff",
@@ -1100,7 +1100,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 53.1
+    "service_dog_score": 3.1
   },
   {
     "name": "Neapolitan Mastiff",
@@ -1134,7 +1134,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 53.1
+    "service_dog_score": 3.1
   },
   {
     "name": "Komondor",
@@ -1168,7 +1168,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 39.1
+    "service_dog_score": 2.6
   },
   {
     "name": "Kuvasz",
@@ -1202,7 +1202,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 53.9
+    "service_dog_score": 3.2
   },
   {
     "name": "Old English Sheepdog",
@@ -1236,7 +1236,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 68.0
+    "service_dog_score": 3.7
   },
   {
     "name": "Scottish Deerhound",
@@ -1270,7 +1270,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 49.2
+    "service_dog_score": 3.0
   },
   {
     "name": "Borzoi",
@@ -1311,7 +1311,7 @@
         "source": "dogtime.com"
       }
     ],
-    "service_dog_score": 59.4
+    "service_dog_score": 3.4
   },
   {
     "name": "Afghan Hound",
@@ -1345,7 +1345,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 45.3
+    "service_dog_score": 2.8
   },
   {
     "name": "Greyhound",
@@ -1379,7 +1379,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 64.8
+    "service_dog_score": 3.6
   },
   {
     "name": "Giant Schnauzer",
@@ -1413,7 +1413,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 54.7
+    "service_dog_score": 3.2
   },
   {
     "name": "Siberian Husky",
@@ -1447,7 +1447,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 46.9
+    "service_dog_score": 2.9
   },
   {
     "name": "Samoyed",
@@ -1481,7 +1481,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 53.1
+    "service_dog_score": 3.1
   },
   {
     "name": "Belgian Malinois",
@@ -1515,7 +1515,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 69.5
+    "service_dog_score": 3.8
   },
   {
     "name": "Bouvier des Flandres",
@@ -1549,7 +1549,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 58.6
+    "service_dog_score": 3.3
   },
   {
     "name": "Briard",
@@ -1583,7 +1583,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 54.7
+    "service_dog_score": 3.2
   },
   {
     "name": "Flat-Coated Retriever",
@@ -1617,7 +1617,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 66.4
+    "service_dog_score": 3.7
   },
   {
     "name": "Chesapeake Bay Retriever",
@@ -1651,7 +1651,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 44.5
+    "service_dog_score": 2.8
   },
   {
     "name": "Gordon Setter",
@@ -1685,7 +1685,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 51.6
+    "service_dog_score": 3.1
   },
   {
     "name": "Irish Setter",
@@ -1719,7 +1719,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 51.6
+    "service_dog_score": 3.1
   },
   {
     "name": "English Setter",
@@ -1753,7 +1753,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 50.8
+    "service_dog_score": 3.0
   },
   {
     "name": "Vizsla",
@@ -1787,7 +1787,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 64.8
+    "service_dog_score": 3.6
   },
   {
     "name": "German Shorthaired Pointer",
@@ -1821,7 +1821,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 53.9
+    "service_dog_score": 3.2
   },
   {
     "name": "Spinone Italiano",
@@ -1855,7 +1855,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 68.8
+    "service_dog_score": 3.8
   },
   {
     "name": "Catahoula Leopard",
@@ -1889,7 +1889,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 41.4
+    "service_dog_score": 2.7
   },
   {
     "name": "Bluetick Coonhound",
@@ -1923,7 +1923,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 47.7
+    "service_dog_score": 2.9
   },
   {
     "name": "Redbone Coonhound",
@@ -1957,7 +1957,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 46.9
+    "service_dog_score": 2.9
   },
   {
     "name": "Otterhound",
@@ -1991,7 +1991,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 55.5
+    "service_dog_score": 3.2
   },
   {
     "name": "Collie",
@@ -2025,7 +2025,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 61.7
+    "service_dog_score": 3.5
   },
   {
     "name": "Belgian Tervuren",
@@ -2059,7 +2059,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 59.4
+    "service_dog_score": 3.4
   },
   {
     "name": "Beauceron",
@@ -2093,7 +2093,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 64.1
+    "service_dog_score": 3.6
   },
   {
     "name": "Saluki",
@@ -2127,7 +2127,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 56.2
+    "service_dog_score": 3.2
   },
   {
     "name": "Chow Chow",
@@ -2161,7 +2161,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 40.6
+    "service_dog_score": 2.6
   },
   {
     "name": "Chinook",
@@ -2195,7 +2195,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 76.6
+    "service_dog_score": 4.1
   },
   {
     "name": "Irish Water Spaniel",
@@ -2229,7 +2229,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 57.0
+    "service_dog_score": 3.3
   },
   {
     "name": "Dogo Argentino",
@@ -2263,7 +2263,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 39.1
+    "service_dog_score": 2.6
   },
   {
     "name": "Belgian Laekenois",
@@ -2297,7 +2297,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 51.6
+    "service_dog_score": 3.1
   },
   {
     "name": "Belgian Sheepdog",
@@ -2331,7 +2331,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 73.4
+    "service_dog_score": 3.9
   },
   {
     "name": "American Bulldog",
@@ -2365,7 +2365,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 49.2
+    "service_dog_score": 3.0
   },
   {
     "name": "Dalmatian",
@@ -2399,7 +2399,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 68.8
+    "service_dog_score": 3.8
   },
   {
     "name": "Norwegian Elkhound",
@@ -2433,7 +2433,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 51.6
+    "service_dog_score": 3.1
   },
   {
     "name": "Black and Tan Coonhound",
@@ -2467,7 +2467,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 51.6
+    "service_dog_score": 3.1
   },
   {
     "name": "Treeing Walker Coonhound",
@@ -2501,7 +2501,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 44.5
+    "service_dog_score": 2.8
   },
   {
     "name": "Ibizan Hound",
@@ -2535,7 +2535,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 58.6
+    "service_dog_score": 3.3
   },
   {
     "name": "Azawakh",
@@ -2569,7 +2569,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 54.7
+    "service_dog_score": 3.2
   },
   {
     "name": "Sloughi",
@@ -2603,7 +2603,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 56.2
+    "service_dog_score": 3.2
   },
   {
     "name": "Dutch Shepherd",
@@ -2637,7 +2637,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 65.6
+    "service_dog_score": 3.6
   },
   {
     "name": "Entlebucher Mountain",
@@ -2671,7 +2671,7 @@
     "verified": true,
     "verification_date": "2026-02-26",
     "corrections": [],
-    "service_dog_score": 44.5
+    "service_dog_score": 2.8
   },
   {
     "name": "Poodle",
@@ -2712,6 +2712,6 @@
         "source": "dogtime.com"
       }
     ],
-    "service_dog_score": 67.2
+    "service_dog_score": 3.7
   }
 ]

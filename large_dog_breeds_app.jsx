@@ -234,7 +234,7 @@ export default function App() {
   const [weightRange,   setWeightRange]   = useState([0, 999]);
   const [heightRange,   setHeightRange]   = useState([0, 99]);
   const [lifespanRange, setLifespanRange] = useState([0, 99]);
-  const [svcScoreRange, setSvcScoreRange] = useState([0, 100]);
+  const [svcMinScore,   setSvcMinScore]   = useState(1);
   const [collapsedSections, setCollapsedSections] = useState(() =>
     new Set(["coat", "temperament", "rat_adaptability", "rat_friendliness", "rat_health", "rat_trainability", "rat_exercise"])
   );
@@ -316,7 +316,7 @@ export default function App() {
     if (field === "weight")    { setWeightRange([...dataRanges.weight]);     return; }
     if (field === "height")    { setHeightRange([...dataRanges.height]);     return; }
     if (field === "lifespan")  { setLifespanRange([...dataRanges.lifespan]); return; }
-    if (field === "svc_score") { setSvcScoreRange([0, 100]);                 return; }
+    if (field === "svc_score") { setSvcMinScore(1);                          return; }
     // rating category clear
     const ratCat = RATING_CATEGORIES.find(c => `rat_${c.key}` === field);
     if (ratCat) {
@@ -341,17 +341,17 @@ export default function App() {
     if (weightRange[0]   > dataRanges.weight[0]   || weightRange[1]   < dataRanges.weight[1])   return true;
     if (heightRange[0]   > dataRanges.height[0]   || heightRange[1]   < dataRanges.height[1])   return true;
     if (lifespanRange[0] > dataRanges.lifespan[0] || lifespanRange[1] < dataRanges.lifespan[1]) return true;
-    if (svcScoreRange[0] > 0 || svcScoreRange[1] < 100) return true;
+    if (svcMinScore > 1) return true;
     if (Object.values(ratingFilters).some(v => v > 1)) return true;
     return false;
-  }, [activeFilters, weightRange, heightRange, lifespanRange, svcScoreRange, dataRanges, ratingFilters]);
+  }, [activeFilters, weightRange, heightRange, lifespanRange, svcMinScore, dataRanges, ratingFilters]);
 
   const clearAll = () => {
     setActiveFilters({});
     setWeightRange([...dataRanges.weight]);
     setHeightRange([...dataRanges.height]);
     setLifespanRange([...dataRanges.lifespan]);
-    setSvcScoreRange([0, 100]);
+    setSvcMinScore(1);
     setRatingFilters({});
   };
 
@@ -408,8 +408,7 @@ export default function App() {
       if (b.weight_lbs.max   < weightRange[0]   || b.weight_lbs.min   > weightRange[1])   return false;
       if (b.height_in.max    < heightRange[0]   || b.height_in.min    > heightRange[1])   return false;
       if (b.lifespan_yrs.max < lifespanRange[0] || b.lifespan_yrs.min > lifespanRange[1]) return false;
-      if (b.service_dog_score != null &&
-          (b.service_dog_score < svcScoreRange[0] || b.service_dog_score > svcScoreRange[1])) return false;
+      if (svcMinScore > 1 && (b.service_dog_score == null || b.service_dog_score < svcMinScore)) return false;
       if (getSet("origin").size       && !getSet("origin").has(b.origin))                         return false;
       if (getSet("exercise").size     && !getSet("exercise").has(b.exercise))                     return false;
       if (getSet("grooming").size     && !getSet("grooming").has(b.grooming))                     return false;
@@ -459,7 +458,7 @@ export default function App() {
       }
       return dir === "desc" ? -cmp : cmp;
     });
-  }, [breedsWithRatings, search, sortBy, activeFilters, weightRange, heightRange, lifespanRange, svcScoreRange, ratingFilters]);
+  }, [breedsWithRatings, search, sortBy, activeFilters, weightRange, heightRange, lifespanRange, svcMinScore, ratingFilters]);
 
   const fmt  = b => `${b.weight_lbs.min}–${b.weight_lbs.max} lbs`;
   const fmtH = b => `${b.height_in.min}–${b.height_in.max} in`;
@@ -646,13 +645,14 @@ export default function App() {
             value={lifespanRange} onChange={setLifespanRange} step={1} unit=" yrs" />
         </SidebarSection>
 
-        {/* Service Score range */}
+        {/* Service Score min filter */}
         <SidebarSection title="Service Score" sectionKey="svc_score"
           collapsed={collapsedSections.has("svc_score")} onToggle={toggleSection}
-          activeCount={rangeActive(svcScoreRange, [0, 100]) ? 1 : 0}
+          activeCount={svcMinScore > 1 ? 1 : 0}
           onClear={clearSection}>
-          <RangeFilter globalMin={0} globalMax={100}
-            value={svcScoreRange} onChange={setSvcScoreRange} step={1} unit="" />
+          <RatingMinSlider label="Min score" traitKey="svc_score"
+            value={svcMinScore} catColor="#c8a96e"
+            onChange={(_, val) => setSvcMinScore(val)} />
         </SidebarSection>
 
         {/* Origin */}

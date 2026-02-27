@@ -264,14 +264,14 @@ def run_correlation_analysis(
         print(f"\nFormula: {len(confirmed_groups)} merged group(s), "
               f"{len(all_standalones)} standalone trait(s)")
         print(f"Normalization: raw ∈ [{raw_min:.2f}, {raw_max:.2f}]  "
-              f"→  score = (raw − {raw_min:.2f}) / {raw_max - raw_min:.2f} × 100")
+              f"→  score = (raw − {raw_min:.2f}) / {raw_max - raw_min:.2f} × 4 + 1  (1–5 scale)")
 
     formula_note = (
         f"Groups confirmed by data (|r| ≥ {CORR_THRESHOLD}): "
         f"{[g['name'] for g in confirmed_groups] or 'none'}. "
         f"Unconfirmed group traits become standalones. "
         f"Raw score range: [{raw_min:.2f}, {raw_max:.2f}]. "
-        f"score = (raw − {raw_min:.2f}) / {raw_max - raw_min:.2f} × 100. "
+        f"score = (raw − {raw_min:.2f}) / {raw_max - raw_min:.2f} × 4 + 1  (1–5 scale). "
         f"Breeds missing any of the {len(ALL_TRAITS)} traits receive null."
     )
 
@@ -338,7 +338,7 @@ def update_service_scores(
             if v is None:
                 return None
             raw += s["weight"] * v if s["direction"] == "positive" else -s["weight"] * v
-        return round((raw - raw_min) / raw_range * 100, 1)
+        return round((raw - raw_min) / raw_range * 4 + 1, 1)
 
     # Score every breed in breed_ratings.json
     with open(ratings_file) as f:

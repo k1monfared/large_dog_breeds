@@ -281,7 +281,7 @@
         <strong style="color:#c8a96e;">Normalization:</strong><br>
         <code>raw_min = ${data.raw_min.toFixed(2)}</code> &nbsp;(all positives = 1, all negatives = 5)<br>
         <code>raw_max = ${data.raw_max.toFixed(2)}</code> &nbsp;(all positives = 5, all negatives = 1)<br>
-        <code>score = (raw − ${data.raw_min.toFixed(2)}) / ${(data.raw_max - data.raw_min).toFixed(2)} × 100</code><br>
+        <code>score = (raw − ${data.raw_min.toFixed(2)}) / ${(data.raw_max - data.raw_min).toFixed(2)} × 4 + 1</code>&nbsp; (1–5 scale)<br>
         <span style="font-size:0.72rem; color:#555; margin-top:0.4rem; display:block;">${data.formula_notes}</span>
       </div>`;
 
@@ -321,13 +321,11 @@
         el.textContent = sortField === f ? (sortDir === "asc" ? "▲" : "▾") : "";
       });
 
-      const maxScore = Math.max(...scoredList.filter(s => s.score !== null).map(s => s.score));
-
       let html = "";
       arr.forEach(row => {
         const hasScore = row.score !== null;
         const scoreStr = hasScore ? row.score.toFixed(1) : "N/A";
-        const barPct   = hasScore ? (row.score / maxScore * 100).toFixed(1) : 0;
+        const barPct   = hasScore ? ((row.score - 1) / 4 * 100).toFixed(1) : 0;
         html += `<tr>
           <td class="rank">${row.rank}</td>
           <td>${row.name}</td>
