@@ -28,7 +28,9 @@
           .replace(/^\s*export\s+default\s+/m,        // expose App as a global
             "window.__App = ");
 
-        const { code } = Babel.transform(patched, { presets: ["react"] });
+        const { code } = Babel.transform(patched, {
+          presets: [["react", { runtime: "classic" }]],
+        });
         const s = document.createElement("script");
         s.textContent = code;
         document.head.appendChild(s);
